@@ -26,6 +26,9 @@
         }
     };
 
+    /*
+     * User interaction code.
+     */
     // Commands the player can give the box
     const actions = {
         left: () => {box.vX = -1, box.vY = 0},
@@ -34,16 +37,20 @@
         down: () => {box.vX = 0, box.vY = 1},
     }
 
-    // Maps keyboard keys to actions
+    // Maps keyboard keys to actions. Splitting things like this allows us to remap keys 
+    // to actions and also have different keys and events perform the same action.
     const keyMap = new Map();
     keyMap.set('ArrowLeft', 'left');
     keyMap.set('ArrowRight', 'right');
     keyMap.set('ArrowUp', 'up');
     keyMap.set('ArrowDown', 'down');
 
+    // React to user input
     document.addEventListener('keydown', (e) => {
         const key = keyMap.get(e.code);
+        // Is the current key one we recognise?
         if (key) {
+            // Perform the action associated with this key.
             actions[key]();
         }
     });
@@ -60,7 +67,7 @@
     function frame(time) {
         /* The canvas is currently set up to fill the whole browser window. 
             But the canvas sets it's pixel size independently, so we need to ensure the
-            Pixel size and screen size match at the start of each frame, in case the \
+            Pixel size and screen size match at the start of each frame, in case the
             browser window has been resized. */
         ctx.canvas.width = can.clientWidth;
         ctx.canvas.height = can.clientHeight;
@@ -73,8 +80,8 @@
 
         // Move the box so it can react to player commands
         box.move(timeDelta);
-        // Now draw the box to the screen. We're just drawing a rectangle here,
-        // but you can also draw images with similar functions.
+        // Now draw the box to the screen. 
+        // We're just drawing a rectangle here, but you can also draw images with similar functions.
         ctx.fillStyle = 'black';
         ctx.fillRect(box.x, box.y, box.w, box.h);
 
