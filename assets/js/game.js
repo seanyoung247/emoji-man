@@ -56,7 +56,7 @@
     });
 
     // This starts the game running by calling frame() for the first time:
-    window.requestAnimationFrame(frame);
+    let runId = window.requestAnimationFrame(frame);
 
      /**
       * Called each frame. 
@@ -87,6 +87,6 @@
 
         this.lastFrameTime = time;
         // Tells the browser to call this function again for the next frame update
-        window.requestAnimationFrame(frame);
+        runId = window.requestAnimationFrame(frame);
     }
 })();
