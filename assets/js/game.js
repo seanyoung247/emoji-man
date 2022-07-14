@@ -76,7 +76,8 @@
             do frame independent animation. We want movement speed and animations to be dependent
             on how much time has passed, not how many frames. Otherwise at 60fps things would be
             twice as fast as at 30fps. */
-        const timeDelta = (time - (this.lastFrameTime || time)) / 1000;
+        const timeDelta = (time - (this.lastFrameTime || time)) / 1000; 
+            // Divide by 1000 because time is in ms and we want timeDelta in seconds
 
         // Move the box so it can react to player commands
         box.move(timeDelta);
