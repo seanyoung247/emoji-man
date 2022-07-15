@@ -9,9 +9,11 @@
 ## Features
 All features of *Emoji-Man* are detailed below.
 
-### First Feature
+### First Feature 
 ### Second Feature
 ### etc
+
+### Rules
 
 ## UX
 The Five Planes method - strategy, scope, structure, skeleton, and surface - was used during the project planning phase to provide a conceptual framework for designing this short game.  The methodology for each plane is provided below. 
