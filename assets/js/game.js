@@ -5,6 +5,11 @@
         cols: 10, rows: 10,
     }
 
+    const player = {
+        // Player position in tile coordinates
+        x: 0, y: 0
+    }
+
     /**
      * Creates the tile grid elements and adds them to the DOM
      */
@@ -73,8 +78,34 @@
         }
     }
 
-    window.addEventListener('keydown', (e) => {
+    window.addEventListener('keyup', (e) => {
+        switch (e.code) {
+            case 'ArrowLeft':
+                player.x -= 1;
+                break;
+            case 'ArrowRight':
+                player.x += 1;
+                break;
+            case 'ArrowUp':
+                player.y -= 1;
+                break;
+            case 'ArrowDown':
+                player.y += 1;
+                break;
+        }
+        if (player.x < 0) player.x = 0;
+        if (player.x > testMap.cols-1) player.x = testMap.cols-1;
+        if (player.y < 0) player.y = 0;
+        if (player.y > testMap.rows-1) player.y = testMap.rows-1;
 
+        console.log(player);
+
+        // Move the player element to represent new player position
+        const playerElem = document.getElementsByClassName('game-player')[0];
+        const pos = tileToPixel(player, testMap);
+        console.log(pos);
+        playerElem.style.left = `${Math.floor(pos.x)}px`;
+        playerElem.style.top = `${Math.floor(pos.y)}px`;
     });
 
 })();

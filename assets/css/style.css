@@ -36,12 +36,13 @@ body {
 
 .game-player {
     position: absolute;
-    left: 0;
-    right: 0;
+    left: 0px;
+    top: 0px;
     aspect-ratio: 1 / 1;
-    max-width: calc(100%/var(--map-columns));
-    max-height: calc(100%/var(--map-rows));
+    width: calc(100%/var(--map-columns));
+    height: calc(100%/var(--map-rows));
+
     background-color: blue;
 
-    transition: left 0.5s, right 0.5s;
+    transition: left 0.5s, top 0.5s;
 }
