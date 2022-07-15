@@ -94,7 +94,8 @@
                 player.y += 1;
                 break;
         }
-        // Constrain to map dimensions
+
+        // Reset player position if it is outside the bounds of the map
         if (player.x < 0) player.x = 0;
         if (player.x > testMap.cols-1) player.x = testMap.cols-1;
         if (player.y < 0) player.y = 0;
