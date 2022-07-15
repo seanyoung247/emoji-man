@@ -4,6 +4,11 @@
     padding: 0;
 }
 
+:root {
+    --map-columns: 25;
+    --map-rows: 25;
+}
+
 body {
     width: 100vw;
     height: 100vh;
@@ -11,6 +16,14 @@ body {
 }
 
 #game-screen {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(0,calc(100%/var(--map-columns))));
+    grid-template-rows: repeat(auto-fill, minmax(0,calc(100%/var(--map-rows))));
+
     width: 100%;
     height: 100%;
+}
+
+.game-tile {
+    border: 1px solid black;
 }
