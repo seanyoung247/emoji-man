@@ -35,10 +35,46 @@
         document.getElementById('game-screen').append(frag);
     }
 
-    setup();
+    setupMap(testMap);
+
+
+    /**
+     * Calculates tile width/height
+     */
+    function tileSize(map) {
+        const gameField = document.getElementById('game-screen');
+        return [
+            gameField.clientWidth / map.cols,
+            gameField.clientHeight / map.rows
+        ]
+    }
+
+    /**
+     * Converts from pixels position to tile position
+     */
+    function pixelToTile(pixel, map) {
+        const [tileWidth, tileHeight] = tileSize(map);
+
+        return {
+            x: pixel.x / tileWidth,
+            y: pixel.y / tileHeight
+        }
+    }
+
+    /**
+     * Converts tile coordinates to pixel coordinates
+     */
+    function tileToPixel(tile, map) {
+        const [tileWidth, tileHeight] = tileSize(map);
+
+        return {
+            x: tile.x * tileWidth,
+            y: tile.y * tileHeight
+        }
+    }
 
     window.addEventListener('keydown', (e) => {
-        
+
     });
 
 })();
