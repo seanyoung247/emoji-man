@@ -5,40 +5,44 @@
 }
 
 :root {
-    /* Ideally these values would be set from a map file so maps can be different sizes */
+    /* These values are set by JavaScript on map load */
     --map-columns: 25;
     --map-rows: 25;
 }
 
 body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     width: 100vw;
     height: 100vh;
 }
 
 #game-screen {
-    display: grid;
-    position: relative;
-    grid-template-columns: repeat(auto-fill, minmax(0,calc(100%/var(--map-columns))));
-    grid-template-rows: repeat(auto-fill, minmax(0,calc(100%/var(--map-rows))));
+    display: flex;
+    flex-wrap: wrap;
 
-    /* aspect-ratio:1/1; forces the element to have the same width and height. 
-        By adding max-width and max-height the square will grow until it is maximum 
-        sized in one dimension. i.e. if there's more width than hieght, the square 
-        will grow to take up the full height but not the full width. */
-    aspect-ratio: 1 / 1;
-    max-width: 100%;
+    position: relative;
+    /* grid-template-columns: repeat(auto-fill, minmax(0,calc(100%/var(--map-columns))));
+    grid-template-rows: repeat(auto-fill, minmax(0,calc(100%/var(--map-rows)))); */
+
+    aspect-ratio: 1 / calc(var(--map-rows)/var(--map-columns));
     max-height: 100%;
+    max-width: 100%;
 }
 
 .game-tile {
     border: 1px solid black;
+    flex: 1 0 calc(100%/var(--map-columns));
+    aspect-ratio: 1 / 1;
 }
 
 .game-player {
     position: absolute;
     left: 0px;
     top: 0px;
-    aspect-ratio: 1 / 1;
+    
     width: calc(100%/var(--map-columns));
     height: calc(100%/var(--map-rows));
 

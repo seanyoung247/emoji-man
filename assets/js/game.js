@@ -2,7 +2,7 @@
 (() => {
 
     const testMap = {
-        cols: 10, rows: 10,
+        cols: 10, rows: 15,
     }
 
     const player = {
@@ -98,12 +98,9 @@
         if (player.y < 0) player.y = 0;
         if (player.y > testMap.rows-1) player.y = testMap.rows-1;
 
-        console.log(player);
-
         // Move the player element to represent new player position
         const playerElem = document.getElementsByClassName('game-player')[0];
         const pos = tileToPixel(player, testMap);
-        console.log(pos);
         playerElem.style.left = `${Math.floor(pos.x)}px`;
         playerElem.style.top = `${Math.floor(pos.y)}px`;
     });
