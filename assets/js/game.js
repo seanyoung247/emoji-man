@@ -12,6 +12,8 @@
         // Now create a div for each tile on the map and add it to the document fragment
         for (let i = 0; i < 625; i++) {
             const tile = document.createElement('div');
+            tile.classList.add('game-tile');
+            frag.append(tile);
         }
     }
 
