@@ -2,7 +2,7 @@
 (() => {
 
     const testMap = {
-        cols: 10, rows: 15,
+        cols: 25, rows: 15,
     }
 
     const player = {
@@ -79,6 +79,7 @@
     }
 
     window.addEventListener('keyup', (e) => {
+        // This could be... better...
         switch (e.code) {
             case 'ArrowLeft':
                 player.x -= 1;
@@ -93,6 +94,7 @@
                 player.y += 1;
                 break;
         }
+        // Constrain to map dimensions
         if (player.x < 0) player.x = 0;
         if (player.x > testMap.cols-1) player.x = testMap.cols-1;
         if (player.y < 0) player.y = 0;

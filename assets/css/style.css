@@ -22,14 +22,10 @@ body {
 #game-screen {
     display: flex;
     flex-wrap: wrap;
-
+    
     position: relative;
-    /* grid-template-columns: repeat(auto-fill, minmax(0,calc(100%/var(--map-columns))));
-    grid-template-rows: repeat(auto-fill, minmax(0,calc(100%/var(--map-rows)))); */
 
     aspect-ratio: 1 / calc(var(--map-rows)/var(--map-columns));
-    max-height: 100%;
-    max-width: 100%;
 }
 
 .game-tile {
