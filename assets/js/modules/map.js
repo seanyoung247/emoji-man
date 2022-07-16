@@ -91,8 +91,10 @@ export class TileMap {
     }
 
     getTile(x, y) {
-        if (this.inBounds(x, y)) {
-            return this._tiles[y][x];
+        const iX = Math.round(x);
+        const iY = Math.round(y);
+        if (this.inBounds(iX, iY)) {
+            return this._tiles[iY][iX];
         }
         // If the tile is out of bounds, just return blocked.
         return this._blocked;
@@ -107,17 +109,21 @@ export class TileMap {
 
     tileToPixel(x, y) {
         const [tW, tH] = this.tileSize();
+        const iX = Math.round(x);
+        const iY = Math.round(y);
         return {
-            x: x * tW,
-            y: y * tH
+            x: Math.round(iX * tW),
+            y: Math.round(iY * tH)
         }
     }
 
     pixelToTile(x, y) {
         const [tW, tH] = this.tileSize();
+        const iX = Math.round(x);
+        const iY = Math.round(y);
         return {
-            x: x / tW,
-            y: y / tH
+            x: Math.round(iX / tW),
+            y: Math.round(iY / tH)
         }
     }
 }
