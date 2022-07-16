@@ -53,3 +53,39 @@ export class Tile {
     }
 }
 
+export class Map {
+    constructor(template) {
+        this._rows = template.map.length;
+        this._cols = template.map[0].length;
+        this._elem = document.createElement('div');
+        this._elem.classList.add('game-map');
+        this._tiles = [];
+        // Generate tiles
+        for (let y = 0; y < this._rows; y++) {
+            this._tiles.push([]);
+            for (let x = 0; x < this._cols; x++) {
+                this._tiles[y].push(new Tile(x, y, (template.map[y][x] === 1)));
+                this._elem.append(this._tiles[y][x].element);
+            }
+        }
+        this._playerSpawn = template.player;
+    }
+    /*
+     * Getters and Setters 
+     */
+    get rows() {return this._rows;}
+    get cols() {return this._cols;}
+    get element() {return this._elem;}
+    get playerSpawn() {return this._playerSpawn;}
+    
+    inBounds(x, y) {
+        return (x > 0 && x < this._cols && y > 0 && y < this._rows);
+    }
+
+    getTile(x, y) {
+        if (this.inBounds(x, y)) {
+            return this._tiles[y][x];
+        }
+        return null;
+    }
+}
