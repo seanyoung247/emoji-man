@@ -1,4 +1,5 @@
 import { TileMap } from './modules/map.js';
+import { MapObject, MapMover, Player } from './modules/objects.js';
 
 (() => {
 
