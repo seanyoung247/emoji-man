@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap')
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -10,14 +12,42 @@
     --map-rows: 25;
 }
 
-body {
+game-screen {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Press Start 2P', sans-serif;
 
     width: 100vw;
     height: 100vh;
 }
+
+#logo-nav {
+    justify-content: space-between;
+
+}
+
+#logo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+#logo-nav a {
+    text-decoration: none;
+    
+}
+#nav {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+#nav a {
+    text-decoration: none;
+    list-style: none;
+}
+
 
 #game-screen {
     position: relative;
