@@ -1,5 +1,65 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+/*<<<<<<< intro-level-branch */
+/* Level Intro */
 
+#intro {
+    z-index: 999;
+    width: 80%;
+    height: 80%;
+    display: block;
+    border: 2px dotted black;
+    margin: 10%;
+    color:white;
+    background-color: black;
+    position: absolute;
+    text-align: center;
+}
+
+#intro-title {
+    margin-top: 10%;
+}
+
+#intro-text {
+    margin-top: 20%;
+    margin-bottom: 15%;
+}
+
+.intro-button {
+    width: 40%;
+    border: 4px solid white;
+    border-radius: 20px;
+    margin-left: 30%;
+}
+
+	
+#logo-nav {
+    justify-content: space-between;
+}
+#logo {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 7%;
+    
+}
+
+/* Navbar */
+#logo-nav a {
+    color: white;
+    text-align: center;
+    
+}
+
+#nav {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+
+#nav a {
+    color: white;
+    list-style: none;
+}
+
+/* Game Styling */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -12,11 +72,15 @@
     --map-rows: 25;
 }
 
-game-screen {
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: black;
+}
+
+#game-screen {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Press Start 2P', sans-serif;
 
     width: 100vw;
     height: 100vh;
@@ -96,4 +160,9 @@ nav {
     content: var(--character);
     font-size: calc(1px * var(--size));
     line-height: calc(1px * var(--size));
+}
+/* @media (min-width: 576px)
+@media (min-width: 768px)
+@media (min-width: 992px)
+@media (min-width: 1200px) */
 }
