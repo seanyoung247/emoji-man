@@ -67,7 +67,8 @@ import { TileMap } from './modules/map.js';
             });
     }
 
-    loadMap('assets/maps/testMap.json');
+    // loadMap('assets/maps/testMap.json');
+    loadMap('assets/maps/vampire_party.json');
 
     let lastFrameTime = performance.now();
     function frame(time) {
