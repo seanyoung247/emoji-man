@@ -6,8 +6,22 @@ import { TileMap } from './modules/map.js';
 
     let player = {
         // Player position in tile coordinates
-        x: 0, y: 0
+        x: 0, y: 0,
+        // Player speed in tiles per second
+        speed: 6
     }
+
+    const actionMap = new Map();
+    actionMap.set('MovePlayerLeft', {active: false, action: (amt) => player.x -= currentMap.getTile(player.x-1,player.y).passable ? amt : 0});
+    actionMap.set('MovePlayerRight', {active: false, action: (amt) => player.x += currentMap.getTile(player.x+1,player.y).passable ? amt : 0});
+    actionMap.set('MovePlayerUp', {active: false, action: (amt) => player.y -= currentMap.getTile(player.x,player.y-1).passable ? amt : 0});
+    actionMap.set('MovePlayerDown', {active: false, action: (amt) => player.y += currentMap.getTile(player.x,player.y+1).passable ? amt : 0});
+
+    const keyMap = new Map();
+    keyMap.set('ArrowLeft', 'MovePlayerLeft');
+    keyMap.set('ArrowRight', 'MovePlayerRight');
+    keyMap.set('ArrowUp', 'MovePlayerUp');
+    keyMap.set('ArrowDown', 'MovePlayerDown');
 
     function startMap() {
         document.documentElement.style.setProperty('--map-columns', currentMap.cols);
@@ -18,7 +32,8 @@ import { TileMap } from './modules/map.js';
         frag.append(currentMap.element);
 
         // Player
-        player = currentMap.playerSpawn;
+        player.x = currentMap.playerSpawn.x;
+        player.y = currentMap.playerSpawn.y;
         const playerEl = document.createElement('div');
         playerEl.classList.add('game-player');
         frag.append(playerEl);
@@ -34,7 +49,11 @@ import { TileMap } from './modules/map.js';
         playerEl.style.setProperty('--size', currentMap.tileSize()[0]);
 
         // Attach events
-        window.addEventListener('keyup', keyup);
+        window.addEventListener('keydown', keyDown);
+        window.addEventListener('keyup', keyUp);
+
+        // Start game loop
+        window.requestAnimationFrame(frame);
     }
 
     function loadMap(path) {
@@ -50,36 +69,40 @@ import { TileMap } from './modules/map.js';
 
     loadMap('assets/maps/testMap.json');
 
+    let lastFrameTime = performance.now();
+    function frame(time) {
+        const timeDelta = (time - lastFrameTime) / 1000;
 
-    function keyup(e) {
-        
-        // This could be... better...
-        switch (e.code) {
-            case 'ArrowLeft':
-                if (currentMap.getTile(player.x-1,player.y).passable) player.x -= 1;
-                break;
-            case 'ArrowRight':
-                if (currentMap.getTile(player.x+1,player.y).passable) player.x += 1;
-                break;
-            case 'ArrowUp':
-                if (currentMap.getTile(player.x,player.y-1).passable) player.y -= 1;
-                break;
-            case 'ArrowDown':
-                if (currentMap.getTile(player.x,player.y+1).passable) player.y += 1;
-                break;
+        // How far can the player move this frame?
+        const playerMovement = player.speed * timeDelta;
+
+        // React to user events
+        for (const value of actionMap.values()) {
+            if (value.active) value.action(playerMovement);
         }
 
-        // Reset player position if it is outside the bounds of the map
-        if (player.x < 0) player.x = 0;
-        if (player.x > currentMap.cols-1) player.x = currentMap.cols-1;
-        if (player.y < 0) player.y = 0;
-        if (player.y > currentMap.rows-1) player.y = currentMap.rows-1;
-
-        // Move the player element to represent new player position
+        // Move the player
         const playerEl = document.getElementsByClassName('game-player')[0];
         const pos = currentMap.tileToPixel(player.x, player.y);
         playerEl.style.setProperty('--pX', pos.x);
         playerEl.style.setProperty('--pY', pos.y);
+
+        lastFrameTime = time;
+        window.requestAnimationFrame(frame);
+    }
+
+    function keyDown(e) {
+        const key = keyMap.get(e.code);
+        if (key) {
+            actionMap.get(key).active = true;
+        }
+    }
+
+    function keyUp(e) {
+        const key = keyMap.get(e.code);
+        if (key) {
+            actionMap.get(key).active = false;
+        }
     }
 
 })();
