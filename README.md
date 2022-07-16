@@ -1,10 +1,19 @@
-# emoji-man
+# emoji-man 😀
 
 ## Project Overview
 - This website was developed for the Code Institute July 2022 'World Emoji Day' Hackathon (13th - 18th July)
 - The website is deployed using Heroku pages at the following url: 
 - The repository on Github that contains the website source code and assets is available at the following url: 
 - The website was built with a responsive look and feel, designed to be enjoyable to use on all screen sizes. 
+
+### Contributors
+- [Sean Young](https://github.com/seanyoung247)
+- [Lucy Colley](https://github.com/MojosBeans100)
+- [Kamil Kwiatkowski](https://github.com/kamil-kw)
+- [Andy Guttridge](https://github.com/andy-guttridge)
+- [Rachel O'Donnell](https://github.com/rachel-o-donnell)
+- [Yasir](https://github.com/yasirwiifto)
+- [Keegan Waters](https://github.com/Keeganw3)
 
 ## Features
 All features of *Emoji-Man* are detailed below.
@@ -142,7 +151,51 @@ The look and feel of the website was considered when designing the visual elemen
 
 ## Testing
 
+### User Story Manual Testing
+All user stories were tested for functionality.
+
+|-|User Story|Action|Desktop|Tablet|Mobile|Pass|
+|-|----------|------|-------|------|------|----|
+|1|As a **User** I can **find the game rules** so that **I understand how to play the game**|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|2|As a **User** I can **see a 'Launch Game' button** so that **I know how to start the game**|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+
+Acceptance Criteria:
+- [x] blah blah
+- [x] blah blah
+
+### Automated Testing
+### Validators
+All files were checked for format validation.
+
+#### HTML
+The validator used to check validity of HTML code was [W3C](https://validator.w3.org/).
+
+|File|Result|Status|
+|----|------|------|
+|index.html|[Validation]()|Pass|
+|canvas.html|[Validation]()|Pass|
+
+#### CSS
+The validator used to check validity of CSS code was [W3 Jigsaw](https://jigsaw.w3.org/css-validator/).
+
+|File|Result|Status|
+|----|------|------|
+|style.css|[Validation]()|Pass|
+|canvas-style.css|[Validation]()|Pass|
+
+#### Javascript
+The validator used to check validity of Javascript code was [JSHINT](https://jshint.com/).
+
+|File|Result|Status|
+|----|------|------|
+|game.js|[Validation]()|Pass|
+|canvas-game.js|[Validation]()|Pass|
+
 ## Technologies Used
+- [HTML]() was used to 
+- [Emojipedia](https://emojipedia.org/) was used to source emojis
+- [Balsamiq](https://balsamiq.com/) was used to mock-up initial wireframes
+- [Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) was used to provide a framework for creating the game in Javascript
 
 ## Deployment
 
