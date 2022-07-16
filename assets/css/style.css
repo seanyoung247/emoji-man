@@ -20,29 +20,44 @@ body {
 }
 
 #game-screen {
+    position: relative;
+}
+
+.game-map {
     display: flex;
     flex-wrap: wrap;
-    
-    position: relative;
-
-    aspect-ratio: 1 / calc(var(--map-rows)/var(--map-columns));
+    aspect-ratio: 1 / calc(var(--map-rows) / var(--map-columns));
+    --tile-width: calc(100% / var(--map-columns));
 }
 
 .game-tile {
     border: 1px solid black;
-    flex: 1 0 calc(100%/var(--map-columns));
+    flex: 1 0 var(--tile-width);
     aspect-ratio: 1 / 1;
 }
 
-.game-player {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    
-    width: calc(100%/var(--map-columns));
-    height: calc(100%/var(--map-rows));
+.game-tile.wall {
+    background-color: black;
+}
 
-    background-color: blue;
+.game-player {
+    --pX: 0;
+    --pY: 0;
+    --size: 0;
+
+    position: absolute;
+    left: calc(1px * var(--pX));
+    top: calc(1px * var(--pY));
+    
+    width: var(--tile-width);
+    aspect-ratio: 1 / 1;
 
     transition: left 0.5s, top 0.5s;
+}
+
+.game-player::before {
+    display: block;
+    content: '\01F600'; /* Can be set by JS to change character */
+    font-size: calc(1px * var(--size));    /* Needs to be set by JS */
+    line-height: calc(1px * var(--size));
 }
