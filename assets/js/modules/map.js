@@ -6,11 +6,13 @@ export class Tile {
      * @param {Number} x - Tile X coordinate
      * @param {Number} y - Tile Y coordinate
      * @param {Boolean} wall - Should this tile be passable or a wall?
+     * @param {Object} map - The map this tile belongs to
      */
-    constructor(x, y, wall) {
+    constructor(x, y, wall, map) {
         this._x = x;
         this._y = y;
         this._wall = wall;
+        this._map = map;
         // Create this tiles html element
         this._elem = document.createElement('div');
         this._elem.classList.add('game-tile', (this._wall ? 'wall' : 'open'));
@@ -24,7 +26,10 @@ export class Tile {
     get y() {return this._y;}
     get isWall() {return this._wall;}
     get passable() {return !this._wall;}
+    // HTML Properties
     get element() {return this._elem;}
+    get width() {return this._elem.clientWidth;}
+    get height() {return this._elem.clientHeight;}
 
     /**
      * Adds an object to be resident to the tile.
@@ -64,7 +69,7 @@ export class Map {
         for (let y = 0; y < this._rows; y++) {
             this._tiles.push([]);
             for (let x = 0; x < this._cols; x++) {
-                this._tiles[y].push(new Tile(x, y, (template.map[y][x] === 1)));
+                this._tiles[y].push(new Tile(x, y, (template.map[y][x] === 1)), this);
                 this._elem.append(this._tiles[y][x].element);
             }
         }
@@ -75,8 +80,11 @@ export class Map {
      */
     get rows() {return this._rows;}
     get cols() {return this._cols;}
-    get element() {return this._elem;}
     get playerSpawn() {return this._playerSpawn;}
+    // HTML Properties
+    get element() {return this._elem;}
+    get width() {return this._elem.clientWidth;}
+    get height() {return this._elem.clientHeight;}
     
     inBounds(x, y) {
         return (x > 0 && x < this._cols && y > 0 && y < this._rows);
@@ -87,5 +95,28 @@ export class Map {
             return this._tiles[y][x];
         }
         return null;
+    }
+
+    _tileSize() {
+        return [
+            this._elem.clientWidth / this._cols,
+            this._elem.clientHeight / this._rows
+        ]
+    }
+
+    tileToPixel(x, y) {
+        const [tW, tH] = this._tileSize();
+        return {
+            x: x * tW,
+            y: y * tH
+        }
+    }
+
+    pixelToTile(x, y) {
+        const [tW, tH] = this._tileSize();
+        return {
+            x: x / tW,
+            y: y / tH
+        }
     }
 }
