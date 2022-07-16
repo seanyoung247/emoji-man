@@ -13,6 +13,5 @@
     ],
     "player": {"x":1, "y":8},
     "objects": [{"type": "balloon", "x":1, "y":1}, {"type": "cake", "x":2, "y":1}, {"type": "balloon", "x":1, "y":2}, {"type": "cake", "x":1, "y":3}], 
-    //One enemy needs to be identified!
-    "enemies": [{"type": "clown", "x":8, "y":8}, {"type": "juggler", "x":9, "y":7}, {"type": "x", "x":8, "y":2}]
+    "enemies": [{"type": "clown", "x":8, "y":8}, {"type": "juggler", "x":9, "y":7}, {"type": "joker", "x":8, "y":2}]
 }
