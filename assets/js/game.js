@@ -1,4 +1,5 @@
 import { Map } from './modules/map.js';
+import { soundfx } from './sounds.js'
 
 (() => {
 
@@ -8,7 +9,7 @@ import { Map } from './modules/map.js';
         // Player position in tile coordinates
         x: 0, y: 0
     }
-
+    
     function startMap() {
         document.documentElement.style.setProperty('--map-columns', currentMap.cols);
         document.documentElement.style.setProperty('--map-rows', currentMap.rows);
@@ -38,8 +39,11 @@ import { Map } from './modules/map.js';
     }
 
     function loadMap(path) {
+        //load sound
+        soundfx.gameSong.play()
         // Check if there's a currently loaded map and unload it here...
         // Load the new map
+        
         fetch(path)
             .then(response => response.json())
             .then(data => {
@@ -52,7 +56,7 @@ import { Map } from './modules/map.js';
 
 
     function keyup(e) {
-        
+        soundfx.chomp.play()
         // This could be... better...
         switch (e.code) {
             case 'ArrowLeft':
