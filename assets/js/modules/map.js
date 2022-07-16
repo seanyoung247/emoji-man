@@ -72,6 +72,7 @@ export class Map {
                 this._elem.append(this._tiles[y][x].element);
             }
         }
+        this._blocked = new Tile(-1,-1,true);
         this._playerSpawn = template.player;
     }
     /*
@@ -93,10 +94,11 @@ export class Map {
         if (this.inBounds(x, y)) {
             return this._tiles[y][x];
         }
-        return null;
+        // If the tile is out of bounds, just return blocked.
+        return this._blocked;
     }
 
-    _tileSize() {
+    tileSize() {
         return [
             this._elem.clientWidth / this._cols,
             this._elem.clientHeight / this._rows
@@ -104,7 +106,7 @@ export class Map {
     }
 
     tileToPixel(x, y) {
-        const [tW, tH] = this._tileSize();
+        const [tW, tH] = this.tileSize();
         return {
             x: x * tW,
             y: y * tH
@@ -112,7 +114,7 @@ export class Map {
     }
 
     pixelToTile(x, y) {
-        const [tW, tH] = this._tileSize();
+        const [tW, tH] = this.tileSize();
         return {
             x: x / tW,
             y: y / tH
