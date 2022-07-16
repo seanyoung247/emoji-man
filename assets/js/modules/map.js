@@ -1,3 +1,4 @@
+import { Node, Graph } from "./graph.js";
 
 export class Tile {
     /**
@@ -14,9 +15,11 @@ export class Tile {
         this._wall = wall;
         // Create this tiles html element
         this._elem = document.createElement('div');
-        this._elem.classList.add('game-tile', (this._wall ? 'wall' : 'open'));
+        this._elem.classList.add('game-tile', (wall ? 'wall' : 'open'));
         // Objects on this tile
         this._objs = [];
+        // Pathing
+        this._node = new Node(x, y, (wall ? 100 : 1));
     }
     /*
      * Getters and Setters
@@ -26,6 +29,7 @@ export class Tile {
     get isWall() {return this._wall;}
     get passable() {return !this._wall;}
     get objects() {return this._objs;}
+    get node() {return this._node;}
     // HTML Properties
     get element() {return this._elem;}
     get width() {return this._elem.clientWidth;}
@@ -75,6 +79,8 @@ export class TileMap {
         }
         this._blocked = new Tile(-1,-1,true);
         this._playerSpawn = template.player;
+        // Build the pathing graph
+        this._graph = this._buildGraph();
     }
     /*
      * Getters and Setters 
@@ -126,5 +132,47 @@ export class TileMap {
             x: Math.round(iX / tW),
             y: Math.round(iY / tH)
         }
+    }
+
+    /*
+     * Pathing
+     */
+    _buildGraph() {
+        const graph = new Graph();
+
+        for (let y = 0; y < this._rows; y++) {
+            for (let x = 0; x < this._cols; x++) {
+                graph.addVertex(this._tiles[y][x].node);
+
+                if (y < this._rows-1) {
+                    graph.addVertex(this._tiles[x][y+1].node);
+                    graph.addEdge(this._tiles[x][y].node, this._tiles[x][y+1].node);
+                }
+    
+                if (x < this._cols-1) {
+                    graph.addVertex(this._tiles[x+1][y].node);
+                    graph.addEdge(this._tiles[x][y].node, this._tiles[x+1][y].node);
+                }
+            }
+        }
+        return graph;
+    }
+
+    getPath(start, goal) {
+        const path = [];
+        let node = this._graph.DA(start.node, goal.node);
+        // If a path was found
+        if (node) {
+            // Create a node path list to return.
+            while (node.parent) {
+                path.unshift(node);
+                node = node.parent;
+            }
+            path.unshift(node);
+        }
+        // Ensure the nodes are cleared so a new path can be built
+        this._graph.reset();
+
+        return path;
     }
 }
