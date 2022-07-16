@@ -24,13 +24,18 @@ body {
     flex-wrap: wrap;
     
     position: relative;
+}
 
-    aspect-ratio: 1 / calc(var(--map-rows)/var(--map-columns));
+.game-map {
+    display: flex;
+    flex-wrap: wrap;
+    aspect-ratio: 1 / calc(var(--map-rows) / var(--map-columns));
+    --tile-width: calc(100% / var(--map-columns));
 }
 
 .game-tile {
     border: 1px solid black;
-    flex: 1 0 calc(100%/var(--map-columns));
+    flex: 1 0 var(--tile-width);
     aspect-ratio: 1 / 1;
 }
 
@@ -39,10 +44,8 @@ body {
     left: 0px;
     top: 0px;
     
-    width: calc(100%/var(--map-columns));
-    height: calc(100%/var(--map-rows));
-
-    background-color: blue;
+    width: var(--tile-width);
+    aspect-ratio: 1 / 1;
 
     transition: left 0.5s, top 0.5s;
 }
