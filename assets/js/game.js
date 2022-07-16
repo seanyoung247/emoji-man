@@ -1,3 +1,4 @@
+import { Map } from './modules/map.js';
 
 (() => {
 
@@ -5,7 +6,9 @@
         cols: 25, rows: 15,
     }
 
-    const player = {
+    let currentMap = null;
+
+    let player = {
         // Player position in tile coordinates
         x: 0, y: 0
     }
@@ -44,8 +47,43 @@
         document.getElementById('game-screen').append(frag);
     }
 
-    setupMap(testMap);
+    function startMap() {
+        document.documentElement.style.setProperty('--map-columns', currentMap.cols);
+        document.documentElement.style.setProperty('--map-rows', currentMap.rows);
 
+        // Map + Tiles
+        const frag = new DocumentFragment();
+        frag.append(currentMap.element);
+
+        // Player
+        player = currentMap.playerSpawn;
+        const playerEl = document.createElement('div');
+        playerEl.classList.add('game-player');
+        frag.append(playerEl);
+
+        //Objects + Enemies here
+
+        //Update the DOM
+        document.getElementById('game-screen').append(frag);
+
+        const pos = currentMap.tileToPixel(player.x, player.y);
+        playerEl.style.left = `${Math.floor(pos.x)}px`;
+        playerEl.style.top = `${Math.floor(pos.y)}px`;
+    }
+
+    function loadMap(path) {
+        // Check if there's a currently loaded map and unload it here...
+        // Load the new map
+        fetch(path)
+            .then(response => response.json())
+            .then(data => {
+                currentMap = new Map(data);
+                startMap();
+            });
+    }
+
+   // setupMap(testMap);
+    loadMap('assets/maps/testMap.json');
 
     /**
      * Calculates tile width/height

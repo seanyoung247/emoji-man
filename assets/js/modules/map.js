@@ -8,11 +8,10 @@ export class Tile {
      * @param {Boolean} wall - Should this tile be passable or a wall?
      * @param {Object} map - The map this tile belongs to
      */
-    constructor(x, y, wall, map) {
+    constructor(x, y, wall) {
         this._x = x;
         this._y = y;
         this._wall = wall;
-        this._map = map;
         // Create this tiles html element
         this._elem = document.createElement('div');
         this._elem.classList.add('game-tile', (this._wall ? 'wall' : 'open'));
@@ -69,7 +68,7 @@ export class Map {
         for (let y = 0; y < this._rows; y++) {
             this._tiles.push([]);
             for (let x = 0; x < this._cols; x++) {
-                this._tiles[y].push(new Tile(x, y, (template.map[y][x] === 1)), this);
+                this._tiles[y].push( new Tile(x, y, (template.map[y][x] === 1)) );
                 this._elem.append(this._tiles[y][x].element);
             }
         }
