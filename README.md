@@ -25,12 +25,14 @@ All features of *Emoji-Man* are detailed below.
 ## Rules
 Help Emojiman become the happiest emoji by thwarting the evil plans of the baddies in Emojiland.
 
+
 Each level Emojiman encounters a new baddie to defeat, he must collect all the special items and then reach a special destination point to reach the next level.
 
 ### HEALTH SCALE:       
                     	despair 🥵😱😩😭🤕 🙂 😋🤗😃🤩 ultimate happiness
 
-You start off as 🙂 a happy emoji but Emojiman transforms up and down the scale of happiness depending on what or who it bumps into. Avoid all the baddies of Emojiland, collect all the fruit and veg and to keep your happiness at a peak ecstatic.
+
+You start off as 🙂 a happy emoji but Emojiman transforms up and down the scale of happiness depending on what or who he bumps into. Avoid all the baddies of Emojiland, collect all the fruit and veg and to keep your happiness at a peak ecstatic.
 
 Emojiman will start a next level in the condition he was in when he reached his destination in the last l - so keep eating those greens!
 
@@ -43,6 +45,7 @@ Collect points to be a part of the highest scores leaderboard. The top ten score
 🥑🥦🥬🍏 🥝  	10 points each
 				Each fruit or veg gains you 1 position on the happiness scale
 
+
 🍒  				30 points 
 				Gain 1 position on the happiness scale
 
@@ -50,7 +53,8 @@ Collect points to be a part of the highest scores leaderboard. The top ten score
 
 🧟🧛👽🦁🐯
 🐻☠️🏴‍☠️🤡🤹‍♂️     Each baddie you cross paths with moves you down 1 place the scale of happiness. 
-🃏 😈🔥👾🤖
+🃏😈🔥👾🤖
+
 
 
 ### LIMITED TIME BONUS OR BOOS:
@@ -67,55 +71,59 @@ These special icons will occasionally appear in the game, and only for a brief a
  
 ### LEVELS
 
-Each level has different themes, characters and collectables.
+
+Each level has different themes, characters and collectables. Each level Emojiman encounters a new baddie to defeat, once he collects all the special items he must then reach a special destination point in order to win that level. 
 
 #### VAMPIRE PARTY
 Baddies: 🧛 
-Collect: 🫀🩸🧄 🌞 
-Destination : ⚰️
+Collect: 🫀🩸🧄 🌞  20 points each
+Destination : ⚰️  
 Aim: Vampires are on the loose! Collect the blood to starve the vampires, collect garlic to repel them and sun to kill them. Find safety through the coffin.
+
 
 #### ALIEN ABDUCTION
 Baddies:👽
 Collect: 🛸 🚀🕴
+
 Destination 🌎 
 Aim: Aliens have abducted Emojilanders. Collect the abductees, your rocket ship and destroy the flying saucers, then head home to Earth!
 
 #### HALLOWEEN HORROR
 Baddies: 🧟 
-Collect: 🧠🎃
+Collect: 🧠🎃	20 points each
 Destination: 🪦
 Aim: A small zombie apocolyse had started. Nothing that emojiman can’t handle. Collect all the brains to starve the zombies, collect the pumpkins to throw at them . Flee through the cemetery
 
 #### WALK THE PLANK
 Baddies: ☠️🏴‍☠️
-Collect: 💰🦜
+Collect: 💰🦜 	20 points each
 Destination: 🧜
 Aim: A pirate ship has come to emojiland. Steal the treasure and the parrots and meet the merperson to sink the pirate ship once and for all
 
 #### LIONS AND TIGERS AND BEARS, OH MY!
 Baddies: 🦁🐯🐻
-Collect: 🐒🍌
+Collect: 🐒🍌	20 points each
 Destination: 👠 👠
 Aim: Wild beasts are on the prowl in the city. Collect monkeys and bananas to cause mischief to distract the baddies collect your ruby slippers to go home 
 
 #### CLOWN TOWN
 Baddies: 🤡🤹‍♂️🃏
-Collect: 🎈🎂
+Collect: 🎈🎂  20 points each
 Destination: 🎪
 Aim: Clowns and jokers are storming the town. Collect birthday cake to throw at the baddies and pop all their balloons, find safety through the tent. 
 
 #### GAME OF DEATH
 Baddies:👾
-Collect:🕹🤖
+Collect:🕹🤖	20points each
 Destination: 📺
-Aim: The game bugs are infecting Emojiland. Collect all the joysticks and bots to take control of the infestation, Reach the tv to turn off their power source.
+Aim: The game bugs are infecting Emojiland. Collect all the joysticks and bots to take control of the infestation, reach the tv to turn off their power source.
 
 #### DEVILS DOMAIN
 Baddies:😈🔥
 Collect: 💧🧑‍🚒  
+
 Destination: 🌋
-Aim: A devil has erupted a volcano . Collect firemen and water to extinguish the flames, reach the volcano to block it up for good.
+Aim: A devil has errupted a volcano. Collect firemen and water to extinguish the flames, reach the volcano to block it up for good.
 
 ## UX
 The Five Planes method - strategy, scope, structure, skeleton, and surface - was used during the project planning phase to provide a conceptual framework for designing this short game.  The methodology for each plane is provided below. 
