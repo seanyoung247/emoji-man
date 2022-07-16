@@ -1,4 +1,4 @@
-import { Map } from './modules/map.js';
+import { TileMap } from './modules/map.js';
 
 (() => {
 
@@ -43,7 +43,7 @@ import { Map } from './modules/map.js';
         fetch(path)
             .then(response => response.json())
             .then(data => {
-                currentMap = new Map(data);
+                currentMap = new TileMap(data);
                 startMap();
             });
     }

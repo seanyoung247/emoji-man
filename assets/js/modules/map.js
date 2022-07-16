@@ -57,7 +57,7 @@ export class Tile {
     }
 }
 
-export class Map {
+export class TileMap {
     constructor(template) {
         this._rows = template.map.length;
         this._cols = template.map[0].length;
