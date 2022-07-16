@@ -1,3 +1,4 @@
+/*<<<<<<< intro-level-branch */
 /* Level Intro */
 
 #intro {
@@ -59,7 +60,6 @@
 }
 
 /* Game Styling */
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -112,6 +112,10 @@ body {
     list-style: none;
 }
 
+nav {
+    top: 0px;
+    position: fixed;
+}
 
 #game-screen {
     position: relative;
@@ -159,3 +163,4 @@ body {
 @media (min-width: 768px)
 @media (min-width: 992px)
 @media (min-width: 1200px) */
+}
