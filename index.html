@@ -30,9 +30,12 @@
                 <li>
                     <a href="#">Highscores</a>
                 </li>
-        </ul>
+            </ul>
         </nav>
     </header>
+
+    <div id="game-screen"></div>
+
     <div id="intro">
         <h1 id="intro-title">VAMPIRE PARTY</h1>
         <p id="intro-text"> Baddies: 🧛 Collect: 🫀🩸🧄 🌞 20 points each Destination : ⚰️
@@ -40,19 +43,18 @@
             collect garlic to repel them and sun to kill them. Find safety through the coffin.
         </p>
         <h2 class="intro-button" onclick="myFunction()">Start Level</h2>
-        </div>
-        <body>
-            <div id="game-screen"></div>
-            <script>
-                // When the user clicks on <span>, close the popup
-                function myFunction() {
-                  var popup = document.getElementById("intro");
-                    if (popup.style.display !== "none") {
-                        popup.style.display = "none";
-                    } else {
-                        popup.style.display = "block";
-                    }
-                }
-            </script>    
+    </div>
+    
+    <script>
+        // When the user clicks on <span>, close the popup
+        function myFunction() {
+            var popup = document.getElementById("intro");
+            if (popup.style.display !== "none") {
+                popup.style.display = "none";
+            } else {
+                popup.style.display = "block";
+            }
+        }
+    </script>
 </body>
 </html>

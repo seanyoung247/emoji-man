@@ -52,13 +52,13 @@ export var soundfx = {
 // pause or play background music
 
 export function music() {
-
-    document.querySelector(".play-music").addEventListener('click', () => {
-        if (!soundfx.gameSong.playing()) {
-            soundfx.gameSong.play();
-        }
-    });
-    document.querySelector(".mute-music").addEventListener('click', () => {
-            soundfx.gameSong.pause();
-        });
+    // Uncomment when fixed!
+    // document.querySelector(".play-music").addEventListener('click', () => {
+    //     if (!soundfx.gameSong.playing()) {
+    //         soundfx.gameSong.play();
+    //     }
+    // });
+    // document.querySelector(".mute-music").addEventListener('click', () => {
+    //     soundfx.gameSong.pause();
+    // });
 };

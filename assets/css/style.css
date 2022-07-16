@@ -1,4 +1,25 @@
-/*<<<<<<< intro-level-branch */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* These values are set by JavaScript on map load */
+    --map-columns: 25;
+    --map-rows: 25;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+
+    font-family: 'Press Start 2P', cursive;
+    background-color: black;
+}
 /* Level Intro */
 
 #intro {
@@ -59,33 +80,6 @@
     list-style: none;
 }
 
-/* Game Styling */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-:root {
-    /* These values are set by JavaScript on map load */
-    --map-columns: 25;
-    --map-rows: 25;
-}
-
-body {
-    font-family: 'Press Start 2P', cursive;
-    background-color: black;
-}
-
-#game-screen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 100vw;
-    height: 100vh;
-}
-
 #logo-nav {
     justify-content: space-between;
 
@@ -112,13 +106,16 @@ body {
     list-style: none;
 }
 
-nav {
+/* nav {
     top: 0px;
     position: fixed;
-}
+} */
 
 #game-screen {
     position: relative;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
 }
 
 .game-map {
@@ -130,6 +127,7 @@ nav {
 
 .game-tile {
     border: 1px solid black;
+    background-color: white;
     flex: 1 0 var(--tile-width);
     aspect-ratio: 1 / 1;
 }
@@ -142,6 +140,7 @@ nav {
     --pX: 0;
     --pY: 0;
     --size: 0;
+    --character: '\01F600';
 
     position: absolute;
     left: calc(1px * var(--pX));
@@ -155,12 +154,13 @@ nav {
 
 .game-player::before {
     display: block;
-    content: '\01F600'; /* Can be set by JS to change character */
-    font-size: calc(1px * var(--size));    /* Needs to be set by JS */
+    content: var(--character);
+    font-size: calc(1px * var(--size));
     line-height: calc(1px * var(--size));
 }
+
 /* @media (min-width: 576px)
 @media (min-width: 768px)
 @media (min-width: 992px)
 @media (min-width: 1200px) */
-}
+

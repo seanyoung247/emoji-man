@@ -54,9 +54,28 @@ export class MapMover extends MapObject {
         this._vector.y = Math.sign(y);
     }
 
+    // Moves along the current movement vector
     move(time) {
-        // Move along the vector based on speed and time passed.
-        
+        const pX = this._x + (this._vector.x * (this._speed * time));
+        const pY = this._y + (this._vector.y * (this._speed * time));
+
+        // Check for collisions in x
+        if (this._map.getTile(pX, this._y).passable) {
+            this._x = pX;
+        }
+        // Check for collision in y
+        if (this._map.getTile(this._x, pY).passable) {
+            this._y = pY;
+        }
+        // Have we moved to a new tile?
+        if (Math.round(pX) != this._x || Math.round(pY) != this._y) {
+            // Deregister this from the current Tile
+            this._tile.removeObject(this);
+            // Register on the new tile
+            this._tile = this._map.getTile(this._x, this._y);
+            this._tile.addObject(this);
+            // Perform collision with any objects on the tile
+        }
     }
 }
 
@@ -67,6 +86,4 @@ export class Player extends MapMover {
     constructor(x, y, map, speed) {
         super(x, y, map, speed);
     }
-
-
 }
