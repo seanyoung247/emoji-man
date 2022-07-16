@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script type="module" src="assets/js/game.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js" integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>emojiman</title>
 </head>
 <body>
-
     <header> 
         <!-- logo and nav bar -->
         <nav id="logo-nav">
@@ -33,8 +33,26 @@
         </ul>
         </nav>
     </header>
-    <div id="game-screen"> 
-        
-    </div>
+    <div id="intro">
+        <h1 id="intro-title">VAMPIRE PARTY</h1>
+        <p id="intro-text"> Baddies: 🧛 Collect: 🫀🩸🧄 🌞 20 points each Destination : ⚰️
+            Aim: Vampires are on the loose! Collect the blood to starve the vampires, 
+            collect garlic to repel them and sun to kill them. Find safety through the coffin.
+        </p>
+        <h2 class="intro-button" onclick="myFunction()">Start Level</h2>
+        </div>
+        <body>
+            <div id="game-screen"></div>
+            <script>
+                // When the user clicks on <span>, close the popup
+                function myFunction() {
+                  var popup = document.getElementById("intro");
+                    if (popup.style.display !== "none") {
+                        popup.style.display = "none";
+                    } else {
+                        popup.style.display = "block";
+                    }
+                }
+            </script>    
 </body>
 </html>
