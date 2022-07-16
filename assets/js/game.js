@@ -48,7 +48,8 @@ import { Map } from './modules/map.js';
             });
     }
 
-    loadMap('assets/maps/testMap.json');
+    // loadMap('assets/maps/testMap.json');
+    loadMap('assets/maps/vampire_party.json');
 
 
     function keyup(e) {
