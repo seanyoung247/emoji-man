@@ -12,7 +12,7 @@
         [1,1,1,1,1,1,1,1,1,1]
     ],
     "player": {"x":1, "y":8},
-    "objects": [{"type": "heart", "x":1, "y":1}, {"type": "heart", "x":2, "y":1}, {"type": "blood", "x":1, "y":2}, {"type": "blood", "x":1, "y":3}], 
-    "enemies": [{"type": "vampire", "x":8, "y":8}],
-    "destination": {"type": "coffin", "x":9, "y":4}
+    "objects": [{"type": "monkey", "x":1, "y":1}, {"type": "banana", "x":2, "y":1}, {"type": "monkey", "x":1, "y":2}, {"type": "banana", "x":1, "y":3}], 
+    "enemies": [{"type": "lion", "x":8, "y":8}, {"type": "tiger", "x":9, "y":7}, {"type": "bear", "x":8, "y":2}],
+    "destination": {"type": "high_heels", "x":9, "y":4}
 }

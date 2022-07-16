@@ -12,7 +12,7 @@
         [1,1,1,1,1,1,1,1,1,1]
     ],
     "player": {"x":1, "y":8},
-    "objects": [{"type": "heart", "x":1, "y":1}, {"type": "heart", "x":2, "y":1}, {"type": "blood", "x":1, "y":2}, {"type": "blood", "x":1, "y":3}], 
-    "enemies": [{"type": "vampire", "x":8, "y":8}],
-    "destination": {"type": "coffin", "x":9, "y":4}
+    "objects": [{"type": "ufo", "x":1, "y":1}, {"type": "rocket", "x":2, "y":1}, {"type": "person", "x":1, "y":2}, {"type": "ufo", "x":1, "y":3}], 
+    "enemies": [{"type": "alien", "x":8, "y":8}],
+    "destination": {"type": "earth", "x":9, "y":4}
 }
