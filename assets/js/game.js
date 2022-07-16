@@ -1,5 +1,8 @@
+
 import { TileMap } from './modules/map.js';
 import { MapObject, MapMover, Player } from './modules/objects.js';
+
+import { soundfx } from './sounds.js'
 
 (() => {
 
@@ -58,8 +61,11 @@ import { MapObject, MapMover, Player } from './modules/objects.js';
     }
 
     function loadMap(path) {
+        //load sound
+        soundfx.gameSong.play()
         // Check if there's a currently loaded map and unload it here...
         // Load the new map
+        
         fetch(path)
             .then(response => response.json())
             .then(data => {
