@@ -41,9 +41,13 @@ body {
 }
 
 .game-player {
+    --pX: 0;
+    --pY: 0;
+    --size: 0;
+
     position: absolute;
-    left: 0px;
-    top: 0px;
+    left: calc(1px * var(--pX));
+    top: calc(1px * var(--pY));
     
     width: var(--tile-width);
     aspect-ratio: 1 / 1;
@@ -54,6 +58,6 @@ body {
 .game-player::before {
     display: block;
     content: '\01F600'; /* Can be set by JS to change character */
-    font-size: 30px;    /* Needs to be set by JS */
-    line-height: 30px;
+    font-size: calc(1px * var(--size));    /* Needs to be set by JS */
+    line-height: calc(1px * var(--size));
 }

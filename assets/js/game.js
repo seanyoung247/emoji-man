@@ -2,10 +2,6 @@ import { Map } from './modules/map.js';
 
 (() => {
 
-    const testMap = {
-        cols: 25, rows: 15,
-    }
-
     let currentMap = null;
 
     let player = {
@@ -33,8 +29,12 @@ import { Map } from './modules/map.js';
         document.getElementById('game-screen').append(frag);
 
         const pos = currentMap.tileToPixel(player.x, player.y);
-        playerEl.style.left = `${Math.floor(pos.x)}px`;
-        playerEl.style.top = `${Math.floor(pos.y)}px`;
+        playerEl.style.setProperty('--pX', pos.x);
+        playerEl.style.setProperty('--pY', pos.y);
+        playerEl.style.setProperty('--size', currentMap.tileSize()[0]);
+
+        // Attach events
+        window.addEventListener('keyup', keyup);
     }
 
     function loadMap(path) {
@@ -50,69 +50,36 @@ import { Map } from './modules/map.js';
 
     loadMap('assets/maps/testMap.json');
 
-    /**
-     * Calculates tile width/height
-     */
-    function tileSize(map) {
-        const gameField = document.getElementById('game-screen');
-        return [
-            gameField.clientWidth / map.cols,
-            gameField.clientHeight / map.rows
-        ]
-    }
 
-    /**
-     * Converts from pixels position to tile position
-     */
-    function pixelToTile(pixel, map) {
-        const [tileWidth, tileHeight] = tileSize(map);
-
-        return {
-            x: pixel.x / tileWidth,
-            y: pixel.y / tileHeight
-        }
-    }
-
-    /**
-     * Converts tile coordinates to pixel coordinates
-     */
-    function tileToPixel(tile, map) {
-        const [tileWidth, tileHeight] = tileSize(map);
-
-        return {
-            x: tile.x * tileWidth,
-            y: tile.y * tileHeight
-        }
-    }
-
-    window.addEventListener('keyup', (e) => {
+    function keyup(e) {
+        
         // This could be... better...
         switch (e.code) {
             case 'ArrowLeft':
-                player.x -= 1;
+                if (currentMap.getTile(player.x-1,player.y).passable) player.x -= 1;
                 break;
             case 'ArrowRight':
-                player.x += 1;
+                if (currentMap.getTile(player.x+1,player.y).passable) player.x += 1;
                 break;
             case 'ArrowUp':
-                player.y -= 1;
+                if (currentMap.getTile(player.x,player.y-1).passable) player.y -= 1;
                 break;
             case 'ArrowDown':
-                player.y += 1;
+                if (currentMap.getTile(player.x,player.y+1).passable) player.y += 1;
                 break;
         }
 
         // Reset player position if it is outside the bounds of the map
         if (player.x < 0) player.x = 0;
-        if (player.x > testMap.cols-1) player.x = testMap.cols-1;
+        if (player.x > currentMap.cols-1) player.x = currentMap.cols-1;
         if (player.y < 0) player.y = 0;
-        if (player.y > testMap.rows-1) player.y = testMap.rows-1;
+        if (player.y > currentMap.rows-1) player.y = currentMap.rows-1;
 
         // Move the player element to represent new player position
-        const playerElem = document.getElementsByClassName('game-player')[0];
-        const pos = tileToPixel(player, testMap);
-        playerElem.style.left = `${Math.floor(pos.x)}px`;
-        playerElem.style.top = `${Math.floor(pos.y)}px`;
-    });
+        const playerEl = document.getElementsByClassName('game-player')[0];
+        const pos = currentMap.tileToPixel(player.x, player.y);
+        playerEl.style.setProperty('--pX', pos.x);
+        playerEl.style.setProperty('--pY', pos.y);
+    }
 
 })();
