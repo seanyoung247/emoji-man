@@ -13,5 +13,6 @@
     ],
     "player": {"x":1, "y":8},
     "objects": [{"type": "water", "x":1, "y":1}, {"type": "fire_fighter", "x":2, "y":1}, {"type": "water", "x":1, "y":2}, {"type": "fire_fighter", "x":1, "y":3}], 
-    "enemies": [{"type": "devil", "x":8, "y":8}, {"type": "fire", "x":9, "y":7}, {"type": "devil", "x":8, "y":2}]
+    "enemies": [{"type": "devil", "x":8, "y":8}, {"type": "fire", "x":9, "y":7}, {"type": "devil", "x":8, "y":2}],
+    "destination": {"type": "volcano", "x":9, "y":4}
 }
