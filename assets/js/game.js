@@ -62,7 +62,7 @@ import { soundfx } from './sounds.js'
 
     function loadMap(path) {
         //load sound
-        soundfx.gameSong.play()
+        soundfx.gameSong.play();
         // Check if there's a currently loaded map and unload it here...
         // Load the new map
         

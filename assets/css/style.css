@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 * {
     box-sizing: border-box;
@@ -49,6 +49,7 @@ game-screen {
 }
 
 
+
 #game-screen {
     position: relative;
 }
@@ -74,6 +75,7 @@ game-screen {
     --pX: 0;
     --pY: 0;
     --size: 0;
+    --character: '\01F600';
 
     position: absolute;
     left: calc(1px * var(--pX));
@@ -87,7 +89,7 @@ game-screen {
 
 .game-player::before {
     display: block;
-    content: '\01F600'; /* Can be set by JS to change character */
-    font-size: calc(1px * var(--size));    /* Needs to be set by JS */
+    content: var(--character);
+    font-size: calc(1px * var(--size));
     line-height: calc(1px * var(--size));
 }
