@@ -36,6 +36,10 @@ body {
     aspect-ratio: 1 / 1;
 }
 
+.game-tile.wall {
+    background-color: black;
+}
+
 .game-player {
     position: absolute;
     left: 0px;
