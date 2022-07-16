@@ -1,5 +1,6 @@
 import { Map } from './modules/map.js';
-import { soundfx } from './sounds.js'
+import { soundfx, music } from './sounds.js'
+
 
 (() => {
 
@@ -40,7 +41,7 @@ import { soundfx } from './sounds.js'
 
     function loadMap(path) {
         //load sound
-        soundfx.gameSong.play()
+        music(soundfx.gameSong.play())
         // Check if there's a currently loaded map and unload it here...
         // Load the new map
         
