@@ -25,6 +25,7 @@ export class Tile {
     get y() {return this._y;}
     get isWall() {return this._wall;}
     get passable() {return !this._wall;}
+    get objects() {return this._objs;}
     // HTML Properties
     get element() {return this._elem;}
     get width() {return this._elem.clientWidth;}
