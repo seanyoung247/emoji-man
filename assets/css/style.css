@@ -20,9 +20,6 @@ body {
 }
 
 #game-screen {
-    display: flex;
-    flex-wrap: wrap;
-    
     position: relative;
 }
 
@@ -48,4 +45,11 @@ body {
     aspect-ratio: 1 / 1;
 
     transition: left 0.5s, top 0.5s;
+}
+
+.game-player::before {
+    display: block;
+    content: '\01F600'; /* Can be set by JS to change character */
+    font-size: 30px;    /* Needs to be set by JS */
+    line-height: 30px;
 }
