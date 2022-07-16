@@ -1,4 +1,7 @@
 {
+    "title": "Test Map",
+    "description": "This is a test map. For testing. And providing an example of map templates.",
+    "theme": "default",
     "map": [
         [1,1,1,1,1,1,1,1,1,1],
         [1,0,0,0,0,0,0,0,0,1],
