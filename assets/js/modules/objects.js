@@ -13,6 +13,13 @@ export class MapObject {
         this._width = map.tileSize()[0];
     }
 
+    update(time) {
+        /*
+          This method will be called every frame so the object can update itself.
+          Check health, timeout, movement etc.
+         */
+    }
+
     /** Registers a collision with another object */
     collide(obj) {
         /* 
@@ -41,12 +48,6 @@ export class MapEntity extends MapObject {
         if (goal != this._goal) {
             this._path = this._map.getPath(this._tile, goal);
         }
-    }
-
-    update(time) {
-        /*
-          This method will be called every frame so the object can update itself.
-         */
     }
 
     setVector(x, y) {
