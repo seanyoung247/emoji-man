@@ -3,15 +3,15 @@
 
 import { TileMap } from './modules/map.js';
 import { MapObject, MapEntity, Player } from './modules/objects.js';
-
 import { soundfx, music } from './modules/sounds.js';
+import { emojis } from './emojis/emoji_dict.js'
 
 
-(async() => {
+(async () => {
     const levelNames = [
-        'alien_abduction.json', 
-        'clown_town.json', 
-        'death.json', 
+        'alien_abduction.json',
+        'clown_town.json',
+        'death.json',
         'devils_domain.json',
         'halloween.json',
         'lions_tigers_bears.json',
@@ -22,24 +22,24 @@ import { soundfx, music } from './modules/sounds.js';
     let gameMaps = [];
     let currentMap = null;
 
-    let player = null; 
+    let player = null;
 
     const actionMap = new Map();
     actionMap.set('MovePlayerLeft', {
-        start: ()=>player.setVectorX(-1),
-        stop: ()=>player.setVectorX(0)
+        start: () => player.setVectorX(-1),
+        stop: () => player.setVectorX(0)
     });
     actionMap.set('MovePlayerRight', {
-        start: ()=>player.setVectorX(1),
-        stop: ()=>player.setVectorX(0)
+        start: () => player.setVectorX(1),
+        stop: () => player.setVectorX(0)
     });
     actionMap.set('MovePlayerUp', {
-        start: ()=>player.setVectorY(-1),
-        stop: ()=>player.setVectorY(0)
+        start: () => player.setVectorY(-1),
+        stop: () => player.setVectorY(0)
     });
     actionMap.set('MovePlayerDown', {
-        start: ()=>player.setVectorY(1),
-        stop: ()=>player.setVectorY(0)
+        start: () => player.setVectorY(1),
+        stop: () => player.setVectorY(0)
     });
 
     const keyMap = new Map();
@@ -48,8 +48,9 @@ import { soundfx, music } from './modules/sounds.js';
     keyMap.set('ArrowUp', 'MovePlayerUp');
     keyMap.set('ArrowDown', 'MovePlayerDown');
 
-    function startGame(gameMap) {
+    function startGame(gameMap, mapParams) {
         currentMap = gameMap;
+
         document.documentElement.style.setProperty('--map-columns', gameMap.cols);
         document.documentElement.style.setProperty('--map-rows', gameMap.rows);
 
@@ -61,10 +62,51 @@ import { soundfx, music } from './modules/sounds.js';
         player = new Player(gameMap.playerSpawn.x, gameMap.playerSpawn.y, gameMap, 6);
         frag.append(player.element);
 
-        //Objects + Enemies here
+        // Objects + Enemies here
+        let mapEnemiesHTML = '';
+        let mapCollectableHTML = '';
+        let mapDestinationHTML = '';
 
-        //Update the DOM
+        // display enemies
+        for (let i = 0; i < mapParams['enemies'].length; i++) {
+            for (let j = 0; j < emojis.length; j++) {
+                if (emojis[j]['name'] == mapParams['enemies'][i]['type']) {
+                    let html = `&#${emojis[j]['html']}`;
+                    if (!mapEnemiesHTML.includes(html)) {
+                        mapEnemiesHTML = mapEnemiesHTML + html + '';
+                    }
+                }
+            }
+            document.getElementById('game-baddies').innerHTML = mapEnemiesHTML;
+        }
+
+        // display collectables
+        for (let i = 0; i < mapParams['objects'].length; i++) {
+            for (let j = 0; j < emojis.length; j++) {
+                if (emojis[j]['name'] == mapParams['objects'][i]['type']) {
+                    let html = `&#${emojis[j]['html']}`;
+                    if (!mapCollectableHTML.includes(html)) {
+                        mapCollectableHTML = mapCollectableHTML + html + '';
+                    }
+                }
+            }
+            document.getElementById('game-objects').innerHTML = mapCollectableHTML;
+        }
+
+        // display destination
+        for (let j = 0; j < emojis.length; j++) {
+            if (emojis[j]['name'] == mapParams['destination']['type']) {
+                console.log(mapParams['destination']['type'])
+                let html = `&#${emojis[j]['html']}`;
+                mapDestinationHTML = mapDestinationHTML + html;
+                console.log(mapDestinationHTML)
+            }
+        }
+
+        // Update the DOM
         document.getElementById('game-screen').append(frag);
+        document.getElementById('game-title').innerHTML = mapParams['title'];
+        document.getElementById('game-dest').innerHTML = mapDestinationHTML;
 
         player.initialise();
 
@@ -76,29 +118,33 @@ import { soundfx, music } from './modules/sounds.js';
         window.requestAnimationFrame(frame);
     }
 
-    function stopGame() {}
+    // function getEmojis() {
+
+    // }
+
+    function stopGame() { }
 
     async function loadMap(path) {
         //load sound
         music(soundfx.gameSong.pause());
         // Check if there's a currently loaded map and unload it here...
         // Load the new map
-        
+
         let maps = [];
         //Load maps
-       
+
         for (let name of levelNames) {
             let fullPath = path + name;
             let response = await fetch(fullPath);
             let data = await response.json();
             maps.push(data);
         }
-        
+
         return maps;
     }
 
     gameMaps = await loadMap('assets/maps/');
-    
+
     /*
     Function to randomize the maps array
     */
@@ -114,7 +160,8 @@ import { soundfx, music } from './modules/sounds.js';
     shuffleArray(gameMaps);
 
     let newMap = new TileMap(gameMaps[0]);
-    startGame(newMap);
+
+    startGame(newMap, gameMaps[0]);
 
     let lastFrameTime = performance.now();
     function frame(time) {
