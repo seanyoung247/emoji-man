@@ -133,7 +133,7 @@ export class MapEntity extends MapObject {
             this._y = pY;
         }
         // Have we moved to a new tile?
-        if (Math.round(pX) != this._x || Math.round(pY) != this._y) {
+        if (Math.round(pX) != this._tile.x || Math.round(pY) != this._tile.y) {
             // Deregister this from the current Tile
             this._tile.removeObject(this);
             // Register on the new tile
