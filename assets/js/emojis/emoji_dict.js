@@ -1,4 +1,5 @@
-emojis = [
+
+export const playerHealth = [
     // HEALTH //
     {
         "name":'health1', // to identify emoji from other code
@@ -90,8 +91,11 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
+];
+
+export const emojis = {
     // POINTS //
-    {
+    avocado: {
         "name":'avocado',
         "category":"points",
         "points":10,
@@ -101,7 +105,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    broccoli: {
         "name":'broccoli',
         "category":"points",
         "points":10,
@@ -111,7 +115,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    cucumber: {
         "name":'cucumber',
         "category":"points",
         "points":10,
@@ -121,7 +125,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    apple: {
         "name":'apple',
         "category":"points",
         "points":10,
@@ -131,7 +135,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    kiwi: {
         "name":'kiwi',
         "category":"points",
         "points":10,
@@ -141,7 +145,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    cherry: {
         "name":'cherry',
         "category":"points",
         "points":30,
@@ -152,7 +156,7 @@ emojis = [
         "sfx":'',
     },
     // SPECIAL //
-    {
+    diamond: {
         "name":'diamond',
         "category":"special",
         "points":50,
@@ -162,7 +166,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    magnet: {
         "name":'magnet',
         "category":"special",
         "points":0,
@@ -172,7 +176,7 @@ emojis = [
         "behaviour":'', // function to collect all available points on the screen
         "sfx":'',
     },
-    {
+    ghost: {
         "name":'ghost',
         "category":"special",
         "points":0,
@@ -184,7 +188,7 @@ emojis = [
     },
     // LEVELS //
     // Vampire Party // 
-    {
+    vampire: {
         "name":'vampire',
         "category":"enemies",
         "points":0,
@@ -194,7 +198,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    heart: {
         "name":'heart',
         "category":"points",
         "points":20,
@@ -204,7 +208,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    blood: {
         "name":'blood',
         "category":"points",
         "points":20,
@@ -214,7 +218,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    sun: {
         "name":'sun',
         "category":"points",
         "points":20,
@@ -224,7 +228,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    coffin: {
         "name":'coffin',
         "category":"destination",
         "points":0,
@@ -235,7 +239,7 @@ emojis = [
         "sfx":'',
     },
     // Alien Abduction //
-    {
+    alien: {
         "name":'alien',
         "category":"enemies",
         "points":0,
@@ -245,7 +249,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    ufo: {
         "name":'ufo',
         "category":"points",
         "points":20,
@@ -255,7 +259,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    rocket: {
         "name":'rocket',
         "category":"points",
         "points":20,
@@ -265,7 +269,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    person: {
         "name":'person',
         "category":"points",
         "points":20,
@@ -275,7 +279,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    earth: {
         "name":'earth',
         "category":"destination",
         "points":0,
@@ -286,7 +290,7 @@ emojis = [
         "sfx":'',
     },
     // Clown Town // 
-    {
+    clown: {
         "name":'clown',
         "category":"enemies",
         "points":0,
@@ -296,7 +300,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    juggler: {
         "name":'juggler',
         "category":"enemies",
         "points":0,
@@ -306,7 +310,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    joker: {
         "name":'joker',
         "category":"enemies",
         "points":0,
@@ -316,7 +320,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    balloon: {
         "name":'balloon',
         "category":"points",
         "points":20,
@@ -326,7 +330,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    cake: {
         "name":'cake',
         "category":"points",
         "points":20,
@@ -336,7 +340,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    "big-top": {
         "name":'big-top',
         "category":"destination",
         "points":0,
@@ -347,7 +351,7 @@ emojis = [
         "sfx":'',
     },
     // Devil's Domain //
-    {
+    devil: {
         "name":'devil',
         "category":"enemies",
         "points":0,
@@ -357,7 +361,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    fire: {
         "name":'fire',
         "category":"enemies",
         "points":0,
@@ -367,7 +371,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    water: {
         "name":'water',
         "category":"points",
         "points":20,
@@ -377,7 +381,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    firefighter: {
         "name":'firefighter',
         "category":"points",
         "points":20,
@@ -387,7 +391,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    volcano: {
         "name":'volcano',
         "category":"destination",
         "points":0,
@@ -398,7 +402,7 @@ emojis = [
         "sfx":'',
     },
     // Lions Tigers Bears //
-    {
+    lion: {
         "name":'lion',
         "category":"enemies",
         "points":0,
@@ -408,7 +412,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    tiger: {
         "name":'tiger',
         "category":"enemies",
         "points":0,
@@ -418,7 +422,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    bear: {
         "name":'bear',
         "category":"enemies",
         "points":0,
@@ -428,7 +432,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    monkey: {
         "name":'monkey',
         "category":"points",
         "points":20,
@@ -438,7 +442,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    banana: {
         "name":'banana',
         "category":"points",
         "points":20,
@@ -448,7 +452,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    "high-heels": {
         "name":'high-heels',
         "category":"destination",
         "points":0,
@@ -459,7 +463,7 @@ emojis = [
         "sfx":'',
     },
     // Walk the Plank // 
-    {
+    skull: {
         "name":'skull',
         "category":"enemies",
         "points":0,
@@ -469,7 +473,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    flag: {
         "name":'flag',
         "category":"enemies",
         "points":0,
@@ -479,7 +483,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    treasure: {
         "name":'treasure',
         "category":"points",
         "points":20,
@@ -489,7 +493,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    parrot: {
         "name":'parrot',
         "category":"points",
         "points":20,
@@ -499,7 +503,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    merfolk: {
         "name":'merfolk',
         "category":"destination",
         "points":0,
@@ -510,7 +514,7 @@ emojis = [
         "sfx":'',
     },
     // Halloween // 
-    {
+    zombie: {
         "name":'zombie',
         "category":"enemies",
         "points":0,
@@ -520,7 +524,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    brain: {
         "name":'brain',
         "category":"points",
         "points":20,
@@ -530,7 +534,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    pumpkin: {
         "name":'pumpkin',
         "category":"points",
         "points":20,
@@ -540,7 +544,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    tomb: {
         "name":'tomb',
         "category":"destination",
         "points":0,
@@ -551,7 +555,7 @@ emojis = [
         "sfx":'',
     },
     // Death // 
-    {
+    "space-invader": {
         "name":'space-invader',
         "category":"enemies",
         "points":0,
@@ -561,7 +565,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    joystick: {
         "name":'joystick',
         "category":"points",
         "points":20,
@@ -571,7 +575,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    robot: {
         "name":'robot',
         "category":"points",
         "points":20,
@@ -581,7 +585,7 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-    {
+    screen: {
         "name":'screen',
         "category":"destination",
         "points":0,
@@ -591,4 +595,4 @@ emojis = [
         "behaviour":'',
         "sfx":'',
     },
-]
+}
