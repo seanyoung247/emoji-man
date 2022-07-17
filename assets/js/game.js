@@ -2,6 +2,7 @@
 /*jshint esversion: 8 */
 
 import { playerHealth } from './emojis/emoji_dict.js';
+import { currentScore } from './modules/scores.js';
 
 import { TileMap } from './modules/map.js';
 import { Player } from './modules/objects.js';
@@ -176,6 +177,10 @@ import { emojis } from './emojis/emoji_dict.js'
         player.update(timeDelta);
         // Update other objects
         currentMap.update(timeDelta);
+
+        // Update score
+        const scoreDisplay = document.getElementById('player-score');
+        scoreDisplay.innerHTML = currentScore;
 
         lastFrameTime = time;
         window.requestAnimationFrame(frame);

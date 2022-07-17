@@ -1,4 +1,5 @@
 import { MapObject, MapEntity, PathFinder } from './objects.js';
+import { incScore } from './scores.js';
 import { emojis } from '../emojis/emoji_dict.js';
 
 export class ObjectFactory {
@@ -46,7 +47,7 @@ class Points extends MapObject {
         // This game object should only react to the player:
         if (obj.category === 'player') {
             // Add points to score.
-            // ADD POINTS HERE
+            incScore(this._points);
             // Get out of here eaten thing
             this.die();
         }
