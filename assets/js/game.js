@@ -51,11 +51,13 @@ import { soundfx, music } from './modules/sounds.js'
         frag.append(player.element);
 
         //Objects + Enemies here
+        frag.append(gameMap.objFragment);
 
         //Update the DOM
         document.getElementById('game-screen').append(frag);
 
         player.initialise();
+        gameMap.initialiseObjects();
 
         // Attach events
         window.addEventListener('keydown', keyDown);
