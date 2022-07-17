@@ -178,6 +178,10 @@ import { emojis } from './emojis/emoji_dict.js'
         // Update other objects
         currentMap.update(timeDelta);
 
+        // Update score
+        //const scoreDisplay = document.getElementById('player-score');
+        console.log(currentScore);
+
         lastFrameTime = time;
         window.requestAnimationFrame(frame);
     }
