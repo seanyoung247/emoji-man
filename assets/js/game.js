@@ -1,8 +1,10 @@
+/*jshint esversion: 6 */
+/*jshint esversion: 8 */
 
 import { TileMap } from './modules/map.js';
 import { MapObject, MapEntity, Player } from './modules/objects.js';
 
-import { soundfx, music } from './modules/sounds.js'
+import { soundfx, music } from './modules/sounds.js';
 
 
 (async() => {
@@ -78,7 +80,7 @@ import { soundfx, music } from './modules/sounds.js'
 
     async function loadMap(path) {
         //load sound
-        music(soundfx.gameSong.pause())
+        music(soundfx.gameSong.pause());
         // Check if there's a currently loaded map and unload it here...
         // Load the new map
         
@@ -92,13 +94,25 @@ import { soundfx, music } from './modules/sounds.js'
             maps.push(data);
         }
         
-        console.log(maps);
         return maps;
     }
 
     gameMaps = await loadMap('assets/maps/');
-    console.log(gameMaps);
-    //Make first map the current map. This needs to be changed.
+    
+    /*
+    Function to randomize the maps array
+    */
+    function shuffleArray(array) {
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    }
+
+    shuffleArray(gameMaps);
+
     let newMap = new TileMap(gameMaps[0]);
     startGame(newMap);
 
