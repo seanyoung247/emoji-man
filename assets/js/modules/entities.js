@@ -22,6 +22,7 @@ export class ObjectFactory {
 // For a static pickup, you can extend MapObject. For a moving enemy extend MapEntity
 
 // Implements the desitination (exit)
+
 class Exit extends MapObject {
     update() {
         // This is called once per frame. If your entity needs to do some sort of state update,
@@ -35,7 +36,9 @@ class Exit extends MapObject {
 
         // This game object should only react to the player:
         if (obj.category === 'player') {
-
+            // Check if all pickups have been 
+            console.log('ow, the player stepped on me');
         }
     }
 }
+ObjectFactory.register('destination', Exit);
