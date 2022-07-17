@@ -150,18 +150,65 @@ Health - the user can gain or lose health of their emojiman
 Levels - the user can enjoy a variety of levels with progressing difficulty and unique themes
 Accessibility - the user can easily navigate the website and enjoy the game on all screen sizes
 
+The EPICS were further reduced to User Stories, which can be found in the [Issues](https://github.com/seanyoung247/emoji-man/issues) section of this repository.
+
 ### Scope
 The Scope plane determines the scope of the project \
 User Stories/Issues were mapped to Sprints (or Milestones) to plan for the current and next phase of the project.
 
+The first sprints contained the higher priority features, providing basic website functionality to meet the project requirements (eg, allow users see a homepage and game map).  The later sprints contained features which were not considered necessary but enhanced the project (eg, enhance map themes, introduce sound effects).
+
+Milestone 1: add homepage, create basic map, implement basic game functionality, create dictionaries to hold game date (emojis, maps)
+Milestone 2: introduce moveable objects on the map, enhance maps for variety between levels, pull in info about different levels when a map is loaded
+Milestone 3: introduce score and health, create game logic to increase/decrease score and health depending on collision with objects
+
+User stories were designated both an EPIC label and a priority label (Must Have, Should Have, Could Have, Won't Have).  The priority labels ensured the team stayed aligned about which tasks to complete first on each milestone.  
+
+User stories also had a list of tasks and acceptance criteria, to ensure it was clear when the user story was completed and acceptable to close. 
+
 ### Structure
 The Structure plane was used to plan the organisation of website functionality and navigation, to provide a clear pathway to desired user actions.
+
+- Navbar /
+There is a main navigation bar at the top of the page in clear sight of the users, to allow them easy accessibility to all pages. 
+
+- Game Section /
+The main game section is always centered in the screen, which ensures the whole game is visible.
+
+- Game Rules and reminders
+Any reminders about value of tokens, objects to be avoided, and the user's score are displayed during the game, allowing them to check their progress.
 
 ### Skeleton
 The Skeleton plane defines the form, presentation, and arrangement of components defined in the Structure. 
 
+Initial wireframes were designed during the project proposal stage to mock-up the main website pages.  During development, these designs evolved to better suit the website content, but provided the team a framework to work from when designing the front-end.
+
+#### Homepage
+![Homepage wireframe](assets/wireframes/rules-home-desktop_ipad.png)
+![Homepage wireframe](assets/wireframes/phone-home-rules.png)
+
+#### Rules
+
+#### Gameplay
+![Gameplay wireframe](assets/wireframes/phone-play-page.png)
+
+#### Between Levels
+
+#### Leaderboard
+![Leaderboard wireframe](assets/wireframes/high-scores-desktop-ipad.png)
+![Leaderboard wireframe](assets/wireframes/phone-high-scores.png)
+
 ### Surface
 The look and feel of the website was considered when designing the visual elements of the product, to produce a polished product which brings together all other UX planes.
+
+- Fonts /
+
+- Colors /
+
+- Sound Effects /
+
+- Buttons /  
+
 
 ## Testing
 
@@ -206,7 +253,9 @@ The validator used to check validity of Javascript code was [JSHINT](https://jsh
 |canvas-game.js|[Validation]()|Pass|
 
 ## Technologies Used
-- [HTML]() was used to 
+- [HTML]() was used to write the website format
+- [CSS]() was used to style the pages and make them responsive for different screen sizes
+- [Javascript]() was used to provide interactive features and produce the game logic
 - [Emojipedia](https://emojipedia.org/) was used to source emojis
 - [Balsamiq](https://balsamiq.com/) was used to mock-up initial wireframes
 - [Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) was used to provide a framework for creating the game in Javascript

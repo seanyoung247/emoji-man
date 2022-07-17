@@ -42,3 +42,24 @@ class Exit extends MapObject {
     }
 }
 ObjectFactory.register('destination', Exit);
+
+
+// Implements points
+class Points extends MapEntity {
+    update() {
+        // This is called once per frame. If your entity needs to do some sort of state update,
+        // say it has a finite lifespan, do that here. You don't need to have this function if
+        // your entity doesn't need to update. I've included it here for reference and it can
+        // be deleted.
+    }
+    collide(obj) {
+        // This function is called when another game object collides with this one. Basically
+        // When they're on the same tile.
+
+        // This game object should only react to the player:
+        if (obj.category === 'player') {
+            
+        }
+    }
+}
+ObjectFactory.register('points', Points);
