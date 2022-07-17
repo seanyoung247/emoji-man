@@ -28,7 +28,7 @@ export class MapObject {
 /**
  * Models an object that can move on the map
  */
-export class MapMover extends MapObject {
+export class MapEntity extends MapObject {
     constructor(x, y, map, speed) {
         super(x, y, map);
         this._speed = speed;
@@ -82,7 +82,7 @@ export class MapMover extends MapObject {
 /*
  * Acts as the player's avatar
  */
-export class Player extends MapMover {
+export class Player extends MapEntity {
     constructor(x, y, map, speed) {
         super(x, y, map, speed);
     }

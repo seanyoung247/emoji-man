@@ -1,8 +1,8 @@
 
 import { TileMap } from './modules/map.js';
-import { MapObject, MapMover, Player } from './modules/objects.js';
+import { MapObject, MapEntity, Player } from './modules/objects.js';
 
-import { soundfx, music } from './sounds.js'
+import { soundfx, music } from './modules/sounds.js'
 
 
 (() => {
