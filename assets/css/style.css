@@ -221,23 +221,28 @@ header {
     --size: 0;
     --character: '\01F352';
 
+    /* TESTING */
+    background: red;
+
     position: absolute;
     left: calc(1px * var(--pX));
     top: calc(1px * var(--pY));
     
-    width: var(--size);
+    width: calc(1px * var(--size));
     aspect-ratio: 1 / 1;
 }
 
 .game-entity {
+    z-index: 99;
     transition: left 0.5s, top 0.5s;
 }
 
 .game-player {
+    z-index: 999;
     --character: '\01F600';
 }
 
-.game-player::before {
+.game-object::before {
     display: block;
     content: var(--character);
     font-size: calc(1px * var(--size));
