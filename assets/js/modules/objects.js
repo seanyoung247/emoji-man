@@ -79,6 +79,9 @@ export class MapEntity extends MapObject {
         this._vector.y = Math.sign(y);
     }
 
+    setVectorX(x) {this.setVector(x, this._vector.y);}
+    setVectorY(y) {this.setVector(this._vector.x, y);}
+
     update(time) {
         super.update(time);
         this.move(time);

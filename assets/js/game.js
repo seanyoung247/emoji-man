@@ -10,29 +10,23 @@ import { soundfx, music } from './modules/sounds.js'
     let currentMap = null;
 
     let player = null; 
-    // {
-    //     // Player position in tile coordinates
-    //     x: 0, y: 0,
-    //     // Player speed in tiles per second
-    //     speed: 6
-    // }
 
     const actionMap = new Map();
     actionMap.set('MovePlayerLeft', {
-        start: ()=>player.setVector(-1, 0),
-        stop: ()=>player.setVector(0, 0)
+        start: ()=>player.setVectorX(-1),
+        stop: ()=>player.setVectorX(0)
     });
     actionMap.set('MovePlayerRight', {
-        start: ()=>player.setVector(1, 0),
-        stop: ()=>player.setVector(0, 0)
+        start: ()=>player.setVectorX(1),
+        stop: ()=>player.setVectorX(0)
     });
     actionMap.set('MovePlayerUp', {
-        start: ()=>player.setVector(0, -1),
-        stop: ()=>player.setVector(0, 0)
+        start: ()=>player.setVectorY(-1),
+        stop: ()=>player.setVectorY(0)
     });
     actionMap.set('MovePlayerDown', {
-        start: ()=>player.setVector(0, 1),
-        stop: ()=>player.setVector(0, 0)
+        start: ()=>player.setVectorY(1),
+        stop: ()=>player.setVectorY(0)
     });
 
     const keyMap = new Map();
@@ -93,11 +87,6 @@ import { soundfx, music } from './modules/sounds.js'
 
         // How far can the player move this frame?
         const playerMovement = player.speed * timeDelta;
-
-        // // React to user events
-        // for (const value of actionMap.values()) {
-        //     if (value.active) value.action(playerMovement);
-        // }
 
         // Update the player
         player.update(timeDelta);
