@@ -115,18 +115,23 @@ header {
 }
 
 #logo {
-    padding-top: 20px;    
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;    
 }
 
 /* Navbar */
 #logo-nav {
     flex: 1 0 auto;
     max-width: 1000px;
+    justify-content: space-between;
 }
 
 #logo-nav a {
     color: var(--light-site-col);
     text-align: center;
+    text-decoration: none;
     
 }
 
@@ -156,21 +161,6 @@ header {
     list-style: none;
 }
 
-#logo-nav {
-    justify-content: space-between;
-
-}
-
-#logo {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    
-}
-#logo-nav a {
-    text-decoration: none;
-    
-}
 
 /* nav {
     top: 0px;
@@ -183,16 +173,6 @@ header {
     justify-content: center;
     
 }
-#logo-nav a {
-    text-decoration: none;
-    
-}
-
-#nav a {
-    text-decoration: none;
-    list-style: none;
-}
-
 
 #game-screen {
     position: relative;
