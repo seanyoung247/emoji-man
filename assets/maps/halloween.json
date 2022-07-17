@@ -82,7 +82,7 @@
         {"type": "zombie", "x":3, "y":16},
         {"type": "zombie", "x":20, "y":9}
     ],
-    "destination": {"type": "tomb", "x":23, "y":23},
+    "destination": {"type": "mausoleum", "x":23, "y":23},
     "background": "#000000",
     "foreground": "#fe8000"
 }

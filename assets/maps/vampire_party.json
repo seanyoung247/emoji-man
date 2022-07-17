@@ -126,7 +126,7 @@
         {"type": "vampire", "x":12, "y":20},
         {"type": "vampire", "x":12, "y":12}
     ],
-    "destination": {"type": "coffin", "x":12, "y":12},
+    "destination": {"type": "castle", "x":12, "y":12},
     "background": "#000000",
     "foreground": "#ff0000"
 }
