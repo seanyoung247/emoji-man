@@ -29,9 +29,24 @@
         [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
     ],
     "player": {"x":1, "y":8},
-    "objects": [{"type": "treasure", "x":1, "y":1}, {"type": "parrot", "x":2, "y":1}, {"type": "treasure", "x":1, "y":2}, {"type": "parrot", "x":1, "y":3}],
-    "food": [{"type": "avocado", "x":20, "y":2}, {"type": "broccoli", "x":19, "y":4}, {"type": "cucumber", "x": 18, "y": 17}, {"type": "apple", "x": 17, "y": 16}, {"type": "kiwi", "x": 16, "y": 15}, {"type": "cherry", "x":15, "y": 14}],    
-    "enemies": [{"type": "skull", "x":8, "y":8}, {"type": "flag", "x":9, "y":7}],
+    "objects": [
+        {"type": "treasure", "x":1, "y":1}, 
+        {"type": "parrot", "x":2, "y":1}, 
+        {"type": "treasure", "x":1, "y":2}, 
+        {"type": "parrot", "x":1, "y":3}
+    ],
+    "food": [
+        {"type": "avocado", "x":20, "y":2}, 
+        {"type": "broccoli", "x":19, "y":4}, 
+        {"type": "cucumber", "x": 18, "y": 17}, 
+        {"type": "apple", "x": 17, "y": 16}, 
+        {"type": "kiwi", "x": 16, "y": 15}, 
+        {"type": "cherry", "x":15, "y": 14}
+    ],    
+    "enemies": [
+        {"type": "skull", "x":8, "y":8}, 
+        {"type": "flag", "x":9, "y":7}
+    ],
     "destination": {"type": "merfolk", "x":9, "y":4},
     "background": "#395461",
     "foreground": "#b1f4fc"
