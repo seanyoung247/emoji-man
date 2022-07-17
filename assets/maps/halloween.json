@@ -80,7 +80,7 @@
         {"type": "zombie", "x":15, "y":18},
         {"type": "zombie", "x":23, "y":6},
         {"type": "zombie", "x":3, "y":16},
-        {"type": "zombie", "x":20, "y":9},
+        {"type": "zombie", "x":20, "y":9}
     ],
     "destination": {"type": "tomb", "x":23, "y":23},
     "background": "#000000",
