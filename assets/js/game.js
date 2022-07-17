@@ -1,6 +1,8 @@
 /*jshint esversion: 6 */
 /*jshint esversion: 8 */
 
+import { playerHealth } from './emojis/emoji_dict.js';
+
 import { TileMap } from './modules/map.js';
 import { MapObject, MapEntity, Player } from './modules/objects.js';
 import { soundfx, music } from './modules/sounds.js';
@@ -59,10 +61,12 @@ import { emojis } from './emojis/emoji_dict.js'
         frag.append(gameMap.element);
 
         // Player
-        player = new Player(gameMap.playerSpawn.x, gameMap.playerSpawn.y, gameMap, 6);
+        player = new Player(playerHealth, gameMap.playerSpawn.x, gameMap.playerSpawn.y, gameMap, 6);
         frag.append(player.element);
 
-        // Objects + Enemies here
+        //Objects + Enemies here
+        frag.append(gameMap.objFragment); // Appends the loaded objects elements
+
         let mapEnemiesHTML = '';
         let mapCollectableHTML = '';
         let mapDestinationHTML = '';
@@ -109,6 +113,7 @@ import { emojis } from './emojis/emoji_dict.js'
         document.getElementById('game-dest').innerHTML = mapDestinationHTML;
 
         player.initialise();
+        gameMap.initialiseObjects();
 
         // Attach events
         window.addEventListener('keydown', keyDown);
