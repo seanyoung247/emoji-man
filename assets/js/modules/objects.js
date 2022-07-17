@@ -5,6 +5,7 @@
 export class MapObject {
     constructor(prefab, x, y, map) {
         this._name = prefab.name;
+        this._category = prefab.category;
         this._points = prefab.points;
         this._health = prefab.health;
         this._health_diff = prefab._health_diff;
@@ -42,6 +43,13 @@ export class MapObject {
     get y() {return this._y;}
     get width() {return this._width;}
     get element() {return this._elem;}
+
+    get name() {return this._name;}
+    get category() {return this._category;}
+    get points() {return this._points;}
+    get health() {return this._health;}
+    get health_diff() {return this._health_diff;}
+    get character() {return this._character;}
 
     update(time) {
         /*
@@ -150,4 +158,6 @@ export class Player extends MapEntity {
         super(health[4], x, y, map, speed);
         this._elem.classList.add('game-player');
     }
+
+    get category() {return 'player';}
 }
