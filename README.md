@@ -77,8 +77,8 @@ Each level has different themes, characters and collectables. Each level Emojima
 #### VAMPIRE PARTY
 Baddies: 🧛 
 Collect: 🫀🩸🧄 🌞  20 points each
-Destination : ⚰️  
-Aim: Vampires are on the loose! Collect the blood to starve the vampires, collect garlic to repel them and sun to kill them. Find safety through the coffin.
+Destination : 🏰 
+Aim: Vampires are on the loose! Collect the blood to starve the vampires, collect garlic to repel them and sun to kill them. Find safety through the castle.
 
 
 #### ALIEN ABDUCTION
@@ -91,8 +91,8 @@ Aim: Aliens have abducted Emojilanders. Collect the abductees, your rocket ship 
 #### HALLOWEEN HORROR
 Baddies: 🧟 
 Collect: 🧠🎃	20 points each
-Destination: 🪦
-Aim: A small zombie apocolyse had started. Nothing that emojiman can’t handle. Collect all the brains to starve the zombies, collect the pumpkins to throw at them . Flee through the cemetery
+Destination: 🏛️
+Aim: A small zombie apocolyse had started. Nothing that emojiman can’t handle. Collect all the brains to starve the zombies, collect the pumpkins to throw at them . Flee through the mausoleum
 
 #### WALK THE PLANK
 Baddies: ☠️🏴‍☠️
