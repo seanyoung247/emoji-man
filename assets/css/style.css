@@ -142,7 +142,12 @@ header {
     justify-content: space-evenly;
     margin: 25px;
     font-size: .4rem;
+}
 
+@media screen and (min-width: 576px) {
+    #nav{
+        font-size: .8rem;
+    }
 }
 
 #nav > li {
@@ -233,6 +238,7 @@ header {
 }
 
 /* @media (min-width: 576px)
+
 @media (min-width: 768px)
 @media (min-width: 992px)
 @media (min-width: 1200px) */
