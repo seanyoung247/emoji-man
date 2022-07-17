@@ -135,7 +135,9 @@ header {
     list-style: none;
     justify-content: center;
     justify-content: space-evenly;
-    margin-top: 50px;
+    margin: 25px;
+    font-size: .4rem;
+
 }
 
 #nav > li {
@@ -185,12 +187,7 @@ header {
     text-decoration: none;
     
 }
-#nav {
-    display: flex;
-    list-style: none;
-    justify-content: center;
-    justify-content: space-evenly;
-}
+
 #nav a {
     text-decoration: none;
     list-style: none;
