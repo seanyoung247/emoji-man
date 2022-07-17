@@ -45,14 +45,12 @@ export class Graph {
     get nodeMap() {return this.nodes;}
 
     reset() {
-        for (const node of this.nodes.values()) {
+        for (const node of this.nodes.keys()) {
             node.clear();
         }
     }
 
     findPath(start, goal) {
-        if (!start) console.log("start is null");
-        if (!goal) console.log("goal is null");
         const front = [];
 
         start.totalCost = 0;

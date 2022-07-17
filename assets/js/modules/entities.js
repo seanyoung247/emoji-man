@@ -58,12 +58,12 @@ ObjectFactory.register('points', Points);
 class Chaser extends PathFinder {
     constructor(prefab, x, y, map) {
         // I completely forgot to deal with a moving entities speed in the ObjectFactory, so we'll just hard code it for now:
-        super(prefab, x, y, map, 5); // Player is 6 tiles per second so monsters are slightly slower.
+        super(prefab, x, y, map, 3); // Player is 6 tiles per second so monsters are half the speed.
     }
     update(time) {
         // This is just a simple chaser. They'll just attempt to move toward the player
         // Get the player's current position and try and create a path to get to them
-        
+
         this.createPath(this._map.player.tile);
         // Let the base class deal with the rest of the functionality
         super.update(time);
