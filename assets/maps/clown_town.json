@@ -48,7 +48,7 @@
         {"type": "juggler", "x":9, "y":7}, 
         {"type": "joker", "x":8, "y":2}
     ],
-    "destination": {"type": "big_top", "x":9, "y":4},
+    "destination": {"type": "big-top", "x":9, "y":4},
     "background": "#fffa33",
     "foreground": "#ff191d"
 }

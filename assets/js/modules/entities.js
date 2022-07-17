@@ -36,8 +36,11 @@ class Exit extends MapObject {
 
         // This game object should only react to the player:
         if (obj.category === 'player') {
-            // Check if all pickups have been 
-            console.log('ow, the player stepped on me');
+            // Check if all pickups have been grabbed
+            if (!this._map.objects.length) {
+                // If the objects array is length 0, no more objects to pick up
+                // END LEVEL HERE!
+            }
         }
     }
 }

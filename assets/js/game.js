@@ -4,7 +4,7 @@
 import { playerHealth } from './emojis/emoji_dict.js';
 
 import { TileMap } from './modules/map.js';
-import { MapObject, MapEntity, Player } from './modules/objects.js';
+import { Player } from './modules/objects.js';
 import { soundfx, music } from './modules/sounds.js';
 import { emojis } from './emojis/emoji_dict.js'
 
