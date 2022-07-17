@@ -340,8 +340,8 @@ export const emojis = {
         "behaviour":'',
         "sfx":'',
     },
-    "big-top": {
-        "name":'big-top',
+    bigtop: {
+        "name":'bigtop',
         "category":"destination",
         "points":0,
         "health":0,
@@ -377,7 +377,7 @@ export const emojis = {
         "points":20,
         "health":0,
         "health_diff":0,
-        "html":'128688',
+        "html":'128167',
         "behaviour":'',
         "sfx":'',
     },
@@ -452,8 +452,8 @@ export const emojis = {
         "behaviour":'',
         "sfx":'',
     },
-    "high-heels": {
-        "name":'high-heels',
+    highheels: {
+        "name":'highheels',
         "category":"destination",
         "points":0,
         "health":0,
@@ -554,17 +554,7 @@ export const emojis = {
         "behaviour":'',
         "sfx":'',
     },
-    // Death // 
-    "space-invader": {
-        "name":'space-invader',
-        "category":"enemies",
-        "points":0,
-        "health":0,
-        "health_diff":-1,
-        "html":'128126',
-        "behaviour":'',
-        "sfx":'',
-    },
+
     joystick: {
         "name":'joystick',
         "category":"points",
