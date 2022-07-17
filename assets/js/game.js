@@ -1,26 +1,33 @@
 
 import { TileMap } from './modules/map.js';
-import { MapObject, MapMover, Player } from './modules/objects.js';
+import { MapObject, MapEntity, Player } from './modules/objects.js';
 
-import { soundfx, music } from './sounds.js'
+import { soundfx, music } from './modules/sounds.js'
 
 
 (() => {
 
     let currentMap = null;
 
-    let player = {
-        // Player position in tile coordinates
-        x: 0, y: 0,
-        // Player speed in tiles per second
-        speed: 6
-    }
+    let player = null; 
 
     const actionMap = new Map();
-    actionMap.set('MovePlayerLeft', {active: false, action: (amt) => player.x -= currentMap.getTile(player.x-1,player.y).passable ? amt : 0});
-    actionMap.set('MovePlayerRight', {active: false, action: (amt) => player.x += currentMap.getTile(player.x+1,player.y).passable ? amt : 0});
-    actionMap.set('MovePlayerUp', {active: false, action: (amt) => player.y -= currentMap.getTile(player.x,player.y-1).passable ? amt : 0});
-    actionMap.set('MovePlayerDown', {active: false, action: (amt) => player.y += currentMap.getTile(player.x,player.y+1).passable ? amt : 0});
+    actionMap.set('MovePlayerLeft', {
+        start: ()=>player.setVectorX(-1),
+        stop: ()=>player.setVectorX(0)
+    });
+    actionMap.set('MovePlayerRight', {
+        start: ()=>player.setVectorX(1),
+        stop: ()=>player.setVectorX(0)
+    });
+    actionMap.set('MovePlayerUp', {
+        start: ()=>player.setVectorY(-1),
+        stop: ()=>player.setVectorY(0)
+    });
+    actionMap.set('MovePlayerDown', {
+        start: ()=>player.setVectorY(1),
+        stop: ()=>player.setVectorY(0)
+    });
 
     const keyMap = new Map();
     keyMap.set('ArrowLeft', 'MovePlayerLeft');
@@ -28,30 +35,25 @@ import { soundfx, music } from './sounds.js'
     keyMap.set('ArrowUp', 'MovePlayerUp');
     keyMap.set('ArrowDown', 'MovePlayerDown');
 
-    function startMap() {
-        document.documentElement.style.setProperty('--map-columns', currentMap.cols);
-        document.documentElement.style.setProperty('--map-rows', currentMap.rows);
+    function startGame(gameMap) {
+        currentMap = gameMap;
+        document.documentElement.style.setProperty('--map-columns', gameMap.cols);
+        document.documentElement.style.setProperty('--map-rows', gameMap.rows);
 
         // Map + Tiles
         const frag = new DocumentFragment();
-        frag.append(currentMap.element);
+        frag.append(gameMap.element);
 
         // Player
-        player.x = currentMap.playerSpawn.x;
-        player.y = currentMap.playerSpawn.y;
-        const playerEl = document.createElement('div');
-        playerEl.classList.add('game-player');
-        frag.append(playerEl);
+        player = new Player(gameMap.playerSpawn.x, gameMap.playerSpawn.y, gameMap, 6);
+        frag.append(player.element);
 
         //Objects + Enemies here
 
         //Update the DOM
         document.getElementById('game-screen').append(frag);
 
-        const pos = currentMap.tileToPixel(player.x, player.y);
-        playerEl.style.setProperty('--pX', pos.x);
-        playerEl.style.setProperty('--pY', pos.y);
-        playerEl.style.setProperty('--size', currentMap.tileSize()[0]);
+        player.initialise();
 
         // Attach events
         window.addEventListener('keydown', keyDown);
@@ -60,6 +62,8 @@ import { soundfx, music } from './sounds.js'
         // Start game loop
         window.requestAnimationFrame(frame);
     }
+
+    function stopGame() {}
 
     function loadMap(path) {
         //load sound
@@ -70,8 +74,7 @@ import { soundfx, music } from './sounds.js'
         fetch(path)
             .then(response => response.json())
             .then(data => {
-                currentMap = new TileMap(data);
-                startMap();
+                startGame(new TileMap(data));
             });
     }
 
@@ -85,16 +88,8 @@ import { soundfx, music } from './sounds.js'
         // How far can the player move this frame?
         const playerMovement = player.speed * timeDelta;
 
-        // React to user events
-        for (const value of actionMap.values()) {
-            if (value.active) value.action(playerMovement);
-        }
-
-        // Move the player
-        const playerEl = document.getElementsByClassName('game-player')[0];
-        const pos = currentMap.tileToPixel(player.x, player.y);
-        playerEl.style.setProperty('--pX', pos.x);
-        playerEl.style.setProperty('--pY', pos.y);
+        // Update the player
+        player.update(timeDelta);
 
         lastFrameTime = time;
         window.requestAnimationFrame(frame);
@@ -103,14 +98,14 @@ import { soundfx, music } from './sounds.js'
     function keyDown(e) {
         const key = keyMap.get(e.code);
         if (key) {
-            actionMap.get(key).active = true;
+            actionMap.get(key).start();
         }
     }
 
     function keyUp(e) {
         const key = keyMap.get(e.code);
         if (key) {
-            actionMap.get(key).active = false;
+            actionMap.get(key).stop();
         }
     }
 
