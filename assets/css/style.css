@@ -17,6 +17,41 @@
     --game-background: white;
 }
 
+.container {
+    display: flex; 
+}
+
+#score-div {
+    color: white;
+    padding-top: 15px;
+}
+
+.blink_me {
+    animation: blinker 1s linear infinite;
+  }
+  
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+
+#reference-div {
+    color: white;
+    padding-top: 20px;
+}
+
+
+#game-title {
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+#score-div p {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 body {
     display: flex;
     flex-direction: column;
