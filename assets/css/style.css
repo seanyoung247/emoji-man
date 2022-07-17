@@ -128,6 +128,13 @@ header {
     justify-content: space-between;
 }
 
+@media screen and (min-width: 768px){
+#logo {
+    padding-top: 40px;
+    font-size: 2rem;
+}
+}
+
 #logo-nav a {
     color: var(--light-site-col);
     text-align: center;
