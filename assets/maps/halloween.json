@@ -29,9 +29,23 @@
         [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
     ],
     "player": {"x":1, "y":8},
-    "objects": [{"type": "brain", "x":1, "y":1}, {"type": "pumpkin", "x":2, "y":1}, {"type": "brain", "x":1, "y":2}, {"type": "pumpkin", "x":1, "y":3}],
-    "food": [{"type": "avocado", "x":20, "y":2}, {"type": "broccoli", "x":19, "y":4}, {"type": "cucumber", "x": 18, "y": 17}, {"type": "apple", "x": 17, "y": 16}, {"type": "kiwi", "x": 16, "y": 15}, {"type": "cherry", "x":15, "y": 14}],  
-    "enemies": [{"type": "zombie", "x":8, "y":8}],
+    "objects": [
+        {"type": "brain", "x":1, "y":1}, 
+        {"type": "pumpkin", "x":2, "y":1}, 
+        {"type": "brain", "x":1, "y":2}, 
+        {"type": "pumpkin", "x":1, "y":3}
+    ],
+    "food": [
+        {"type": "avocado", "x":20, "y":2}, 
+        {"type": "broccoli", "x":19, "y":4}, 
+        {"type": "cucumber", "x": 18, "y": 17}, 
+        {"type": "apple", "x": 17, "y": 16}, 
+        {"type": "kiwi", "x": 16, "y": 15}, 
+        {"type": "cherry", "x":15, "y": 14}
+    ],  
+    "enemies": [
+        {"type": "zombie", "x":8, "y":8}
+    ],
     "destination": {"type": "tomb", "x":9, "y":4},
     "background": "#000000",
     "foreground": "#fe8000"
