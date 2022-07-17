@@ -29,9 +29,25 @@
         [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
     ],
     "player": {"x":1, "y":8},
-    "objects": [{"type": "joystick", "x":1, "y":1}, {"type": "robot", "x":2, "y":1}, {"type": "joystick", "x":1, "y":2}, {"type": "robot", "x":1, "y":3}],
-    "food": [{"type": "avocado", "x":20, "y":2}, {"type": "broccoli", "x":19, "y":4}, {"type": "cucumber", "x": 18, "y": 17}, {"type": "apple", "x": 17, "y": 16}, {"type": "kiwi", "x": 16, "y": 15}, {"type": "cherry", "x":15, "y": 14}], 
-    "enemies": [{"type": "space_invader", "x":8, "y":8}, {"type": "space_invader", "x":9, "y":7}, {"type": "space_invader", "x":8, "y":2}],
+    "objects": [
+        {"type": "joystick", "x":1, "y":1}, 
+        {"type": "robot", "x":2, "y":1}, 
+        {"type": "joystick", "x":1, "y":2}, 
+        {"type": "robot", "x":1, "y":3}
+    ],
+    "food": [
+        {"type": "avocado", "x":20, "y":2}, 
+        {"type": "broccoli", "x":19, "y":4}, 
+        {"type": "cucumber", "x": 18, "y": 17}, 
+        {"type": "apple", "x": 17, "y": 16}, 
+        {"type": "kiwi", "x": 16, "y": 15}, 
+        {"type": "cherry", "x":15, "y": 14}
+    ], 
+    "enemies": [
+        {"type": "space_invader", "x":8, "y":8}, 
+        {"type": "space_invader", "x":9, "y":7}, 
+        {"type": "space_invader", "x":8, "y":2}
+    ],
     "destination": {"type": "screen", "x":9, "y":4},
     "background": "#525049",
     "foreground": "#c4cfc8"

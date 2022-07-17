@@ -5,8 +5,19 @@ import { MapObject, MapEntity, Player } from './modules/objects.js';
 import { soundfx, music } from './modules/sounds.js'
 
 
-(() => {
+(async() => {
+    const levelNames = [
+        'alien_abduction.json', 
+        'clown_town.json', 
+        'death.json', 
+        'devils_domain.json',
+        'halloween.json',
+        'lions_tigers_bears.json',
+        'vampire_party.json',
+        'walk_plank.json'
+    ];
 
+    let gameMaps = [];
     let currentMap = null;
 
     let player = null; 
@@ -65,21 +76,31 @@ import { soundfx, music } from './modules/sounds.js'
 
     function stopGame() {}
 
-    function loadMap(path) {
+    async function loadMap(path) {
         //load sound
         music(soundfx.gameSong.pause())
         // Check if there's a currently loaded map and unload it here...
         // Load the new map
         
-        fetch(path)
-            .then(response => response.json())
-            .then(data => {
-                startGame(new TileMap(data));
-            });
+        let maps = [];
+        //Load maps
+       
+        for (let name of levelNames) {
+            let fullPath = path + name;
+            let response = await fetch(fullPath);
+            let data = await response.json();
+            maps.push(data);
+        }
+        
+        console.log(maps);
+        return maps;
     }
 
-    // loadMap('assets/maps/testMap.json');
-    loadMap('assets/maps/vampire_party.json');
+    gameMaps = await loadMap('assets/maps/');
+    console.log(gameMaps);
+    //Make first map the current map. This needs to be changed.
+    let newMap = new TileMap(gameMaps[0]);
+    startGame(newMap);
 
     let lastFrameTime = performance.now();
     function frame(time) {
