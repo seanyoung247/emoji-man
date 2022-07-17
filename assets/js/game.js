@@ -4,7 +4,7 @@
 import { playerHealth } from './emojis/emoji_dict.js';
 
 import { TileMap } from './modules/map.js';
-import { MapObject, MapEntity, Player } from './modules/objects.js';
+import { Player } from './modules/objects.js';
 import { soundfx, music } from './modules/sounds.js';
 import { emojis } from './emojis/emoji_dict.js'
 
@@ -61,6 +61,7 @@ import { emojis } from './emojis/emoji_dict.js'
 
         // Player
         player = new Player(playerHealth, gameMap.playerSpawn.x, gameMap.playerSpawn.y, gameMap, 6);
+        gameMap.registerPlayer(player);
         frag.append(player.element);
 
         //Objects + Enemies here
@@ -173,6 +174,8 @@ import { emojis } from './emojis/emoji_dict.js'
 
         // Update the player
         player.update(timeDelta);
+        // Update other objects
+        currentMap.update(timeDelta);
 
         lastFrameTime = time;
         window.requestAnimationFrame(frame);

@@ -198,8 +198,8 @@ header {
     width: 80vw;
     height: calc(80vw / (var(--map-rows) / var(--map-columns)));
 
-    max-height: 80vh;
-    max-width: calc(80vh * (var(--map-rows) / var(--map-columns)));
+    max-height: 70vh;
+    max-width: calc(70vh * (var(--map-rows) / var(--map-columns)));
 
     --tile-width: calc(100% / var(--map-columns));
 }
@@ -222,7 +222,7 @@ header {
     --character: '\01F352';
 
     /* TESTING */
-    background: red;
+    /* background: red; */
 
     position: absolute;
     left: calc(1px * var(--pX));

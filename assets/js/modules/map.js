@@ -80,6 +80,7 @@ export class TileMap {
         }
         this._blocked = new Tile(-1,-1,true);
         this._playerSpawn = template.player;
+        this._player = null;
 
         // Load objects, food, destination and enemies
         this._frag = new DocumentFragment();
@@ -87,7 +88,6 @@ export class TileMap {
         this._enemies = [];
         this._objects = [];
         this._food = [];
-        //console.log(template.destination);
         this._exit = ObjectFactory.create(
             template.destination.type, 
             template.destination.x,
@@ -117,6 +117,7 @@ export class TileMap {
     get enemies() {return this._enemies;}
     get objects() {return this._objects;}
     get food() {return this._food;}
+    get player() {return this._player;}
     
     inBounds(x, y) {
         return (x > 0 && x < this._cols && y > 0 && y < this._rows);
@@ -185,6 +186,10 @@ export class TileMap {
         this._exit.initialise();
     }
 
+    registerPlayer(player) {
+        this._player = player;
+    }
+
     update(time) {
         for (const nme of this._enemies) {
             nme.update(time);
@@ -195,7 +200,28 @@ export class TileMap {
         for (const food of this._food) {
             food.update(time);
         }
-        exit.update(time);
+        this._exit.update(time);
+    }
+
+    removeObject(obj) {
+        let idx = this._objects.indexOf(obj);
+        if (idx >= 0) {
+            this.removeIndex(idx, this._objects);
+            return
+        }
+        idx = this._food.indexOf(obj);
+        if (idx >= 0) {
+            this.removeIndex(idx, this._food);
+            return
+        }
+        idx = this._enemies.indexOf(obj);
+        if (idx >= 0) {
+            this.removeIndex(idx, this._enemies);
+        }
+    }
+
+    removeIndex(idx,list) {
+        list.splice(idx, 1);
     }
 
     /*
@@ -206,17 +232,19 @@ export class TileMap {
 
         for (let y = 0; y < this._rows; y++) {
             for (let x = 0; x < this._cols; x++) {
-                graph.addVertex(this._tiles[y][x].node);
+                //if (this._tiles[y][x].passable) {
+                    graph.addVertex(this._tiles[y][x].node);
 
-                if (y < this._rows-1) {
-                    graph.addVertex(this._tiles[x][y+1].node);
-                    graph.addEdge(this._tiles[x][y].node, this._tiles[x][y+1].node);
-                }
-    
-                if (x < this._cols-1) {
-                    graph.addVertex(this._tiles[x+1][y].node);
-                    graph.addEdge(this._tiles[x][y].node, this._tiles[x+1][y].node);
-                }
+                    if (y < this._rows-1) {
+                        graph.addVertex(this._tiles[y+1][x].node);
+                        graph.addEdge(this._tiles[y][x].node, this._tiles[y+1][x].node);
+                    }
+        
+                    if (x < this._cols-1) {
+                        graph.addVertex(this._tiles[y][x+1].node);
+                        graph.addEdge(this._tiles[y][x].node, this._tiles[y][x+1].node);
+                    }
+                //}
             }
         }
         return graph;
@@ -224,7 +252,9 @@ export class TileMap {
 
     getPath(start, goal) {
         const path = [];
-        let node = this._graph.DA(start.node, goal.node);
+
+        let node = this._graph.findPath(start.node, goal.node);
+
         // If a path was found
         if (node) {
             // Create a node path list to return.

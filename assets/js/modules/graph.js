@@ -45,38 +45,36 @@ export class Graph {
     get nodeMap() {return this.nodes;}
 
     reset() {
-        for (const node of this.nodes.values()) {
+        for (const node of this.nodes.keys()) {
             node.clear();
         }
     }
 
-    // Modified aStar
-    DA(start, goal) {
+    findPath(start, goal) {
         const front = [];
+
+        start.totalCost = 0;
         front.push(start);
-        start.totalCost = start.h = 0;
 
         while (front.length) {
             const node = front.pop();
 
-            if (node === goal) {
+            if (node == goal) {
                 return node;
             }
 
-            for (const next of this.nodes.get(node).values()) {
+            for (const next of this.nodes.get(node)) {
                 const cost = node.totalCost + next.cost;
-
-                if (!next.visited || cost < next.totalCost) {
-                    next.visited = true;
-                    next.totalCost = cost;
-                    next.h = cost + next.manhattan(goal);
-                    front.push(next);
+                
+                if (cost < next.totalCost) {
                     next.parent = node;
+                    next.totalCost = cost;
+                    front.push(next);
                 }
             }
-            front.sort((a,b)=>b.h-a.h);
+
+            front.sort((a,b)=>b.totalCost-a.totalCost);
         }
-        return null;
     }
 
     listConnections() {

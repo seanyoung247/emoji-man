@@ -43,6 +43,7 @@ export class MapObject {
     get y() {return this._y;}
     get width() {return this._width;}
     get element() {return this._elem;}
+    get tile() {return this._tile;}
 
     get name() {return this._name;}
     get category() {return this._category;}
@@ -52,21 +53,20 @@ export class MapObject {
     get character() {return this._character;}
 
     update(time) {
-        /*
-          This method will be called every frame so the object can update itself.
-          Check health, timeout, movement etc.
-         */
+        this._setElementProps()
     }
 
     /** Registers a collision with another object */
-    collide(obj) {
-        /* 
-           This will be called when a moving object moves on to the same 
-           tile as this object. The object colliding will be passed as obj.
-           So this is where any collision actions can be taken. For instance
-           if a derived class needs to increase the player's health, we'd
-           check the obj is the player then increase the player health here.
-        */
+    collide(obj) {}
+
+    die() {
+        // For you my little chickadee, it's time to die
+        // Deregister self from tile.
+        this._tile.removeObject(this);
+        // Deregister self from Map.
+        this._map.removeObject(this);
+        // Set element to invisible.
+        this._elem.style.display = 'none';
     }
 }
 
@@ -88,20 +88,24 @@ export class MapEntity extends MapObject {
     }
 
     createPath(goal) {
-        if (goal != this._goal) {
-            this._path = this._map.getPath(this._tile, goal);
-            this._goal = goal;
-            this._step = 0;
-            this._pathing = true;
-        }
+        this._path = this._map.getPath(this._tile, goal);
+        this._goal = goal;
+        this._step = 0;
+        this._pathing = true;
     }
 
     followPath() {
         if (this._pathing) {
-            // If we're on the current path step, set the next goal
-            if (this._tile.node === this._path[this._step]) {
+            // Have we reached our goal?
+            if (this._tile === this._goal) {
+                this._pathing = false;
+                this._goal = null;
+                this._path = [];
+                this._step = 0;
+                this.setVector(0,0);
+            } else if (this._tile.node === this._path[this._step]) {
                 this._step++;
-                this.setVector()
+                this.setVector(this._path[this._step].x - this._tile.x, this._path[this._step].y - this._tile.y);
             }
         }
     }
@@ -146,6 +150,14 @@ export class MapEntity extends MapObject {
                 obj.collide(this);
             }
         }
+    }
+}
+
+export class PathFinder extends MapEntity {
+    update(time) {
+        this.followPath();
+        this.move(time);
+        this._setElementProps();
     }
 }
 
