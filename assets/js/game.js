@@ -28,17 +28,18 @@ import { soundfx, music } from './modules/sounds.js'
     keyMap.set('ArrowUp', 'MovePlayerUp');
     keyMap.set('ArrowDown', 'MovePlayerDown');
 
-    function startMap() {
-        document.documentElement.style.setProperty('--map-columns', currentMap.cols);
-        document.documentElement.style.setProperty('--map-rows', currentMap.rows);
+    function startGame(gameMap) {
+        currentMap = gameMap;
+        document.documentElement.style.setProperty('--map-columns', gameMap.cols);
+        document.documentElement.style.setProperty('--map-rows', gameMap.rows);
 
         // Map + Tiles
         const frag = new DocumentFragment();
-        frag.append(currentMap.element);
+        frag.append(gameMap.element);
 
         // Player
-        player.x = currentMap.playerSpawn.x;
-        player.y = currentMap.playerSpawn.y;
+        player.x = gameMap.playerSpawn.x;
+        player.y = gameMap.playerSpawn.y;
         const playerEl = document.createElement('div');
         playerEl.classList.add('game-player');
         frag.append(playerEl);
@@ -48,10 +49,10 @@ import { soundfx, music } from './modules/sounds.js'
         //Update the DOM
         document.getElementById('game-screen').append(frag);
 
-        const pos = currentMap.tileToPixel(player.x, player.y);
+        const pos = gameMap.tileToPixel(player.x, player.y);
         playerEl.style.setProperty('--pX', pos.x);
         playerEl.style.setProperty('--pY', pos.y);
-        playerEl.style.setProperty('--size', currentMap.tileSize()[0]);
+        playerEl.style.setProperty('--size', gameMap.tileSize()[0]);
 
         // Attach events
         window.addEventListener('keydown', keyDown);
@@ -60,6 +61,8 @@ import { soundfx, music } from './modules/sounds.js'
         // Start game loop
         window.requestAnimationFrame(frame);
     }
+
+    function stopGame()
 
     function loadMap(path) {
         //load sound
@@ -70,8 +73,7 @@ import { soundfx, music } from './modules/sounds.js'
         fetch(path)
             .then(response => response.json())
             .then(data => {
-                currentMap = new TileMap(data);
-                startMap();
+                startGame(new TileMap(data));
             });
     }
 
