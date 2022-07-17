@@ -228,13 +228,13 @@ export const emojis = {
         "behaviour":'',
         "sfx":'',
     },
-    coffin: {
-        "name":'coffin',
+    castle: {
+        "name":'castle',
         "category":"destination",
         "points":0,
         "health":0,
         "health_diff":0,
-        "html":'65039',
+        "html":'127984',
         "behaviour":'',
         "sfx":'',
     },
@@ -544,13 +544,13 @@ export const emojis = {
         "behaviour":'',
         "sfx":'',
     },
-    tomb: {
-        "name":'tomb',
+    mausoleum: {
+        "name":'mausoleum',
         "category":"destination",
         "points":0,
         "health":0,
         "health_diff":0,
-        "html":'129702',
+        "html":'127963',
         "behaviour":'',
         "sfx":'',
     },
@@ -595,4 +595,4 @@ export const emojis = {
         "behaviour":'',
         "sfx":'',
     },
-}
+};
