@@ -152,7 +152,7 @@ body {
     left: calc(1px * var(--pX));
     top: calc(1px * var(--pY));
     
-    width: var(--tile-width);
+    width: var(--size);
     aspect-ratio: 1 / 1;
 }
 

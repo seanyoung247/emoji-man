@@ -11,7 +11,30 @@ export class MapObject {
         // Add self to the map tile
         this._tile.addObject(this);
         this._width = map.tileSize()[0];
+        // Setup object's element - These will be set by a template when wired up
+        this._elem = document.createElement('div');
+        this._elem.classList.add('game-object');
     }
+
+    // Called after the object has been added to the DOM. Do element initialisation here
+    initialise() {
+        this._setElementProps();
+    }
+
+    _setElementProps() {
+        const pos = this._map.tileToPixel(this._x, this._y);
+        this._elem.style.setProperty('--pX', pos.x);
+        this._elem.style.setProperty('--pY', pos.y);
+        this._elem.style.setProperty('--size', this._map.tileSize()[0]);
+    }
+
+    /*
+     * Getters and Setters
+     */
+    get x() {return this._x;}
+    get y() {return this._y;}
+    get width() {return this._width;}
+    get element() {return this._elem;}
 
     update(time) {
         /*
@@ -42,6 +65,7 @@ export class MapEntity extends MapObject {
         this._path = [];
         this._goal = null;
         this._vector = {x:0, y:0};
+        this._elem.classList.add('game-entity');
     }
 
     createPath(goal) {
@@ -53,6 +77,12 @@ export class MapEntity extends MapObject {
     setVector(x, y) {
         this._vector.x = Math.sign(x);
         this._vector.y = Math.sign(y);
+    }
+
+    update(time) {
+        super.update(time);
+        this.move(time);
+        this._setElementProps();
     }
 
     // Moves along the current movement vector
@@ -77,7 +107,7 @@ export class MapEntity extends MapObject {
             this._tile.addObject(this);
             // Perform collision with any objects on the tile
             const tileObjs = this._tile.objects;
-            for (obj of tileObjs) {
+            for (const obj of tileObjs) {
                 // Call collision on every object on the tile
                 obj.collide(this);
             }
@@ -91,5 +121,6 @@ export class MapEntity extends MapObject {
 export class Player extends MapEntity {
     constructor(x, y, map, speed) {
         super(x, y, map, speed);
+        this._elem.classList.add('game-player');
     }
 }
