@@ -61,6 +61,7 @@ import { emojis } from './emojis/emoji_dict.js'
 
         // Player
         player = new Player(playerHealth, gameMap.playerSpawn.x, gameMap.playerSpawn.y, gameMap, 6);
+        gameMap.registerPlayer(player);
         frag.append(player.element);
 
         //Objects + Enemies here
@@ -173,6 +174,8 @@ import { emojis } from './emojis/emoji_dict.js'
 
         // Update the player
         player.update(timeDelta);
+        // Update other objects
+        currentMap.update(timeDelta);
 
         lastFrameTime = time;
         window.requestAnimationFrame(frame);

@@ -51,9 +51,9 @@ export class Graph {
     }
 
     findPath(start, goal) {
+        if (!start) console.log("start is null");
+        if (!goal) console.log("goal is null");
         const front = [];
-        const origin = new Map;
-        const totalCost = new Map;
 
         start.totalCost = 0;
         front.push(start);
