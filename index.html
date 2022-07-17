@@ -46,14 +46,40 @@
         </nav>
     </header>
 
-    <div>
-        <h4 style="color: white;" id="game-title"></h4>
-        <p style="color: white;">Baddies:</p>
-        <p id="game-baddies"></p>
-        <p style="color: white;">Collectable items:</p>
-        <p id="game-objects"></p>
-        <p style="color: white;">Destination:</p>
-        <p id="game-dest"></p>
+    <div id="reference-div">
+        <h2 id="game-title"></h2>
+        <table>
+            <tr>
+                <td>Enemies</td>
+                <td id="game-baddies"></td>
+                <td>-1 health</td>
+            </tr>
+            <tr>
+                <td>Collectables</td>
+                <td id="game-objects"></td>
+                <td>20 pts</td>
+            </tr>
+            <tr>
+                <td>Food</td>
+                <td>&#129361 &#129382 &#129362 &#127823 &#129373</td>
+                <td>10 pts</td>
+            </tr>
+            <tr>
+                <td>Destination</td>
+                <td id="game-dest"></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- <div id="health-chart">
+        <p>&#128545 &#128561 &#128547 &#129301 <span>&#128578</span> &#128523 &#128522 &#128512 &#128525</p>
+    </div> -->
+
+    <div id="score-div" class="container">
+        <p>Current score:</p>
+        <p id="player-score" class="blink_me">1068</p>
+        <p>High score:</p>
+        <p id="high-score">36520</p>
     </div>
 
     <div id="game-screen"></div>
