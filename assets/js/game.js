@@ -52,7 +52,6 @@ import { emojis } from './emojis/emoji_dict.js'
 
     function startGame(gameMap, mapParams) {
         currentMap = gameMap;
-
         document.documentElement.style.setProperty('--map-columns', gameMap.cols);
         document.documentElement.style.setProperty('--map-rows', gameMap.rows);
 
@@ -71,39 +70,40 @@ import { emojis } from './emojis/emoji_dict.js'
         let mapCollectableHTML = '';
         let mapDestinationHTML = '';
 
+
         // display enemies
-        for (let i = 0; i < mapParams['enemies'].length; i++) {
-            for (let j = 0; j < emojis.length; j++) {
-                if (emojis[j]['name'] == mapParams['enemies'][i]['type']) {
-                    let html = `&#${emojis[j]['html']}`;
+        for (const [key, value] of Object.entries(emojis)) {
+            for (let i = 0; i < mapParams['enemies'].length; i++) {
+                if (mapParams['enemies'][i]['type'] == key) {
+                    let html = `&#${value['html']}`;
                     if (!mapEnemiesHTML.includes(html)) {
                         mapEnemiesHTML = mapEnemiesHTML + html + '';
                     }
                 }
             }
-            document.getElementById('game-baddies').innerHTML = mapEnemiesHTML;
+            document.getElementById('game-baddies').innerHTML = mapEnemiesHTML
+
         }
 
         // display collectables
-        for (let i = 0; i < mapParams['objects'].length; i++) {
-            for (let j = 0; j < emojis.length; j++) {
-                if (emojis[j]['name'] == mapParams['objects'][i]['type']) {
-                    let html = `&#${emojis[j]['html']}`;
+        for (const [key, value] of Object.entries(emojis)) {
+            for (let i = 0; i < mapParams['objects'].length; i++) {
+                if (mapParams['objects'][i]['type'] == key) {
+                    let html = `&#${value['html']}`;
                     if (!mapCollectableHTML.includes(html)) {
                         mapCollectableHTML = mapCollectableHTML + html + '';
                     }
                 }
             }
-            document.getElementById('game-objects').innerHTML = mapCollectableHTML;
+            document.getElementById('game-objects').innerHTML = mapCollectableHTML
+
         }
 
         // display destination
-        for (let j = 0; j < emojis.length; j++) {
-            if (emojis[j]['name'] == mapParams['destination']['type']) {
-                console.log(mapParams['destination']['type'])
-                let html = `&#${emojis[j]['html']}`;
+        for (const [key, value] of Object.entries(emojis)) {
+            if (key == mapParams['destination']['type']) {
+                let html = `&#${value['html']}`;
                 mapDestinationHTML = mapDestinationHTML + html;
-                console.log(mapDestinationHTML)
             }
         }
 
@@ -122,10 +122,6 @@ import { emojis } from './emojis/emoji_dict.js'
         // Start game loop
         window.requestAnimationFrame(frame);
     }
-
-    // function getEmojis() {
-
-    // }
 
     function stopGame() { }
 

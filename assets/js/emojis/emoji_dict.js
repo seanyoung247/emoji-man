@@ -595,4 +595,4 @@ export const emojis = {
         "behaviour":'',
         "sfx":'',
     },
-}
+};
