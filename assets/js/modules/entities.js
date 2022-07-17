@@ -19,7 +19,7 @@ export class ObjectFactory {
     }
 }
 
-// For a static pickup, you can extend MapObject. For a moving enemy extend MapEntity
+// For a static pickup, you can extend MapObject. For a moving enemy extend PathFinder
 
 // Implements the desitination (exit)
 

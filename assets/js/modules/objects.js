@@ -98,10 +98,15 @@ export class MapEntity extends MapObject {
 
     followPath() {
         if (this._pathing) {
-            // If we're on the current path step, set the next goal
-            if (this._tile.node === this._path[this._step]) {
+            // Have we reached our goal?
+            if (this._tile === this._goal) {
+                this._pathing = false;
+                this._goal = false;
+                this._step = 0;
+                this.setVector(0,0);
+            } else if (this._tile.node === this._path[this._step]) {
                 this._step++;
-                this.setVector()
+                this.setVector(this._path[this._step].x - this._tile.x, this._path[this._step].y - this._tile.y);
             }
         }
     }
@@ -146,6 +151,14 @@ export class MapEntity extends MapObject {
                 obj.collide(this);
             }
         }
+    }
+}
+
+export class PathFinder extends MapEntity {
+    update(time) {
+        this.followPath();
+        this.move(time);
+        this._setElementProps();
     }
 }
 

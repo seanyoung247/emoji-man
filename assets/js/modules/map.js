@@ -205,16 +205,18 @@ export class TileMap {
 
         for (let y = 0; y < this._rows; y++) {
             for (let x = 0; x < this._cols; x++) {
-                graph.addVertex(this._tiles[y][x].node);
+                if (this._tiles[y][x].passable) {
+                    graph.addVertex(this._tiles[y][x].node);
 
-                if (y < this._rows-1) {
-                    graph.addVertex(this._tiles[x][y+1].node);
-                    graph.addEdge(this._tiles[x][y].node, this._tiles[x][y+1].node);
-                }
-    
-                if (x < this._cols-1) {
-                    graph.addVertex(this._tiles[x+1][y].node);
-                    graph.addEdge(this._tiles[x][y].node, this._tiles[x+1][y].node);
+                    if (y < this._rows-1) {
+                        graph.addVertex(this._tiles[y+1][x].node);
+                        graph.addEdge(this._tiles[y][x].node, this._tiles[y+1][x].node);
+                    }
+        
+                    if (x < this._cols-1) {
+                        graph.addVertex(this._tiles[y][x+1].node);
+                        graph.addEdge(this._tiles[y][x].node, this._tiles[y][x+1].node);
+                    }
                 }
             }
         }
@@ -223,7 +225,9 @@ export class TileMap {
 
     getPath(start, goal) {
         const path = [];
-        let node = this._graph.DA(start.node, goal.node);
+
+        let node = this._graph.findPath(start.node, goal.node);
+
         // If a path was found
         if (node) {
             // Create a node path list to return.
