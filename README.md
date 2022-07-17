@@ -201,14 +201,19 @@ Initial wireframes were designed during the project proposal stage to mock-up th
 ### Surface
 The look and feel of the website was considered when designing the visual elements of the product, to produce a polished product which brings together all other UX planes.
 
-- Fonts /
+#### Font
+- [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P) from Google Fonts was chosen as the font for all in game text. Press Start 2P is based on the font for Namco's 1980s arcade machines - perfect for a homage to PacMan.
 
-- Colors /
+#### Colors
+- Each game map has a foreground and background color, chosen based on the theme. For example the 'Vampire Party' level has black background with a blood red foreground, while the 'Walk the Plank' map has a dark aqua background and a cyan foreground to evoke the ocean. 
 
-- Sound Effects /
+- The overall background of the site is black, with text in white. This is to achieve maximum contrast/legibility, and in keeping with the retro theme of the font and the game itself.
 
-- Buttons /  
+#### Sound effects
+- An 80s 'chip tune' style piece of music and 8 bit style sound effects were chosen, in keeping with overall theme.
 
+#### Buttons
+- The buttons to select 'Home', 'Rules', 'Play' and 'Highscores' share the 'Press Start 2P' font and the black and white background/foreground with the rest of the game's text. This is to enhance the minimalistic 1980s feel.  
 
 ## Testing
 
