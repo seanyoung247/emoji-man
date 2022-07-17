@@ -44,12 +44,12 @@
         {"type": "treasure", "x":18, "y":12}, 
         {"type": "treasure", "x":19, "y":12}, 
         {"type": "treasure", "x":20, "y":12},
-        {"type": "treasure", "x":19, "y":12},
+        {"type": "treasure", "x":19, "y":13},
         {"type": "parrot", "x":12, "y":20},
         {"type": "parrot", "x":11, "y":19},
         {"type": "parrot", "x":12, "y":19},
         {"type": "parrot", "x":13, "y":19},
-        {"type": "parrot", "x":12, "y":20}
+        {"type": "parrot", "x":12, "y":18}
     ],
     "food": [
         {"type": "avocado", "x":14, "y":15}, 
