@@ -1,4 +1,4 @@
-emojis = [
+export var emojis = [
     // HEALTH //
     {
         "name":'health1', // to identify emoji from other code
