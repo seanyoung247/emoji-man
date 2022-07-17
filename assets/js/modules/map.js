@@ -1,4 +1,5 @@
 import { Node, Graph } from "./graph.js";
+import { ObjectFactory } from "./entities.js";
 
 export class Tile {
     /**
@@ -79,6 +80,25 @@ export class TileMap {
         }
         this._blocked = new Tile(-1,-1,true);
         this._playerSpawn = template.player;
+
+        // Load objects, food, destination and enemies
+        this._frag = new DocumentFragment();
+
+        this._enemies = [];
+        this._objects = [];
+        this._food = [];
+        console.log(template.destination);
+        this._exit = ObjectFactory.create(
+            template.destination.type, 
+            template.destination.x,
+            template.destination.y,
+            this
+        );
+        this._frag.append(this._exit.element);
+        this._createObjects(template.enemies, this._enemies);
+        this._createObjects(template.objects, this._objects);
+        this._createObjects(template.food, this._food);
+
         // Build the pathing graph
         this._graph = this._buildGraph();
     }
@@ -92,6 +112,11 @@ export class TileMap {
     get element() {return this._elem;}
     get width() {return this._elem.clientWidth;}
     get height() {return this._elem.clientHeight;}
+    // Objects
+    get objFragment() {return this._frag;}
+    get enemies() {return this._enemies;}
+    get objects() {return this._objects;}
+    get food() {return this._food;}
     
     inBounds(x, y) {
         return (x > 0 && x < this._cols && y > 0 && y < this._rows);
@@ -132,6 +157,45 @@ export class TileMap {
             x: Math.round(iX / tW),
             y: Math.round(iY / tH)
         }
+    }
+
+    /*
+     * Map Objects and entities
+     */
+    _createObjects(prefabs, list) {
+        for (const prefab of prefabs) {
+            const object = ObjectFactory.create(prefab.type, prefab.x, prefab.y, this);
+            if (object) {
+                list.push(object);
+                this._frag.append(object.element);
+            }
+        }
+    }
+
+    initialiseObjects() {
+        for (const nme of this._enemies) {
+            nme.initialise();
+        }
+        for (const obj of this._objects) {
+            obj.initialise();
+        }
+        for (const food of this._food) {
+            food.initialise();
+        }
+        this._exit.initialise();
+    }
+
+    update(time) {
+        for (const nme of this._enemies) {
+            nme.update(time);
+        }
+        for (const obj of this._objects) {
+            obj.update(time);
+        }
+        for (const food of this._food) {
+            food.update(time);
+        }
+        exit.update(time);
     }
 
     /*
