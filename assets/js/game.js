@@ -2,6 +2,7 @@
 /*jshint esversion: 8 */
 
 import { playerHealth } from './emojis/emoji_dict.js';
+import { currentScore } from './modules/scores.js';
 
 import { TileMap } from './modules/map.js';
 import { Player } from './modules/objects.js';
