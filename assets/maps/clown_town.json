@@ -283,7 +283,7 @@
         { "type": "clown", "x": 14, "y": 17 }
 
     ],
-    "destination": { "type": "big_top", "x": 14, "y": 21 },
+    "destination": { "type": "big-top", "x": 14, "y": 21 },
     "background": "#fffa33",
     "foreground": "#ff191d"
 }

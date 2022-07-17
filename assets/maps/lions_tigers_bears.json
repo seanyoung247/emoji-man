@@ -83,7 +83,7 @@
         {"type": "tiger", "x":3, "y":23}, 
         {"type": "bear", "x":9, "y":8}
     ],
-    "destination": {"type": "high_heels", "x":23, "y":23},
+    "destination": {"type": "high-heels", "x":23, "y":23},
     "background": "#563727",
     "foreground": "#d3f090"
 }
