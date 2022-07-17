@@ -1,4 +1,6 @@
 
+import { playerHealth } from './emojis/emoji_dict.js';
+
 import { TileMap } from './modules/map.js';
 import { MapObject, MapEntity, Player } from './modules/objects.js';
 
@@ -45,7 +47,7 @@ import { soundfx, music } from './modules/sounds.js'
         frag.append(gameMap.element);
 
         // Player
-        player = new Player(gameMap.playerSpawn.x, gameMap.playerSpawn.y, gameMap, 6);
+        player = new Player(playerHealth, gameMap.playerSpawn.x, gameMap.playerSpawn.y, gameMap, 6);
         frag.append(player.element);
 
         //Objects + Enemies here
@@ -70,7 +72,6 @@ import { soundfx, music } from './modules/sounds.js'
         music(soundfx.gameSong.pause())
         // Check if there's a currently loaded map and unload it here...
         // Load the new map
-        
         fetch(path)
             .then(response => response.json())
             .then(data => {

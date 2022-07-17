@@ -3,7 +3,13 @@
  * Models an object that can live on the tile map
  */
 export class MapObject {
-    constructor(x, y, map) {
+    constructor(prefab, x, y, map) {
+        this._name = prefab.name;
+        this._points = prefab.points;
+        this._health = prefab.health;
+        this._health_diff = prefab._health_diff;
+        this._character = `'\\0${parseInt(prefab.html).toString(16)}'`;
+
         this._x = x;
         this._y = y;
         this._map = map;
@@ -26,6 +32,7 @@ export class MapObject {
         this._elem.style.setProperty('--pX', pos.x);
         this._elem.style.setProperty('--pY', pos.y);
         this._elem.style.setProperty('--size', this._map.tileSize()[0]);
+        this._elem.style.setProperty('--character', this._character);
     }
 
     /*
@@ -59,18 +66,35 @@ export class MapObject {
  * Models an object that can move on the map
  */
 export class MapEntity extends MapObject {
-    constructor(x, y, map, speed) {
-        super(x, y, map);
+    constructor(prefab, x, y, map, speed) {
+        super(prefab, x, y, map);
         this._speed = speed;
-        this._path = [];
-        this._goal = null;
+        
         this._vector = {x:0, y:0};
         this._elem.classList.add('game-entity');
+
+        this._pathing = false;
+        this._goal = null;
+        this._path = [];
+        this._step = 0;
     }
 
     createPath(goal) {
         if (goal != this._goal) {
             this._path = this._map.getPath(this._tile, goal);
+            this._goal = goal;
+            this._step = 0;
+            this._pathing = true;
+        }
+    }
+
+    followPath() {
+        if (this._pathing) {
+            // If we're on the current path step, set the next goal
+            if (this._tile.node === this._path[this._step]) {
+                this._step++;
+                this.setVector()
+            }
         }
     }
 
@@ -83,7 +107,6 @@ export class MapEntity extends MapObject {
     setVectorY(y) {this.setVector(this._vector.x, y);}
 
     update(time) {
-        super.update(time);
         this.move(time);
         this._setElementProps();
     }
@@ -122,8 +145,9 @@ export class MapEntity extends MapObject {
  * Acts as the player's avatar
  */
 export class Player extends MapEntity {
-    constructor(x, y, map, speed) {
-        super(x, y, map, speed);
+    constructor(health, x, y, map, speed) {
+        // The fifth health def is the default I think?
+        super(health[4], x, y, map, speed);
         this._elem.classList.add('game-player');
     }
 }
