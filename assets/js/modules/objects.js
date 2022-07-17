@@ -76,6 +76,11 @@ export class MapEntity extends MapObject {
             this._tile = this._map.getTile(this._x, this._y);
             this._tile.addObject(this);
             // Perform collision with any objects on the tile
+            const tileObjs = this._tile.objects;
+            for (obj of tileObjs) {
+                // Call collision on every object on the tile
+                obj.collide(this);
+            }
         }
     }
 }
