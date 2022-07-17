@@ -1,90 +1,112 @@
-import { Map } from './modules/map.js';
-import { soundfx } from './sounds.js'
+
+import { TileMap } from './modules/map.js';
+import { MapObject, MapEntity, Player } from './modules/objects.js';
+
+import { soundfx, music } from './modules/sounds.js'
+
 
 (() => {
 
     let currentMap = null;
 
-    let player = {
-        // Player position in tile coordinates
-        x: 0, y: 0
-    }
-    
-    function startMap() {
-        document.documentElement.style.setProperty('--map-columns', currentMap.cols);
-        document.documentElement.style.setProperty('--map-rows', currentMap.rows);
+    let player = null; 
+
+    const actionMap = new Map();
+    actionMap.set('MovePlayerLeft', {
+        start: ()=>player.setVectorX(-1),
+        stop: ()=>player.setVectorX(0)
+    });
+    actionMap.set('MovePlayerRight', {
+        start: ()=>player.setVectorX(1),
+        stop: ()=>player.setVectorX(0)
+    });
+    actionMap.set('MovePlayerUp', {
+        start: ()=>player.setVectorY(-1),
+        stop: ()=>player.setVectorY(0)
+    });
+    actionMap.set('MovePlayerDown', {
+        start: ()=>player.setVectorY(1),
+        stop: ()=>player.setVectorY(0)
+    });
+
+    const keyMap = new Map();
+    keyMap.set('ArrowLeft', 'MovePlayerLeft');
+    keyMap.set('ArrowRight', 'MovePlayerRight');
+    keyMap.set('ArrowUp', 'MovePlayerUp');
+    keyMap.set('ArrowDown', 'MovePlayerDown');
+
+    function startGame(gameMap) {
+        currentMap = gameMap;
+        document.documentElement.style.setProperty('--map-columns', gameMap.cols);
+        document.documentElement.style.setProperty('--map-rows', gameMap.rows);
 
         // Map + Tiles
         const frag = new DocumentFragment();
-        frag.append(currentMap.element);
+        frag.append(gameMap.element);
 
         // Player
-        player = currentMap.playerSpawn;
-        const playerEl = document.createElement('div');
-        playerEl.classList.add('game-player');
-        frag.append(playerEl);
+        player = new Player(gameMap.playerSpawn.x, gameMap.playerSpawn.y, gameMap, 6);
+        frag.append(player.element);
 
         //Objects + Enemies here
 
         //Update the DOM
         document.getElementById('game-screen').append(frag);
 
-        const pos = currentMap.tileToPixel(player.x, player.y);
-        playerEl.style.setProperty('--pX', pos.x);
-        playerEl.style.setProperty('--pY', pos.y);
-        playerEl.style.setProperty('--size', currentMap.tileSize()[0]);
+        player.initialise();
 
         // Attach events
-        window.addEventListener('keyup', keyup);
+        window.addEventListener('keydown', keyDown);
+        window.addEventListener('keyup', keyUp);
+
+        // Start game loop
+        window.requestAnimationFrame(frame);
     }
+
+    function stopGame() {}
 
     function loadMap(path) {
         //load sound
-        soundfx.gameSong.play()
+        music(soundfx.gameSong.pause())
         // Check if there's a currently loaded map and unload it here...
         // Load the new map
         
         fetch(path)
             .then(response => response.json())
             .then(data => {
-                currentMap = new Map(data);
-                startMap();
+                startGame(new TileMap(data));
             });
     }
 
     // loadMap('assets/maps/testMap.json');
     loadMap('assets/maps/vampire_party.json');
 
+    let lastFrameTime = performance.now();
+    function frame(time) {
+        const timeDelta = (time - lastFrameTime) / 1000;
 
-    function keyup(e) {
-        soundfx.chomp.play()
-        // This could be... better...
-        switch (e.code) {
-            case 'ArrowLeft':
-                if (currentMap.getTile(player.x-1,player.y).passable) player.x -= 1;
-                break;
-            case 'ArrowRight':
-                if (currentMap.getTile(player.x+1,player.y).passable) player.x += 1;
-                break;
-            case 'ArrowUp':
-                if (currentMap.getTile(player.x,player.y-1).passable) player.y -= 1;
-                break;
-            case 'ArrowDown':
-                if (currentMap.getTile(player.x,player.y+1).passable) player.y += 1;
-                break;
+        // How far can the player move this frame?
+        const playerMovement = player.speed * timeDelta;
+
+        // Update the player
+        player.update(timeDelta);
+
+        lastFrameTime = time;
+        window.requestAnimationFrame(frame);
+    }
+
+    function keyDown(e) {
+        const key = keyMap.get(e.code);
+        if (key) {
+            actionMap.get(key).start();
         }
+    }
 
-        // Reset player position if it is outside the bounds of the map
-        if (player.x < 0) player.x = 0;
-        if (player.x > currentMap.cols-1) player.x = currentMap.cols-1;
-        if (player.y < 0) player.y = 0;
-        if (player.y > currentMap.rows-1) player.y = currentMap.rows-1;
-
-        // Move the player element to represent new player position
-        const playerEl = document.getElementsByClassName('game-player')[0];
-        const pos = currentMap.tileToPixel(player.x, player.y);
-        playerEl.style.setProperty('--pX', pos.x);
-        playerEl.style.setProperty('--pY', pos.y);
+    function keyUp(e) {
+        const key = keyMap.get(e.code);
+        if (key) {
+            actionMap.get(key).stop();
+        }
     }
 
 })();

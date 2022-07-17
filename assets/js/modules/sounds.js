@@ -1,11 +1,10 @@
-
+//all sounds
 export var soundfx = {
     gameSong: new Howl({
         src: [
             'assets/sounds/retrorace-108750.ogg',
             'assets/sounds/retrorace-108750.wav'
         ],
-        autoplay: true,
         loop: true,
         volume: 0.1
     }),
@@ -48,4 +47,18 @@ export var soundfx = {
             'assets/sounds/emojiman_eatghost.wav'
         ]
     })
-}
+};
+
+// pause or play background music
+
+export function music() {
+    // Uncomment when fixed!
+    // document.querySelector(".play-music").addEventListener('click', () => {
+    //     if (!soundfx.gameSong.playing()) {
+    //         soundfx.gameSong.play();
+    //     }
+    // });
+    // document.querySelector(".mute-music").addEventListener('click', () => {
+    //     soundfx.gameSong.pause();
+    // });
+};

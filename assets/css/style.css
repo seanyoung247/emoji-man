@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap')
 
 * {
     box-sizing: border-box;
@@ -10,16 +9,149 @@
     /* These values are set by JavaScript on map load */
     --map-columns: 25;
     --map-rows: 25;
+    /* General site colours */
+    --dark-site-col: black;
+    --light-site-col: white;
+    /* Game theme colours */
+    --game-foreground: black;
+    --game-background: white;
 }
 
-game-screen {
+body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: stretch;
     align-items: center;
-    font-family: 'Press Start 2P', sans-serif;
 
-    width: 100vw;
-    height: 100vh;
+    max-height: 100vh;
+    font-family: 'Press Start 2P', cursive;
+    background-color: var(--dark-site-col);
+    overflow: hidden;
+    /* padding-left: 200px;
+    padding-right: 200px; */
+}
+
+span {
+    border: solid var(--dark-site-col) 3px;
+    padding: 10px;
+}
+
+button {
+    font-family: 'Press Start 2P', cursive;
+    background-color: var(--dark-site-col);
+    color: var(--light-site-col);
+    padding: 10px;
+    
+}
+
+input {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 30px;
+}
+
+button:hover {
+    background-color: var(--light-site-col);
+    color: var(--dark-site-col);;
+    transform: scaleX(1.3);
+    transform: scaleY(1.3);
+}
+
+ul {
+    list-style-type: none;
+}
+
+#container-div {
+    background-color: var(--light-site-col);
+    height: auto;
+    max-height: 700px;
+    overflow-y: scroll;
+    margin-left: calc(50%-500px);
+    margin-top: 100px;
+}
+
+#rules {
+    padding: 100px;
+    text-align: center;
+    line-height: 30px;
+}
+
+/* Level Intro */
+
+#intro {
+    z-index: 999;
+    width: 80%;
+    height: 80%;
+    display: block;
+    border: 2px dotted var(--light-site-col);
+    margin: 10%;
+    color: var(--light-site-col);
+    background-color: var(--dark-site-col);;
+    position: absolute;
+    text-align: center;
+    display: none;
+}
+
+#intro-title {
+    margin-top: 10%;
+}
+
+#intro-text {
+    margin-top: 20%;
+    margin-bottom: 15%;
+}
+
+.intro-button {
+    width: 40%;
+    border: 4px solid var(--light-site-col);
+    border-radius: 20px;
+    margin-left: 30%;
+}
+
+header {
+    display: flex;
+    flex: 1 0 auto;
+    align-self: stretch;
+    justify-content: center;
+}
+
+#logo {
+    padding-top: 20px;    
+}
+
+/* Navbar */
+#logo-nav {
+    flex: 1 0 auto;
+    max-width: 1000px;
+}
+
+#logo-nav a {
+    color: var(--light-site-col);
+    text-align: center;
+    
+}
+
+#nav {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    justify-content: space-evenly;
+    margin-top: 50px;
+}
+
+#nav > li {
+    flex: 1 1 0;
+    text-align: center;
+    border-bottom: 1px solid var(--dark-site-col);
+}
+
+#nav li:hover {
+    border-bottom: 1px solid var(--light-site-col);
+}
+
+#nav a {
+    color: var(--light-site-col);
+    text-decoration: none;
+    list-style: none;
 }
 
 #logo-nav {
@@ -37,17 +169,11 @@ game-screen {
     text-decoration: none;
     
 }
-#nav {
-    display: flex;
-    list-style: none;
-    justify-content: center;
-    justify-content: space-evenly;
-}
-#nav a {
-    text-decoration: none;
-    list-style: none;
-}
 
+/* nav {
+    top: 0px;
+    position: fixed;
+} */
 
 #game-screen {
     display: flex;
@@ -78,12 +204,20 @@ game-screen {
 .game-map {
     display: flex;
     flex-wrap: wrap;
-    aspect-ratio: 1 / calc(var(--map-rows) / var(--map-columns));
+    /* aspect-ratio: 1 / calc(var(--map-rows) / var(--map-columns)); */
+
+    width: 80vw;
+    height: calc(80vw / (var(--map-rows) / var(--map-columns)));
+
+    max-height: 80vh;
+    max-width: calc(80vh * (var(--map-rows) / var(--map-columns)));
+
     --tile-width: calc(100% / var(--map-columns));
 }
 
 .game-tile {
-    border: 1px solid black;
+    border: 1px solid var(--game-foreground);
+    background-color: var(--game-background);
     flex: 1 0 var(--tile-width);
     aspect-ratio: 1 / 1;
 }
@@ -92,24 +226,37 @@ game-screen {
     background-color: black;
 }
 
-.game-player {
+.game-object {
     --pX: 0;
     --pY: 0;
     --size: 0;
+    --character: '\01F352';
 
     position: absolute;
     left: calc(1px * var(--pX));
     top: calc(1px * var(--pY));
     
-    width: var(--tile-width);
+    width: var(--size);
     aspect-ratio: 1 / 1;
+}
 
+.game-entity {
     transition: left 0.5s, top 0.5s;
+}
+
+.game-player {
+    --character: '\01F600';
 }
 
 .game-player::before {
     display: block;
-    content: '\01F600'; /* Can be set by JS to change character */
-    font-size: calc(1px * var(--size));    /* Needs to be set by JS */
-    line-height: calc(1px * var(--size));
+    content: var(--character);
+    font-size: calc(1px * var(--size));
+    line-height: calc(1px * (var(--size)/1.25));
 }
+
+/* @media (min-width: 576px)
+@media (min-width: 768px)
+@media (min-width: 992px)
+@media (min-width: 1200px) */
+

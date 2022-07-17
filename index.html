@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
+        integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <link rel="stylesheet" href="assets/css/style.css">
     <script type="module" src="assets/js/game.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js" integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#x1F600;</text></svg>">
 
     <title>emojiman</title>
 </head>
+
 <body>
-    <header> 
+    <header>
         <!-- logo and nav bar -->
         <nav id="logo-nav">
             <a href="index.html">
@@ -29,11 +39,100 @@
                 <li>
                     <a href="#">Highscores</a>
                 </li>
-        </ul>
+            </ul>
         </nav>
     </header>
-    <div id="game-screen"> 
-        
+
+    <div id="game-screen"></div>
+    <div id="container-div">
+        <!-- <div id="rules">
+            <h3>
+                >> Game Rules <<
+            </h3>
+
+            <br><br>
+
+            <p>
+                Welcome to <strong>Emoji-man</strong>, an emoji-based variation of the much-loved Pacman game which was born in the
+                1980s! We have included some interesting new themes. See the game rules below:
+            </p>
+
+            <br><br>
+
+            <h4>The main objectives are:</h4>
+            <ul>
+                <li>move Emoji-man around the maze using your arrow controls</li>
+                <li>collect points via food tokens and other collectables</li>
+                <li>avoid the baddies - they will drain your health or kill you!</li>
+                <li>try to escape the maze!</li>
+            </ul>
+
+            <img src="assets/img/pacman.jpeg">
+
+            <br><br>
+
+            <h4>Themes</h4>
+            <p>
+                Each level has a different theme - which means different baddies, collectables and surprise
+                characters...</p>
+            <p>&#9904 &#127758 &#127914 &#127755 &#128096 &#129500 &#129702 &#128250</p>
+
+            <br><br>
+
+            <h4>Health</h4>
+            <p>
+                Watch your health level! Bumping into certain tokens will <strong>increase</strong> your health
+                level... but bumping into baddies will <strong>decrease</strong> your health.<br>
+                Poor health > > > > <span>starting health</span> > > > > great health
+            </p>
+            <br>
+            <p>
+                &#128545 &#128561 &#128547 &#129301 <span>&#128578</span> &#128523 &#128522 &#128512 &#128525</p>
+
+            <br><br>
+
+            <h4>Points</h4>
+            <p>Gain points by collecting food tokens and other collectables</p>
+
+            <p>Search for special tokens which will bump up your score!</p>
+            <p>&#129361 &#129382 &#129362 &#127823 &#129373 = 10 points</p>
+            <p>&#127826 = 30 points + 1 health</p>
+            <p>&#128142 = 50 points + max health</p>
+
+            <p>See if you can beat the highest score!</p>
+
+            <br><br>
+
+            <label for="player-name">Your name:</label>
+            <input type="text" id="player-name">
+            <br><br>
+            <button>Launch game!</button>
+        </div> -->
+
+        <div id="intro">
+            <h1 id="intro-title">VAMPIRE PARTY</h1>
+            <p id="intro-text"> Baddies: 🧛 Collect: 🫀🩸🧄 🌞 20 points each Destination : ⚰️
+                Aim: Vampires are on the loose! Collect the blood to starve the vampires,
+                collect garlic to repel them and sun to kill them. Find safety through the coffin.
+            </p>
+            <h2 class="intro-button" onclick="myFunction()">Start Level</h2>
+        </div>
+
     </div>
+
+
+
+    <script>
+        // When the user clicks on <span>, close the popup
+        function myFunction() {
+            var popup = document.getElementById("intro");
+            if (popup.style.display !== "none") {
+                popup.style.display = "none";
+            } else {
+                popup.style.display = "block";
+            }
+        }
+    </script>
 </body>
+
 </html>
