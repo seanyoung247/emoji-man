@@ -210,6 +210,16 @@ ul {
     line-height: calc(1px * var(--size));
 }
 
+#highscores-title {
+    color: white;
+    text-align: center;
+    margin-top: 10%;
+}
+
+.highscores{
+
+}
+
 /* @media (min-width: 576px)
 @media (min-width: 768px)
 @media (min-width: 992px)
