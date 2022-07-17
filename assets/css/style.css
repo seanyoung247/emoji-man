@@ -169,10 +169,6 @@ ul {
 
 #game-screen {
     position: relative;
-    display: none;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
 }
 
 .game-map {
