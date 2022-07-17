@@ -87,7 +87,7 @@ export class TileMap {
         this._enemies = [];
         this._objects = [];
         this._food = [];
-        console.log(template.destination);
+        //console.log(template.destination);
         this._exit = ObjectFactory.create(
             template.destination.type, 
             template.destination.x,
