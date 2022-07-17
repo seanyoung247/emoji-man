@@ -142,11 +142,11 @@ body {
     background-color: black;
 }
 
-.game-player {
+.game-object {
     --pX: 0;
     --pY: 0;
     --size: 0;
-    --character: '\01F600';
+    --character: '\01F352';
 
     position: absolute;
     left: calc(1px * var(--pX));
@@ -154,8 +154,14 @@ body {
     
     width: var(--tile-width);
     aspect-ratio: 1 / 1;
+}
 
+.game-entity {
     transition: left 0.5s, top 0.5s;
+}
+
+.game-player {
+    --character: '\01F600';
 }
 
 .game-player::before {
