@@ -222,8 +222,22 @@ All user stories were tested for functionality.
 
 |-|User Story|Action|Desktop|Tablet|Mobile|Pass|
 |-|----------|------|-------|------|------|----|
-|1|As a **User** I can **find the game rules** so that **I understand how to play the game**|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
-|2|As a **User** I can **see a 'Launch Game' button** so that **I know how to start the game**|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|7|As a **user** I can **see a preview of the game on the homepage** so that **I know this is a Pacman-style game**|[Image]()|Pass|
+|8|As **user** I can **see the game rules on the rules page** so that **I can understand how to play the game**|[Image](assets/img/rmvalidation/rules2.JPG)|Pass|
+|11|As **user** I can **collect a range of tokens when playing** so that **I can increase my score**|[Image](assets/img/rmvalidation/increasescore.JPG)|Pass|
+|13|As **user** I can **see my score increasing/decreasing as I play** so that **I can understand how well I'm playing**|[Image](assets/img/rmvalidation/increasescore.JPG)|Pass|
+|21|As **user** I can **see the characters/tokens/map change in appearance between levels** so that **the game play is new and interesting between each level**|[Image](assets/img/testing/21.JPG) [Image](assets/img/testing/21-2.JPG)|Pass|
+|15|As **user** I can **see my starting health is in the middle of the range** so that **I'm aware how many health levels I can gain/lose**|[Image](assets/img/testing/15.JPG) [Image](assets/img/testing/15-2.JPG)|Pass|
+|18|As **user** I can **see health draining token** so that **I can avoid these tokens to maintain good health**|[Image](assets/img/testing/18.JPG) [Image](assets/img/testing/182.JPG)|Pass|
+|9|As **user** I can **see a 'Launch Game' button on the homepage** so that **I know how to start playing**|[Image]()||
+|10|As **user** I can **add my name** so that **I can see my personal game score on the leadership board**|[Image]()|Pass|
+|24|As **user** I can **see buttons/navigation bar** so that **I can easily navigate the website**|[Image]|Pass|
+||As **user** I can **** so that ****|[Image]|Pass|
+||As **user** I can **** so that ****|[Image]|Pass|
+||As **user** I can **** so that ****|[Image]|Pass|
+||As **user** I can **** so that ****|[Image]|Pass|
+||As **user** I can **** so that ****|[Image]|Pass|
+
 
 Acceptance Criteria:
 - [x] blah blah
