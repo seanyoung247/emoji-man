@@ -8,7 +8,7 @@ import { emojis } from '../emojis/emoji_dict.js';
 
 export class ObjectFactory {
     static products = new Map();
-    
+
     static register(type, obj) {
         this.products.set(type, obj);
     }
@@ -108,7 +108,7 @@ class Chaser extends PathFinder {
             // Trigger reset
             this._map.resetPositions();
             // Do we want the monster to die here?
-        } 
+        }
     }
 }
 ObjectFactory.register('enemies', Chaser);
@@ -136,12 +136,12 @@ export class Player extends MapEntity {
         this._dead = false;
     }
 
-    get category() {return 'player';}
-    get health() {return this._health.health - 1;}
-    get dead() {return this._dead;}
+    get category() { return 'player'; }
+    get health() { return this._health.health - 1; }
+    get dead() { return this._dead; }
 
-    set map(m) {this._map = m;}
-    
+    set map(m) { this._map = m; }
+
     // Health
     setHealth(amt) {
         if (amt < 0 && this._health === this._minHealth) {
@@ -149,6 +149,9 @@ export class Player extends MapEntity {
         } else {
             this._health = clamp(this._health + amt, this._minHealth, this._maxHealth);
             this._character = `'\\0${parseInt(this._healthPrefabs[this._health].html).toString(16)}'`;
+            let health_id = document.getElementById(this._healthPrefabs[this._health].html)
+            document.getElementsByClassName('health-range-current')[0].classList.remove('health-range-current')
+            health_id.classList.add('health-range-current')
         }
     }
 
