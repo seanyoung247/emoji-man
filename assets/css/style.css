@@ -41,8 +41,8 @@
   }
 
 #reference-div {
-    color: white;
-    padding-top: 20px;
+    color: var(--light-site-col);
+    /* padding-top: 20px; */
 }
 
 
@@ -157,7 +157,8 @@ header {
     padding-top: 20px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;    
+    justify-content: center; 
+    font-size: 0.25vw;  
 }
 
 /* Navbar */
@@ -167,12 +168,6 @@ header {
     justify-content: space-between;
 }
 
-@media screen and (min-width: 768px){
-#logo {
-    padding-top: 40px;
-    font-size: 2rem;
-}
-}
 
 #logo-nav a {
     color: var(--light-site-col);
@@ -188,12 +183,6 @@ header {
     justify-content: space-evenly;
     margin: 25px;
     font-size: .4rem;
-}
-
-@media screen and (min-width: 576px) {
-    #nav{
-        font-size: .8rem;
-    }
 }
 
 #nav > li {
@@ -212,12 +201,6 @@ header {
     list-style: none;
 }
 
-
-/* nav {
-    top: 0px;
-    position: fixed;
-} */
-
 #game-screen {
     display: flex;
     flex-wrap: wrap;
@@ -232,7 +215,6 @@ header {
 .game-map {
     display: flex;
     flex-wrap: wrap;
-    /* aspect-ratio: 1 / calc(var(--map-rows) / var(--map-columns)); */
 
     width: 80vw;
     height: calc(80vw / (var(--map-rows) / var(--map-columns)));
@@ -318,10 +300,3 @@ header {
     line-height: calc(1px * (var(--size)/1.25) * 4);
     transition: all 1s;
 }
-
-/* @media (min-width: 576px)
-
-@media (min-width: 768px)
-@media (min-width: 992px)
-@media (min-width: 1200px) */
-
