@@ -64,3 +64,7 @@ export function createGameElements(gameMap, mapParams, player) {
     document.getElementById('game-screen').append(frag);
     createMapInfo(mapParams);
 }
+
+export function clearGameElements(gameScreen) {
+    document.getElementById('game-screen').innerHTML = '';
+}
