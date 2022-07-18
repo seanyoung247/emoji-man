@@ -291,7 +291,6 @@ header {
 /* Death animations */
 .game-object.dying {
     top: 0;
-    transform: translate(50%, 50%);
     opacity: 0;
     transition: all 0.5s;
 }
@@ -302,9 +301,22 @@ header {
     transition: all 0.5s;
 }
 
-
 .game-object.dead {
     display: none;
+}
+
+.game-player.dying {
+    top: 50%;
+    left: 50%;
+    transform: translate(50%, 50%);
+    opacity: 0;
+    transition: top 1s, left 1s, opacity 1s;
+}
+
+.game-player.dying::before {
+    font-size: calc(1px * var(--size) * 4);
+    line-height: calc(1px * (var(--size)/1.25) * 4);
+    transition: all 1s;
 }
 
 /* @media (min-width: 576px)
