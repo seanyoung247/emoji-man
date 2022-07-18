@@ -101,6 +101,8 @@ export class TileMap {
 
         // Build the pathing graph
         this._graph = this._buildGraph();
+
+        this._complete = false;
     }
     /*
      * Getters and Setters 
@@ -118,6 +120,9 @@ export class TileMap {
     get objects() {return this._objects;}
     get food() {return this._food;}
     get player() {return this._player;}
+    // Map completion
+    get complete() {return this._complete;}
+    set complete(val) {this._complete = val;}
     
     inBounds(x, y) {
         return (x > 0 && x < this._cols && y > 0 && y < this._rows);

@@ -7,8 +7,8 @@ import { currentScore } from './modules/scores.js';
 import { TileMap } from './modules/map.js';
 import { Player } from './modules/entities.js';
 import { soundfx, music } from './modules/sounds.js';
-import { emojis } from './emojis/emoji_dict.js'
 
+import { createGameElements } from './domHandling.js';
 
 (async () => {
     const levelNames = [
@@ -24,6 +24,7 @@ import { emojis } from './emojis/emoji_dict.js'
 
     let gameMaps = [];
     let currentMap = null;
+    let running = 0;
 
     let player = null;
 
@@ -51,68 +52,16 @@ import { emojis } from './emojis/emoji_dict.js'
     keyMap.set('ArrowUp', 'MovePlayerUp');
     keyMap.set('ArrowDown', 'MovePlayerDown');
 
+
     function startGame(gameMap, mapParams) {
         currentMap = gameMap;
-        document.documentElement.style.setProperty('--map-columns', gameMap.cols);
-        document.documentElement.style.setProperty('--map-rows', gameMap.rows);
 
-        // Map + Tiles
-        const frag = new DocumentFragment();
-        frag.append(gameMap.element);
+        // load sound
+        music(soundfx.gameSong.pause());
 
         // Player
         player = new Player(playerHealth, gameMap.playerSpawn.x, gameMap.playerSpawn.y, gameMap, 6);
-        gameMap.registerPlayer(player);
-        frag.append(player.element);
-
-        //Objects + Enemies here
-        frag.append(gameMap.objFragment); // Appends the loaded objects elements
-
-        let mapEnemiesHTML = '';
-        let mapCollectableHTML = '';
-        let mapDestinationHTML = '';
-
-
-        // display enemies
-        for (const [key, value] of Object.entries(emojis)) {
-            for (let i = 0; i < mapParams['enemies'].length; i++) {
-                if (mapParams['enemies'][i]['type'] == key) {
-                    let html = `&#${value['html']}`;
-                    if (!mapEnemiesHTML.includes(html)) {
-                        mapEnemiesHTML = mapEnemiesHTML + html + '';
-                    }
-                }
-            }
-            document.getElementById('game-baddies').innerHTML = mapEnemiesHTML
-
-        }
-
-        // display collectables
-        for (const [key, value] of Object.entries(emojis)) {
-            for (let i = 0; i < mapParams['objects'].length; i++) {
-                if (mapParams['objects'][i]['type'] == key) {
-                    let html = `&#${value['html']}`;
-                    if (!mapCollectableHTML.includes(html)) {
-                        mapCollectableHTML = mapCollectableHTML + html + '';
-                    }
-                }
-            }
-            document.getElementById('game-objects').innerHTML = mapCollectableHTML
-
-        }
-
-        // display destination
-        for (const [key, value] of Object.entries(emojis)) {
-            if (key == mapParams['destination']['type']) {
-                let html = `&#${value['html']}`;
-                mapDestinationHTML = mapDestinationHTML + html;
-            }
-        }
-
-        // Update the DOM
-        document.getElementById('game-screen').append(frag);
-        document.getElementById('game-title').innerHTML = mapParams['title'];
-        document.getElementById('game-dest').innerHTML = mapDestinationHTML;
+        createGameElements(gameMap, mapParams, player);
 
         player.initialise();
         gameMap.initialiseObjects();
@@ -122,20 +71,22 @@ import { emojis } from './emojis/emoji_dict.js'
         window.addEventListener('keyup', keyUp);
 
         // Start game loop
-        window.requestAnimationFrame(frame);
+        running = window.requestAnimationFrame(frame);
+    }
+
+    function unloadMap() {
+
+    }
+
+    function nextMap() {
+        console.log("moving to next map");
     }
 
     function stopGame() { }
 
-    async function loadMap(path) {
-        //load sound
-        music(soundfx.gameSong.pause());
-        // Check if there's a currently loaded map and unload it here...
-        // Load the new map
-
+    async function loadMaps(path) {
         let maps = [];
         //Load maps
-
         for (let name of levelNames) {
             let fullPath = path + name;
             let response = await fetch(fullPath);
@@ -146,15 +97,15 @@ import { emojis } from './emojis/emoji_dict.js'
         return maps;
     }
 
-    gameMaps = await loadMap('assets/maps/');
+    gameMaps = await loadMaps('assets/maps/');
 
     /*
     Function to randomize the maps array
     */
     function shuffleArray(array) {
-        for (var i = array.length - 1; i > 0; i--) {
-            var j = Math.floor(Math.random() * (i + 1));
-            var temp = array[i];
+        for (let i = array.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            let temp = array[i];
             array[i] = array[j];
             array[j] = temp;
         }
@@ -166,26 +117,37 @@ import { emojis } from './emojis/emoji_dict.js'
 
     startGame(newMap, gameMaps[0]);
 
+    /*
+     * Game Loop
+     */
     let lastFrameTime = performance.now();
     function frame(time) {
         const timeDelta = (time - lastFrameTime) / 1000;
 
+        /* -------- PLAYER UPDATES ------- */
         // How far can the player move this frame?
         const playerMovement = player.speed * timeDelta;
-
         // Update the player
         player.update(timeDelta);
+
+        /* -------- ENTITY UPDATES ------- */
         // Update other objects
         currentMap.update(timeDelta);
+
+        /* ----- GAME LOGIC UPDATES ------ */
+        
 
         // Update score
         const scoreDisplay = document.getElementById('player-score');
         scoreDisplay.innerHTML = currentScore;
 
         lastFrameTime = time;
-        window.requestAnimationFrame(frame);
+        running = window.requestAnimationFrame(frame);
     }
 
+    /*
+     * Events
+     */
     function keyDown(e) {
         const key = keyMap.get(e.code);
         if (key) {
