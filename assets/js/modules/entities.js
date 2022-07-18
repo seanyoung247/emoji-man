@@ -1,4 +1,6 @@
+
 /*jshint esversion: 6 */
+
 
 import { MapObject, MapEntity, PathFinder } from './objects.js';
 import { incScore } from './scores.js';
@@ -121,21 +123,24 @@ const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
  * Acts as the player's avatar
  */
 export class Player extends MapEntity {
-    constructor(health, x, y, map, speed) {
+    constructor(health, healthPrefabs, x, y, map, speed) {
         // The fifth health def is the default I think?
-        super(health[4], x, y, map, speed);
+        super(healthPrefabs[health], x, y, map, speed);
         this._elem.classList.add('game-player');
 
-        this._healthPrefabs = health;
+        this._healthPrefabs = healthPrefabs;
 
         this._minHealth = 0;
-        this._health = health[4].health - 1;
-        this._maxHealth = health.length - 1;
+        this._health = healthPrefabs[health].health - 1;
+        this._maxHealth = healthPrefabs.length - 1;
         this._dead = false;
     }
 
     get category() {return 'player';}
+    get health() {return this._health.health - 1;}
     get dead() {return this._dead;}
+
+    set map(m) {this._map = m;}
     
     // Health
     setHealth(amt) {
