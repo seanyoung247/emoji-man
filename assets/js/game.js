@@ -19,7 +19,7 @@ import { createGameElements } from './domHandling.js';
         'halloween.json',
         'lions_tigers_bears.json',
         'vampire_party.json',
-        // 'walk_plank.json' - Not sure why but this map causes the game to lock up. Will investigate if time.
+        // 'walk_plank.json' - Not sure why but this map causes the game to lock up. Appears to be yet another pathing bug... Will investigate if time. 
     ];
 
     let gameMaps = [];
@@ -52,7 +52,11 @@ import { createGameElements } from './domHandling.js';
     keyMap.set('ArrowUp', 'MovePlayerUp');
     keyMap.set('ArrowDown', 'MovePlayerDown');
 
-
+    /**
+     * Starts a new game
+     * @param {Object} gameMap - The map to start with
+     * @param {Object} mapParams - Map parameters
+     */
     function startGame(gameMap, mapParams) {
         currentMap = gameMap;
 
@@ -135,7 +139,8 @@ import { createGameElements } from './domHandling.js';
         currentMap.update(timeDelta);
 
         /* ----- GAME LOGIC UPDATES ------ */
-        
+        // Check map complete:
+        if (currentMap.complete) nextMap();
 
         // Update score
         const scoreDisplay = document.getElementById('player-score');
