@@ -172,10 +172,13 @@ export class TileMap {
      */
     _createObjects(prefabs, list) {
         for (const prefab of prefabs) {
-            const object = ObjectFactory.create(prefab.type, prefab.x, prefab.y, this);
-            if (object) {
-                list.push(object);
-                this._frag.append(object.element);
+            //Don't create an object if it'll be inside a wall.
+            if (this._tiles[prefab.y][prefab.x].passable) {
+                const object = ObjectFactory.create(prefab.type, prefab.x, prefab.y, this);
+                if (object) {
+                    list.push(object);
+                    this._frag.append(object.element);
+                }
             }
         }
     }
