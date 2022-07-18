@@ -83,11 +83,15 @@ class Chaser extends PathFinder {
         super(prefab, x, y, map, 3); // Player is 6 tiles per second so monsters are half the speed.
     }
     update(time) {
-        // This is just a simple chaser. They'll just attempt to move toward the player
-        // Get the player's current position and try and create a path to get to them
-
+        /* 
+          This is just a simple chaser. They'll just attempt to move toward the player
+          by getting the player's current position and trying to create a path to get to them
+          Different behaviour types could be implemented by picking a different pathing target.
+          An enemy could flee from the player by pathing to the opposite side of the map, or 
+          attempt to ambush them by pathing to a tile near them etc.
+        */
         this.createPath(this._map.player.tile);
-        // Let the base class deal with the rest of the functionality
+        // Let the base class deal with the rest of the movement functionality
         super.update(time);
     }
     collide(obj) {
