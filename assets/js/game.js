@@ -24,6 +24,7 @@ import { createGameElements } from './domHandling.js';
 
     let gameMaps = [];
     let currentMap = null;
+    let running = 0;
 
     let player = null;
 
@@ -70,7 +71,15 @@ import { createGameElements } from './domHandling.js';
         window.addEventListener('keyup', keyUp);
 
         // Start game loop
-        window.requestAnimationFrame(frame);
+        running = window.requestAnimationFrame(frame);
+    }
+
+    function unloadMap() {
+
+    }
+
+    function nextMap() {
+        console.log("moving to next map");
     }
 
     function stopGame() { }
@@ -108,26 +117,37 @@ import { createGameElements } from './domHandling.js';
 
     startGame(newMap, gameMaps[0]);
 
+    /*
+     * Game Loop
+     */
     let lastFrameTime = performance.now();
     function frame(time) {
         const timeDelta = (time - lastFrameTime) / 1000;
 
+        /* -------- PLAYER UPDATES ------- */
         // How far can the player move this frame?
         const playerMovement = player.speed * timeDelta;
-
         // Update the player
         player.update(timeDelta);
+
+        /* -------- ENTITY UPDATES ------- */
         // Update other objects
         currentMap.update(timeDelta);
+
+        /* ----- GAME LOGIC UPDATES ------ */
+        
 
         // Update score
         const scoreDisplay = document.getElementById('player-score');
         scoreDisplay.innerHTML = currentScore;
 
         lastFrameTime = time;
-        window.requestAnimationFrame(frame);
+        running = window.requestAnimationFrame(frame);
     }
 
+    /*
+     * Events
+     */
     function keyDown(e) {
         const key = keyMap.get(e.code);
         if (key) {
