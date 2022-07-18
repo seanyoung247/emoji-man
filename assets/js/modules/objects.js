@@ -104,34 +104,6 @@ export class MapEntity extends MapObject {
         
         this._vector = {x:0, y:0};
         this._elem.classList.add('game-entity');
-
-        this._pathing = false;
-        this._goal = null;
-        this._path = [];
-        this._step = 0;
-    }
-
-    createPath(goal) {
-        this._path = this._map.getPath(this._tile, goal);
-        this._goal = goal;
-        this._step = 0;
-        this._pathing = true;
-    }
-
-    followPath() {
-        if (this._pathing) {
-            // Have we reached our goal?
-            if (this._tile === this._goal) {
-                this._pathing = false;
-                this._goal = null;
-                this._path = [];
-                this._step = 0;
-                this.setVector(0,0);
-            } else if (this._tile.node === this._path[this._step]) {
-                this._step++;
-                this.setVector(this._path[this._step].x - this._tile.x, this._path[this._step].y - this._tile.y);
-            }
-        }
     }
 
     setVector(x, y) {
@@ -178,6 +150,35 @@ export class MapEntity extends MapObject {
 }
 
 export class PathFinder extends MapEntity {
+    constructor(prefab, x, y, map, speed) {
+        super(prefab, x, y, map, speed);
+
+        this._pathing = false;
+        this._goal = null;
+        this._path = [];
+        this._step = 0;
+    }
+            this._path = this._map.getPath(this._tile, goal);
+            this._goal = goal;
+            this._step = 0;
+            this._pathing = true;
+    }
+
+    followPath() {
+        if (this._pathing) {
+            // Have we reached our goal?
+            if (this._tile === this._goal) {
+                this._pathing = true;
+                this._goal = null;
+                this._path = [];
+                this._step = 0;
+                this.setVector(0,0);
+            } else if (this._tile.node === this._path[this._step]) {
+                this._step++;
+                this.setVector(this._path[this._step].x - this._tile.x, this._path[this._step].y - this._tile.y);
+            }
+        }
+    }
     update(time) {
         this.followPath();
         this.move(time);
