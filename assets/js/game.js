@@ -8,7 +8,7 @@ import { TileMap } from './modules/map.js';
 import { Player } from './modules/entities.js';
 import { soundfx, music } from './modules/sounds.js';
 
-import { createGameElements } from './domHandling.js';
+import { createGameElements, clearGameElements } from './domHandling.js';
 
 (async () => {
     const levelNames = [
@@ -25,7 +25,7 @@ import { createGameElements } from './domHandling.js';
     let gameMaps = [];
     let currentMap = null;
     let mapIdx = 0;
-    let running = 0;
+    let running = false;
 
     let player = null;
 
@@ -76,7 +76,8 @@ import { createGameElements } from './domHandling.js';
         window.addEventListener('keyup', keyUp);
 
         // Start game loop
-        running = window.requestAnimationFrame(frame);
+        running = true;
+        window.requestAnimationFrame(frame);
     }
 
     /**
@@ -86,7 +87,7 @@ import { createGameElements } from './domHandling.js';
         // Clear the current map
         currentMap = null;
         // Clear the elements
-        document.getElementById("game-screen").innerHTML = "";
+        clearGameElements();
     }
 
     /**
@@ -117,15 +118,23 @@ import { createGameElements } from './domHandling.js';
      */
     function stopGame() {
         // Clear game loop
+        running = false;
         // Remove event listeners
-        // Unload current map and clear game objects
+        window.removeEventListener('keydown', keyDown);
+        window.removeEventListener('keyup', keyUp);
     }
 
+    /**
+     * Called when the last level has been completed
+     */
     function playerWon() {
         // Actions specific to player winning here
         stopGame();
     }
 
+    /**
+     * Called when the player has run out of health
+     */
     function playerDied() {
         // Actions specific to player dying here
         stopGame();
@@ -186,7 +195,7 @@ import { createGameElements } from './domHandling.js';
 
         // Store current frame time and wait for next cycle
         lastFrameTime = time;
-        running = window.requestAnimationFrame(frame);
+        if (running) window.requestAnimationFrame(frame);
     }
 
     /*
