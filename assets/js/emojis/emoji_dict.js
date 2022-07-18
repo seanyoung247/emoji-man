@@ -555,8 +555,8 @@ export const emojis = {
         "sfx":'',
     },
     // Death // 
-    "space-invader": {
-        "name":'space-invader',
+    "space_invader": {
+        "name":'space_invader',
         "category":"enemies",
         "points":0,
         "health":0,

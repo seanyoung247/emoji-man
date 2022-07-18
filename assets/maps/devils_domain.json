@@ -282,13 +282,9 @@
     ],
     "enemies": [
         { "type": "devil", "x": 11, "y": 17 },
-        { "type": "devil", "x": 12, "y": 17 },
         { "type": "devil", "x": 13, "y": 17 },
-        { "type": "devil", "x": 10, "y": 18 },
         { "type": "devil", "x": 14, "y": 18 },
-        { "type": "fire", "x": 10, "y": 19 },
         { "type": "fire", "x": 11, "y": 19 },
-        { "type": "fire", "x": 12, "y": 19 },
         { "type": "fire", "x": 13, "y": 19 },
         { "type": "fire", "x": 14, "y": 19 }
     ],
