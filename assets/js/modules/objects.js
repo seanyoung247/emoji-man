@@ -161,15 +161,3 @@ export class PathFinder extends MapEntity {
     }
 }
 
-/*
- * Acts as the player's avatar
- */
-export class Player extends MapEntity {
-    constructor(health, x, y, map, speed) {
-        // The fifth health def is the default I think?
-        super(health[4], x, y, map, speed);
-        this._elem.classList.add('game-player');
-    }
-
-    get category() {return 'player';}
-}

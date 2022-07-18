@@ -71,3 +71,27 @@ class Chaser extends PathFinder {
     }
 }
 ObjectFactory.register('enemies', Chaser);
+
+/*
+ * Acts as the player's avatar
+ */
+export class Player extends MapEntity {
+    constructor(health, x, y, map, speed) {
+        // The fifth health def is the default I think?
+        super(health[4], x, y, map, speed);
+        this._elem.classList.add('game-player');
+
+        this._healthPrefabs = health;
+
+        this._minHealth = 0;
+        this._health = health[4].health - 1;
+        this._maxHealth = health.length - 1;
+    }
+
+    get category() {return 'player';}
+    
+
+    collide(obj) {
+        obj.doCollision(this);
+    }
+}
