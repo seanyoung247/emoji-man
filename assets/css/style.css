@@ -21,6 +21,10 @@
     display: flex; 
 }
 
+.health-range-current {
+    border: solid red 2px;
+}
+
 #score-div {
     color: white;
     padding-top: 15px;
