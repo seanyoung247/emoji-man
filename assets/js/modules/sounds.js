@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 //all sounds
 export var soundfx = {
     gameSong: new Howl({

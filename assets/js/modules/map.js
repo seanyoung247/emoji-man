@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 import { Node, Graph } from "./graph.js";
 import { ObjectFactory } from "./entities.js";
 
@@ -142,7 +144,7 @@ export class TileMap {
         return [
             this._elem.clientWidth / this._cols,
             this._elem.clientHeight / this._rows
-        ]
+        ];
     }
 
     tileToPixel(x, y) {
@@ -152,7 +154,7 @@ export class TileMap {
         return {
             x: Math.round(iX * tW),
             y: Math.round(iY * tH)
-        }
+        };
     }
 
     pixelToTile(x, y) {
@@ -162,7 +164,7 @@ export class TileMap {
         return {
             x: Math.round(iX / tW),
             y: Math.round(iY / tH)
-        }
+        };
     }
 
     /*
@@ -219,12 +221,12 @@ export class TileMap {
         let idx = this._objects.indexOf(obj);
         if (idx >= 0) {
             this.removeIndex(idx, this._objects);
-            return
+            return;
         }
         idx = this._food.indexOf(obj);
         if (idx >= 0) {
             this.removeIndex(idx, this._food);
-            return
+            return;
         }
         idx = this._enemies.indexOf(obj);
         if (idx >= 0) {
