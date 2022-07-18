@@ -238,22 +238,25 @@ The validator used to check validity of HTML code was [W3C](https://validator.w3
 
 |File|Result|Status|
 |----|------|------|
-|index.html|[Validation]()|Pass|
-|canvas.html|[Validation]()|Pass|
+|index.html|[Validation](assets/img/rmvalidation/index.JPG)|Pass*|
+|rules.html|[Validation](assets/img/rmvalidation/rules.JPG)|Pass|
+
+*There were two warnings on the index.html file:
+1. for an empty h2 heading, which was input by Javascript based on the game theme
+2. the h1 heading was used as the main website title
 
 #### CSS
 The validator used to check validity of CSS code was [W3 Jigsaw](https://jigsaw.w3.org/css-validator/).
 
 |File|Result|Status|
 |----|------|------|
-|style.css|[Validation]()|Pass|
-|canvas-style.css|[Validation]()|Pass|
+|style.css|[Validation](assets/img/rmvalidation/css.JPG)|Pass|
 
 #### Javascript
 The validator used to check validity of Javascript code was [JSHINT](https://jshint.com/).
 
 |File|Result|Status|
-|----|------|------|=
+|----|------|------|
 |entities.js|[Validation](assets/img/rmvalidation/entities.JPG)|Pass|
 |graph.js|[Validation](assets/img/rmvalidation/graph.JPG)|Pass|
 |map.js|[Validation](assets/img/rmvalidation/map.JPG)|Pass|
