@@ -269,7 +269,7 @@ header {
 
 .game-entity {
     z-index: 99;
-    transition: left 0.5s, top 0.5s;
+    transition: left 0.1s, top 0.1s;
 }
 
 .game-player {

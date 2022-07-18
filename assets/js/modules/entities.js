@@ -55,6 +55,19 @@ class Points extends MapObject {
 }
 ObjectFactory.register('points', Points);
 
+class Food extends MapObject {
+    collide(obj) {
+        if (obj.category === 'player') {
+            // Add points to score.
+            incScore(this._points);
+            // Add health to player
+            obj.setHealth(this._health_diff);
+            // Get out of here eaten thing
+            this.die();
+        }
+    }
+}
+
 
 class Chaser extends PathFinder {
     constructor(prefab, x, y, map) {
@@ -69,5 +82,56 @@ class Chaser extends PathFinder {
         // Let the base class deal with the rest of the functionality
         super.update(time);
     }
+    collide(obj) {
+        this.doCollision(obj);
+    }
+    doCollision(obj) {
+        if (obj.category === 'player') {
+            // Imma gonna hurt ya
+            obj.setHealth(this._health_diff);
+            // Trigger reset
+            this._map.resetPositions();
+            // Do we want the monster to die here?
+        } 
+    }
 }
 ObjectFactory.register('enemies', Chaser);
+
+
+
+const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
+
+
+
+/*
+ * Acts as the player's avatar
+ */
+export class Player extends MapEntity {
+    constructor(health, x, y, map, speed) {
+        // The fifth health def is the default I think?
+        super(health[4], x, y, map, speed);
+        this._elem.classList.add('game-player');
+
+        this._healthPrefabs = health;
+
+        this._minHealth = 0;
+        this._health = health[4].health - 1;
+        this._maxHealth = health.length - 1;
+    }
+
+    get category() {return 'player';}
+    
+    // Health
+    setHealth(amt) {
+        if (amt < 0 && this._health === this._minHealth) {
+            // Player dies here
+        } else {
+            this._health = clamp(this._health + amt, this._minHealth, this._maxHealth);
+            this._character = `'\\0${parseInt(this._healthPrefabs[this._health].html).toString(16)}'`;
+        }
+    }
+
+    collide(obj) {
+        obj.doCollision(this);
+    }
+}

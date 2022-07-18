@@ -186,6 +186,13 @@ export class TileMap {
         this._exit.initialise();
     }
 
+    resetPositions() {
+        for (const nme of this._enemies) {
+            nme.reset();
+        }
+        this._player.reset();
+    }
+
     registerPlayer(player) {
         this._player = player;
     }
@@ -232,7 +239,7 @@ export class TileMap {
 
         for (let y = 0; y < this._rows; y++) {
             for (let x = 0; x < this._cols; x++) {
-                //if (this._tiles[y][x].passable) {
+                if (this._tiles[y][x].passable) {
                     graph.addVertex(this._tiles[y][x].node);
 
                     if (y < this._rows-1) {
@@ -244,7 +251,7 @@ export class TileMap {
                         graph.addVertex(this._tiles[y][x+1].node);
                         graph.addEdge(this._tiles[y][x].node, this._tiles[y][x+1].node);
                     }
-                //}
+                }
             }
         }
         return graph;

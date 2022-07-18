@@ -8,11 +8,12 @@ export class MapObject {
         this._category = prefab.category;
         this._points = prefab.points;
         this._health = prefab.health;
-        this._health_diff = prefab._health_diff;
+        this._health_diff = prefab.health_diff;
         this._character = `'\\0${parseInt(prefab.html).toString(16)}'`;
+        this._prefab = prefab;
 
-        this._x = x;
-        this._y = y;
+        this._x = this._spawnX = x;
+        this._y = this._spawnY = y;
         this._map = map;
         this._tile = map.getTile(x, y);
         // Add self to the map tile
@@ -51,6 +52,7 @@ export class MapObject {
     get health() {return this._health;}
     get health_diff() {return this._health_diff;}
     get character() {return this._character;}
+    get prefab() {return this._prefab;}
 
     update(time) {
         this._setElementProps()
@@ -58,6 +60,13 @@ export class MapObject {
 
     /** Registers a collision with another object */
     collide(obj) {}
+    doCollision(obj) {}
+
+    /** Moves the object back to it's spawn point */
+    reset() {
+        this._x = this._spawnX;
+        this._y = this._spawnY
+    }
 
     die() {
         // For you my little chickadee, it's time to die
@@ -161,15 +170,3 @@ export class PathFinder extends MapEntity {
     }
 }
 
-/*
- * Acts as the player's avatar
- */
-export class Player extends MapEntity {
-    constructor(health, x, y, map, speed) {
-        // The fifth health def is the default I think?
-        super(health[4], x, y, map, speed);
-        this._elem.classList.add('game-player');
-    }
-
-    get category() {return 'player';}
-}
