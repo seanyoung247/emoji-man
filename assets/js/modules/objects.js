@@ -12,6 +12,8 @@ export class MapObject {
         this._character = `'\\0${parseInt(prefab.html).toString(16)}'`;
         this._prefab = prefab;
 
+        this._dying = false;
+
         this._x = this._spawnX = x;
         this._y = this._spawnY = y;
         this._map = map;
@@ -73,14 +75,22 @@ export class MapObject {
         this._y = this._spawnY;
     }
 
-    die() {
-        // For you my little chickadee, it's time to die
+    _dead() {
         // Deregister self from tile.
         this._tile.removeObject(this);
         // Deregister self from Map.
         this._map.removeObject(this);
-        // Set element to invisible.
-        this._elem.style.display = 'none';
+        // Stop displaying the element
+        this._elem.classList.remove('dying');
+        this._elem.classList.add('dead');
+    }
+
+    die() {
+        // For you my little chickadee, it's time to die
+        this._dying = true;
+        // Reflect death in element.
+        this._elem.classList.add('dying');
+        setTimeout(()=>this._dead(),500);
     }
 }
 
