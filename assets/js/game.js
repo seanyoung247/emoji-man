@@ -51,23 +51,8 @@ import { emojis } from './emojis/emoji_dict.js'
     keyMap.set('ArrowUp', 'MovePlayerUp');
     keyMap.set('ArrowDown', 'MovePlayerDown');
 
-    function startGame(gameMap, mapParams) {
-        currentMap = gameMap;
-        document.documentElement.style.setProperty('--map-columns', gameMap.cols);
-        document.documentElement.style.setProperty('--map-rows', gameMap.rows);
 
-        // Map + Tiles
-        const frag = new DocumentFragment();
-        frag.append(gameMap.element);
-
-        // Player
-        player = new Player(playerHealth, gameMap.playerSpawn.x, gameMap.playerSpawn.y, gameMap, 6);
-        gameMap.registerPlayer(player);
-        frag.append(player.element);
-
-        //Objects + Enemies here
-        frag.append(gameMap.objFragment); // Appends the loaded objects elements
-
+    function createMapInfo(mapParams) {
         let mapEnemiesHTML = '';
         let mapCollectableHTML = '';
         let mapDestinationHTML = '';
@@ -109,10 +94,35 @@ import { emojis } from './emojis/emoji_dict.js'
             }
         }
 
-        // Update the DOM
-        document.getElementById('game-screen').append(frag);
         document.getElementById('game-title').innerHTML = mapParams['title'];
         document.getElementById('game-dest').innerHTML = mapDestinationHTML;
+    }
+
+    function createGameElements(gameMap, mapParams, player) {
+        document.documentElement.style.setProperty('--map-columns', gameMap.cols);
+        document.documentElement.style.setProperty('--map-rows', gameMap.rows);
+
+        // Map + Tiles
+        const frag = new DocumentFragment();
+        frag.append(gameMap.element);
+
+        gameMap.registerPlayer(player);
+        frag.append(player.element);
+
+        //Objects + Enemies here
+        frag.append(gameMap.objFragment); // Appends the loaded objects elements
+
+        // Update the DOM
+        document.getElementById('game-screen').append(frag);
+        createMapInfo(mapParams);
+    }
+
+    function startGame(gameMap, mapParams) {
+        currentMap = gameMap;
+
+        // Player
+        player = new Player(playerHealth, gameMap.playerSpawn.x, gameMap.playerSpawn.y, gameMap, 6);
+        createGameElements(gameMap, mapParams, player);
 
         player.initialise();
         gameMap.initialiseObjects();
@@ -127,7 +137,7 @@ import { emojis } from './emojis/emoji_dict.js'
 
     function stopGame() { }
 
-    async function loadMap(path) {
+    async function loadMaps(path) {
         //load sound
         music(soundfx.gameSong.pause());
         // Check if there's a currently loaded map and unload it here...
@@ -146,15 +156,15 @@ import { emojis } from './emojis/emoji_dict.js'
         return maps;
     }
 
-    gameMaps = await loadMap('assets/maps/');
+    gameMaps = await loadMaps('assets/maps/');
 
     /*
     Function to randomize the maps array
     */
     function shuffleArray(array) {
-        for (var i = array.length - 1; i > 0; i--) {
-            var j = Math.floor(Math.random() * (i + 1));
-            var temp = array[i];
+        for (let i = array.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            let temp = array[i];
             array[i] = array[j];
             array[j] = temp;
         }
