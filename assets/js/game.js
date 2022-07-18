@@ -19,7 +19,7 @@ import { createGameElements, clearGameElements } from './domHandling.js';
         'halloween.json',
         'lions_tigers_bears.json',
         'vampire_party.json',
-        // 'walk_plank.json' - Not sure why but this map causes the game to lock up. Appears to be yet another pathing bug... Will investigate if time. 
+        // 'walk_plank.json' - Not sure why but this map causes the game to lock up. Appears to be yet another parthing bug... Will investigate if time. 
     ];
 
     let gameMaps = [];
