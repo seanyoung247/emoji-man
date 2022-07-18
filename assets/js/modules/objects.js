@@ -153,7 +153,7 @@ export class PathFinder extends MapEntity {
     constructor(prefab, x, y, map, speed) {
         super(prefab, x, y, map, speed);
 
-        this._pathWait = 500;   // How long to wait before asking for a new path (ms)
+        this._pathWait = 1000;  // How long to wait before asking for a new path (ms)
         this._lastPathTime = 0; // Time last path was created (ms)
 
         this._pathing = false;

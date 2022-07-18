@@ -42,7 +42,7 @@ export function createMapInfo(mapParams) {
         }
     }
 
-    document.getElementById('game-title').innerHTML = mapParams['title'];
+    document.getElementById('game-title').innerHTML = '- ' + mapParams['title'];
     document.getElementById('game-dest').innerHTML = mapDestinationHTML;
 }
 
@@ -67,4 +67,26 @@ export function createGameElements(gameMap, mapParams, player) {
 
 export function clearGameElements(gameScreen) {
     document.getElementById('game-screen').innerHTML = '';
+}
+
+export function showGameDialog(text='Ready Player One?', btnText='Play Emojiman') {
+    const dialog = document.getElementById('game-dialog');
+    const dialogText = document.getElementById('dialog-text');
+    const dialogBtn = document.getElementById('start-game-btn');
+
+    dialogText.innerText = text;
+    dialogBtn.innerText = btnText;
+    dialog.style.display = 'block';
+}
+
+export function hideGameDialog() {
+    document.getElementById('game-dialog').style.display = 'none';
+}
+
+export function setGameOver() {
+    document.getElementById('game-screen').classList.add('paused');
+}
+
+export function setGameRunning() {
+    document.getElementById('game-screen').classList.remove('paused');
 }

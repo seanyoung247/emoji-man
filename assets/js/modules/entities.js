@@ -54,7 +54,7 @@ ObjectFactory.register('destination', Exit);
 class Points extends MapObject {
     collide(obj) {
         // This game object should only react to the player:
-        if (obj.category === 'player') {
+        if (obj.category === 'player' && !this._dying) {
             // Add points to score.
             incScore(this._points);
             // Get out of here eaten thing
@@ -66,7 +66,7 @@ ObjectFactory.register('points', Points);
 
 class Food extends MapObject {
     collide(obj) {
-        if (obj.category === 'player') {
+        if (obj.category === 'player' && !this._dying) {
             // Add points to score.
             incScore(this._points);
             // Add health to player

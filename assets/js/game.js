@@ -8,7 +8,11 @@ import { TileMap } from './modules/map.js';
 import { Player } from './modules/entities.js';
 import { soundfx, music } from './modules/sounds.js';
 
-import { createGameElements, clearGameElements } from './domHandling.js';
+import { 
+    createGameElements, clearGameElements, 
+    showGameDialog, hideGameDialog,
+    setGameOver, setGameRunning
+} from './domHandling.js';
 
 (async () => {
     const levelNames = [
@@ -19,7 +23,7 @@ import { createGameElements, clearGameElements } from './domHandling.js';
         'halloween.json',
         'lions_tigers_bears.json',
         'vampire_party.json',
-        // 'walk_plank.json' - Not sure why but this map causes the game to lock up. Appears to be yet another pathing bug... Will investigate if time. 
+        // 'walk_plank.json' - Not sure why but this map causes the game to lock up. Appears to be yet another parthing bug... Will investigate if time. 
     ];
 
     let gameMaps = [];
@@ -60,6 +64,8 @@ import { createGameElements, clearGameElements } from './domHandling.js';
      */
     function startGame(gameMap, mapParams) {
         currentMap = gameMap;
+
+        setGameRunning();
 
         // load sound
         music(soundfx.gameSong.pause());
@@ -117,6 +123,7 @@ import { createGameElements, clearGameElements } from './domHandling.js';
      * Cleans up objects at the end of the game, either on winning or dying.
      */
     function pauseGame() {
+        setGameOver();
         // Clear game loop
         running = false;
         // Remove event listeners
@@ -129,6 +136,7 @@ import { createGameElements, clearGameElements } from './domHandling.js';
      */
     function playerWon() {
         // Actions specific to player winning here
+        showGameDialog(`You won with ${currentScore} points!`, 'Play Again?');
         // Pause game
         pauseGame();
     }
@@ -138,6 +146,7 @@ import { createGameElements, clearGameElements } from './domHandling.js';
      */
     function playerDied() {
         // Actions specific to player dying here
+        showGameDialog('You lost! Have you tried getting good?', 'Play Again?');
         // Pause game
         pauseGame();
     }
@@ -169,8 +178,13 @@ import { createGameElements, clearGameElements } from './domHandling.js';
         }
     }
 
-    shuffleArray(gameMaps);
-    startGame(new TileMap(gameMaps[0]), gameMaps[0]);
+    function playGame() {
+        shuffleArray(gameMaps);
+        clearGameElements();
+        startGame(new TileMap(gameMaps[0]), gameMaps[0]);
+    }
+
+    showGameDialog();
 
     /*
      * Game Loop
@@ -216,5 +230,10 @@ import { createGameElements, clearGameElements } from './domHandling.js';
             actionMap.get(key).stop();
         }
     }
+
+    document.getElementById('start-game-btn').addEventListener('click', ()=>{
+        playGame();
+        hideGameDialog();
+    });
 
 })();
