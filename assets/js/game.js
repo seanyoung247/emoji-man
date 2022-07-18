@@ -116,7 +116,7 @@ import { createGameElements, clearGameElements } from './domHandling.js';
     /**
      * Cleans up objects at the end of the game, either on winning or dying.
      */
-    function stopGame() {
+    function pauseGame() {
         // Clear game loop
         running = false;
         // Remove event listeners
@@ -129,7 +129,8 @@ import { createGameElements, clearGameElements } from './domHandling.js';
      */
     function playerWon() {
         // Actions specific to player winning here
-        stopGame();
+        // Pause game
+        pauseGame();
     }
 
     /**
@@ -137,7 +138,8 @@ import { createGameElements, clearGameElements } from './domHandling.js';
      */
     function playerDied() {
         // Actions specific to player dying here
-        stopGame();
+        // Pause game
+        pauseGame();
     }
 
     async function loadMaps(path) {
