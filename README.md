@@ -1,9 +1,9 @@
-# emoji-man 😀
+# Emoji-man 😀
 
 ## Project Overview
 - This website was developed for the Code Institute July 2022 'World Emoji Day' Hackathon (13th - 18th July)
-- The website is deployed using Heroku pages at the following url: 
-- The repository on Github that contains the website source code and assets is available at the following url: 
+- The website is deployed using Github pages at the following url: https://seanyoung247.github.io/emoji-man/
+- The repository on Github that contains the website source code and assets is available at the following url: https://github.com/seanyoung247/emoji-man 
 - The website was built with a responsive look and feel, designed to be enjoyable to use on all screen sizes. 
 
 ### Contributors
@@ -15,17 +15,8 @@
 - [Yasir](https://github.com/yasirwiifto)
 - [Keegan Waters](https://github.com/Keeganw3)
 
-## Features
-All features of *Emoji-Man* are detailed below.
-
-### First Feature 
-### Second Feature
-### etc
-
 ## Rules
 Help Emojiman become the happiest emoji by thwarting the evil plans of the baddies in Emojiland.
-
-
 Each level Emojiman encounters a new baddie to defeat, he must collect all the special items and then reach a special destination point to reach the next level.
 
 ### HEALTH SCALE:       
@@ -37,7 +28,6 @@ You start off as 🙂 a happy emoji but Emojiman transforms up and down the scal
 Emojiman will start a next level in the condition he was in when he reached his destination in the last l - so keep eating those greens!
 
 ### WIN POINTS AND GAIN HAPPINESS!
-
 Collect points to be a part of the highest scores leaderboard. The top ten scores are published on the leaderboard page.
 
 ### FOOD:
@@ -55,12 +45,8 @@ Collect points to be a part of the highest scores leaderboard. The top ten score
 🐻☠️🏴‍☠️🤡🤹‍♂️     Each baddie you cross paths with moves you down 1 place the scale of happiness. 
 🃏😈🔥👾🤖
 
-
-
 ### LIMITED TIME BONUS OR BOOS:
-
 These special icons will occasionally appear in the game, and only for a brief amount of time so grab them while you can!
-
 
 💎	50 points 
 	When the diamond is collected Emojiman immediately transforms into 🤩 the highest happiness on the scale 
@@ -70,8 +56,6 @@ These special icons will occasionally appear in the game, and only for a brief a
 👻 	The ghost of a long ago game can haunt each level. If you bump into it emojiman transforms into despair no matter where you are on the scale 🥵 
  
 ### LEVELS
-
-
 Each level has different themes, characters and collectables. Each level Emojiman encounters a new baddie to defeat, once he collects all the special items he must then reach a special destination point in order to win that level. 
 
 #### VAMPIRE PARTY
@@ -80,11 +64,9 @@ Collect: 🫀🩸🧄 🌞  20 points each
 Destination : 🏰 
 Aim: Vampires are on the loose! Collect the blood to starve the vampires, collect garlic to repel them and sun to kill them. Find safety through the castle.
 
-
 #### ALIEN ABDUCTION
 Baddies:👽
 Collect: 🛸 🚀🕴
-
 Destination 🌎 
 Aim: Aliens have abducted Emojilanders. Collect the abductees, your rocket ship and destroy the flying saucers, then head home to Earth!
 
@@ -114,7 +96,7 @@ Aim: Clowns and jokers are storming the town. Collect birthday cake to throw at 
 
 #### GAME OF DEATH
 Baddies:👾
-Collect:🕹🤖	20points each
+Collect:🕹🤖	20 points each
 Destination: 📺
 Aim: The game bugs are infecting Emojiland. Collect all the joysticks and bots to take control of the infestation, reach the tv to turn off their power source.
 
@@ -166,6 +148,8 @@ User stories were designated both an EPIC label and a priority label (Must Have,
 
 User stories also had a list of tasks and acceptance criteria, to ensure it was clear when the user story was completed and acceptable to close. 
 
+![Tasks & AC](assets/img/testing/tasksac.JPG)
+
 ### Structure
 The Structure plane was used to plan the organisation of website functionality and navigation, to provide a clear pathway to desired user actions.
 
@@ -183,16 +167,12 @@ The Skeleton plane defines the form, presentation, and arrangement of components
 
 Initial wireframes were designed during the project proposal stage to mock-up the main website pages.  During development, these designs evolved to better suit the website content, but provided the team a framework to work from when designing the front-end.
 
-#### Homepage
-![Homepage wireframe](assets/wireframes/rules-home-desktop_ipad.png)
-![Homepage wireframe](assets/wireframes/phone-home-rules.png)
-
-#### Rules
-
-#### Gameplay
+#### Homepage / Gameplay
 ![Gameplay wireframe](assets/wireframes/phone-play-page.png)
 
-#### Between Levels
+#### Rules
+![Homepage wireframe](assets/wireframes/rules-home-desktop_ipad.png)
+![Homepage wireframe](assets/wireframes/phone-home-rules.png)
 
 #### Leaderboard
 ![Leaderboard wireframe](assets/wireframes/high-scores-desktop-ipad.png)
@@ -218,16 +198,16 @@ The look and feel of the website was considered when designing the visual elemen
 ## Testing
 
 ### User Story Manual Testing
-All user stories were tested for functionality.
+All completed user stories were tested for expected functionality.
 
 |-|User Story|Action|Desktop|Tablet|Mobile|Pass|
 |-|----------|------|-------|------|------|----|
-|7|As a **user** I can **see a preview of the game on the homepage** so that **I know this is a Pacman-style game**|[Image]()|Pass|
+|7|As a **user** I can **see a preview of the game on the rules page** so that **I know this is a Pacman-style game**|[Image](assets/img/testing/rulespreview.JPG)|Pass|
 |8|As **user** I can **see the game rules on the rules page** so that **I can understand how to play the game**|[Image](assets/img/rmvalidation/rules2.JPG)|Pass|
-|9|As **user** I can **see a 'Launch Game' button on the homepage** so that **I know how to start playing**|[Image]()||
+|9|As **user** I can **see a 'Launch Game' button on the homepage** so that **I know how to start playing**|-|Not completed|
 |10|As **user** I can **add my name** so that **I can see my personal game score on the leadership board**|[Image]()|Pass|
 |11|As **user** I can **collect a range of tokens when playing** so that **I can increase my score**|[Image](assets/img/rmvalidation/increasescore.JPG)|Pass|
-|12|As **user** I can **find a magnet token ** so that **I can collect points from all current tokens on the map**|[Image]|Not completed|
+|12|As **user** I can **find a magnet token** so that **I can collect points from all current tokens on the map**|-|Not completed|
 |13|As **user** I can **see my score increasing/decreasing as I play** so that **I can understand how well I'm playing**|[Image](assets/img/rmvalidation/increasescore.JPG)|Pass|
 |14|As **user** I can **see the current game high score** so that **I know how many points I have to get to beat it**|-|Not completed|
 |15|As **user** I can **see my starting health is in the middle of the range** so that **I'm aware how many health levels I can gain/lose**|[Image](assets/img/testing/15.JPG) [Image](assets/img/testing/15-2.JPG)|Pass|
@@ -238,22 +218,21 @@ All user stories were tested for functionality.
 |20|As a **user** I can **see more baddies on the map as I progress levels** so that **I am challenged to play faster/better**|-|Not completed|
 |21|As **user** I can **see the characters/tokens/map change in appearance between levels** so that **the game play is new and interesting between each level**|[Image](assets/img/testing/21.JPG) [Image](assets/img/testing/21-2.JPG)|Pass|
 |22|As a **user** I can **see a brief story introduction to each level** so that **I understand who the goodies/baddies are, how to complete the level, which tokens I'm collecting etc**|[Image]|Pass|
-|24|As **user** I can **see buttons/navigation bar** so that **I can easily navigate the website**|[Image]|Pass|
+|23|As a **user** I can **see feedback that I have the current highscore** so that **I am motivated to keep playing**|-|Not completed|
+|24|As **user** I can **see buttons/navigation bar** so that **I can easily navigate the website**|[Image](assets/img/testing/24.JPG)|Pass|
+|25|As a **user** I can **see how to exit the game** so that **I can leave the game when I want**|[Image]()|Pass|
+|30|As a **user** I can **hear sound effects to different actions** so that **the game is more interactive and enjoyable to play**|[Image]|Pass|
+|26|As a **user** I can **see a warning of exiting the game** so that **I understand the consequences of exiting the game early**|[Image]()|Pass|
+|44|As a **user** I can **view the leaderboard** so that **I can see all high scores**|-|Not completed|
 
+#### User Stories Not Completed
+- 9:  The game automatically loads on the homepage so this was no longer required
+- 12:  It was determined out of scope to create a magnet token which would pull all collectables and win the game
+- 14:  All user stories based on the leaderboard were abandoned, as it required setting up a back-end server to store everyone's scores
+- 20:  As the levels were already quite difficult to complete, adding additional difficulties with more enemies was deemed unnecessary
+- 23:  All user stories based on the leaderboard were abandoned, as it required setting up a back-end server to store everyone's scores
+- 44:  All user stories based on the leaderboard were abandoned, as it required setting up a back-end server to store everyone's scores
 
-||As **user** I can **** so that ****|[Image]|Pass|
-||As **user** I can **** so that ****|[Image]|Pass|
-||As **user** I can **** so that ****|[Image]|Pass|
-||As **user** I can **** so that ****|[Image]|Pass|
-||As **user** I can **** so that ****|[Image]|Pass|
-
-
-
-Acceptance Criteria:
-- [x] blah blah
-- [x] blah blah
-
-### Automated Testing
 ### Validators
 All files were checked for format validation.
 
@@ -290,14 +269,15 @@ The validator used to check validity of Javascript code was [JSHINT](https://jsh
 |objects.js|[Validation](assets/img/rmvalidation/objects.JPG)|Pass|
 
 ## Technologies Used
-- [HTML]() was used to write the website format
-- [CSS]() was used to style the pages and make them responsive for different screen sizes
-- [Javascript]() was used to provide interactive features and produce the game logic
+- [HTML](https://en.wikipedia.org/wiki/HTML) was used to write the website format
+- [CSS](https://en.wikipedia.org/wiki/CSS) was used to style the pages and make them responsive for different screen sizes
+- [Javascript](https://www.javascript.com/) was used to provide interactive features and produce the game logic
 - [Emojipedia](https://emojipedia.org/) was used to source emojis
 - [Balsamiq](https://balsamiq.com/) was used to mock-up initial wireframes
 - [Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) was used to provide a framework for creating the game in Javascript
 
 ## Deployment
+The website is deployed at the following url: https://seanyoung247.github.io/emoji-man/
 
 ## Unfixed Bugs
 

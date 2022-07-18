@@ -26,7 +26,7 @@
         <!-- logo and nav bar -->
         <nav id="logo-nav">
             <a href="index.html">
-                <h1 id="logo">Emoji&#129321;man</h1>
+                <h1 id="logo">Emoji&#129321;man <span id="game-title"></span></h1>
             </a>
             <!-- nav bar -->
             <ul id="nav">
@@ -36,15 +36,11 @@
                 <li> 
                     <a href="rules.html">Rules</a>
                 </li>
-                <li>
-                    <a href="play.html">Play</a>
-                </li>
             </ul>
         </nav>
     </header>
 
     <div id="reference-div">
-        <!-- <h2 id="game-title"></h2> -->
         <table>
             <tr>
                 <td>Enemies</td>
@@ -87,11 +83,34 @@
 
     <div id="score-div" class="container">
         <p>Current score:</p>
-        <p id="player-score" class="blink_me">1068</p>
+        <p id="player-score" class="blink_me">0</p>
     </div>
 
     <div id="game-screen"></div>
+    <!-- <div id="container-div">
 
+        <div id="intro">
+            <h1 id="intro-title">VAMPIRE PARTY</h1>
+            <p id="intro-text"> Baddies: 🧛 Collect: 🫀🩸🧄 🌞 20 points each Destination : ⚰️
+                Aim: Vampires are on the loose! Collect the blood to starve the vampires,
+                collect garlic to repel them and sun to kill them. Find safety through the coffin.
+            </p>
+            <h2 class="intro-button" onclick="myFunction()">Start Level</h2>
+        </div>
+
+    </div>
+
+    <script>
+        // When the user clicks on <span>, close the popup
+        function myFunction() {
+            var popup = document.getElementById("intro");
+            if (popup.style.display !== "none") {
+                popup.style.display = "none";
+            } else {
+                popup.style.display = "block";
+            }
+        }
+    </script> -->
 </body>
 
 </html>
