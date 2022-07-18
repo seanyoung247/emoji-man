@@ -76,6 +76,7 @@ class Food extends MapObject {
         }
     }
 }
+ObjectFactory.register('food', Food);
 
 /*
  * MOVABLE ENTITIES:
@@ -144,11 +145,14 @@ export class Player extends MapEntity {
 
     // Health
     setHealth(amt) {
-        if (amt < 0 && this._health === this._minHealth) {
+        if (amt < 0 && this._health <= this._minHealth) {
             this._dead = true;
+            this._elem.classList.add('dying');
+
         } else {
             this._health = clamp(this._health + amt, this._minHealth, this._maxHealth);
             this._character = `'\\0${parseInt(this._healthPrefabs[this._health].html).toString(16)}'`;
+
             let health_id = document.getElementById(this._healthPrefabs[this._health].html)
             document.getElementsByClassName('health-range-current')[0].classList.remove('health-range-current')
             health_id.classList.add('health-range-current')

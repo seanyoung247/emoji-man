@@ -197,11 +197,7 @@
         {"type": "robot", "x":13, "y":21},
         {"type": "robot", "x":14, "y":21},
         {"type": "robot", "x":15, "y":21},
-        {"type": "robot", "x":16, "y":21},
-        {"type": "robot", "x":20, "y":21}
-        
-
-        
+        {"type": "robot", "x":16, "y":21}             
     ],
     "food": [
         {"type": "avocado", "x":1, "y":1},

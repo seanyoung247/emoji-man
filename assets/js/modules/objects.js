@@ -12,6 +12,8 @@ export class MapObject {
         this._character = `'\\0${parseInt(prefab.html).toString(16)}'`;
         this._prefab = prefab;
 
+        this._dying = false;
+
         this._x = this._spawnX = x;
         this._y = this._spawnY = y;
         this._map = map;
@@ -73,14 +75,22 @@ export class MapObject {
         this._y = this._spawnY;
     }
 
-    die() {
-        // For you my little chickadee, it's time to die
+    _dead() {
         // Deregister self from tile.
         this._tile.removeObject(this);
         // Deregister self from Map.
         this._map.removeObject(this);
-        // Set element to invisible.
-        this._elem.style.display = 'none';
+        // Stop displaying the element
+        this._elem.classList.remove('dying');
+        this._elem.classList.add('dead');
+    }
+
+    die() {
+        // For you my little chickadee, it's time to die
+        this._dying = true;
+        // Reflect death in element.
+        this._elem.classList.add('dying');
+        setTimeout(()=>this._dead(),500);
     }
 }
 
@@ -94,34 +104,6 @@ export class MapEntity extends MapObject {
         
         this._vector = {x:0, y:0};
         this._elem.classList.add('game-entity');
-
-        this._pathing = false;
-        this._goal = null;
-        this._path = [];
-        this._step = 0;
-    }
-
-    createPath(goal) {
-        this._path = this._map.getPath(this._tile, goal);
-        this._goal = goal;
-        this._step = 0;
-        this._pathing = true;
-    }
-
-    followPath() {
-        if (this._pathing) {
-            // Have we reached our goal?
-            if (this._tile === this._goal) {
-                this._pathing = false;
-                this._goal = null;
-                this._path = [];
-                this._step = 0;
-                this.setVector(0,0);
-            } else if (this._tile.node === this._path[this._step]) {
-                this._step++;
-                this.setVector(this._path[this._step].x - this._tile.x, this._path[this._step].y - this._tile.y);
-            }
-        }
     }
 
     setVector(x, y) {
@@ -168,6 +150,43 @@ export class MapEntity extends MapObject {
 }
 
 export class PathFinder extends MapEntity {
+    constructor(prefab, x, y, map, speed) {
+        super(prefab, x, y, map, speed);
+
+        this._pathWait = 500;   // How long to wait before asking for a new path (ms)
+        this._lastPathTime = 0; // Time last path was created (ms)
+
+        this._pathing = false;
+        this._goal = null;
+        this._path = [];
+        this._step = 0;
+    }
+    createPath(goal) {
+        const time = performance.now();
+        if ((time - this._lastPathTime) > this._pathWait) {
+            this._lastPathTime = time;
+            this._path = this._map.getPath(this._tile, goal);
+            this._goal = goal;
+            this._step = 0;
+            this._pathing = true;
+        }
+    }
+
+    followPath() {
+        if (this._pathing) {
+            // Have we reached our goal?
+            if (this._tile === this._goal) {
+                this._pathing = true;
+                this._goal = null;
+                this._path = [];
+                this._step = 0;
+                this.setVector(0,0);
+            } else if (this._tile.node === this._path[this._step]) {
+                this._step++;
+                this.setVector(this._path[this._step].x - this._tile.x, this._path[this._step].y - this._tile.y);
+            }
+        }
+    }
     update(time) {
         this.followPath();
         this.move(time);
