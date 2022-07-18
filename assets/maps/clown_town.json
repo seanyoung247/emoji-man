@@ -289,13 +289,8 @@
     ],
     "enemies": [{ "type": "clown", "x": 10, "y": 19 },
         { "type": "juggler", "x": 11, "y": 19 },
-        { "type": "joker", "x": 12, "y": 19 },
         { "type": "clown", "x": 13, "y": 19 },
-        { "type": "juggler", "x": 14, "y": 19 },
         { "type": "joker", "x": 9, "y": 18 },
-        { "type": "clown", "x": 10, "y": 18 },
-        { "type": "juggler", "x": 14, "y": 18 },
-        { "type": "joker", "x": 15, "y": 18 },
         { "type": "clown", "x": 14, "y": 17 }
 
     ],

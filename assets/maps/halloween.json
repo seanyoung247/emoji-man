@@ -73,13 +73,8 @@
     "enemies": [
         {"type": "zombie", "x":1, "y":6},
         {"type": "zombie", "x":8, "y":6},
-        {"type": "zombie", "x":13, "y":2},
         {"type": "zombie", "x":17, "y":4},
-        {"type": "zombie", "x":8, "y":22},
-        {"type": "zombie", "x":4, "y":23},
-        {"type": "zombie", "x":15, "y":18},
         {"type": "zombie", "x":23, "y":6},
-        {"type": "zombie", "x":3, "y":16},
         {"type": "zombie", "x":20, "y":9}
     ],
     "destination": {"type": "mausoleum", "x":23, "y":23},
