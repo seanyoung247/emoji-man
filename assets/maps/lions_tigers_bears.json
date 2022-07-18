@@ -74,12 +74,7 @@
     ],  
     "enemies": [
         {"type": "lion", "x":1, "y":10}, 
-        {"type": "tiger", "x":1, "y":5}, 
         {"type": "bear", "x":23, "y":5},
-        {"type": "lion", "x":23, "y":10}, 
-        {"type": "tiger", "x":6, "y":17}, 
-        {"type": "bear", "x":5, "y":19},
-        {"type": "lion", "x":4, "y":21}, 
         {"type": "tiger", "x":3, "y":23}, 
         {"type": "bear", "x":9, "y":8}
     ],

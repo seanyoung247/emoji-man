@@ -224,19 +224,29 @@ All user stories were tested for functionality.
 |-|----------|------|-------|------|------|----|
 |7|As a **user** I can **see a preview of the game on the homepage** so that **I know this is a Pacman-style game**|[Image]()|Pass|
 |8|As **user** I can **see the game rules on the rules page** so that **I can understand how to play the game**|[Image](assets/img/rmvalidation/rules2.JPG)|Pass|
-|11|As **user** I can **collect a range of tokens when playing** so that **I can increase my score**|[Image](assets/img/rmvalidation/increasescore.JPG)|Pass|
-|13|As **user** I can **see my score increasing/decreasing as I play** so that **I can understand how well I'm playing**|[Image](assets/img/rmvalidation/increasescore.JPG)|Pass|
-|21|As **user** I can **see the characters/tokens/map change in appearance between levels** so that **the game play is new and interesting between each level**|[Image](assets/img/testing/21.JPG) [Image](assets/img/testing/21-2.JPG)|Pass|
-|15|As **user** I can **see my starting health is in the middle of the range** so that **I'm aware how many health levels I can gain/lose**|[Image](assets/img/testing/15.JPG) [Image](assets/img/testing/15-2.JPG)|Pass|
-|18|As **user** I can **see health draining token** so that **I can avoid these tokens to maintain good health**|[Image](assets/img/testing/18.JPG) [Image](assets/img/testing/182.JPG)|Pass|
 |9|As **user** I can **see a 'Launch Game' button on the homepage** so that **I know how to start playing**|[Image]()||
 |10|As **user** I can **add my name** so that **I can see my personal game score on the leadership board**|[Image]()|Pass|
+|11|As **user** I can **collect a range of tokens when playing** so that **I can increase my score**|[Image](assets/img/rmvalidation/increasescore.JPG)|Pass|
+|12|As **user** I can **find a magnet token ** so that **I can collect points from all current tokens on the map**|[Image]|Not completed|
+|13|As **user** I can **see my score increasing/decreasing as I play** so that **I can understand how well I'm playing**|[Image](assets/img/rmvalidation/increasescore.JPG)|Pass|
+|14|As **user** I can **see the current game high score** so that **I know how many points I have to get to beat it**|-|Not completed|
+|15|As **user** I can **see my starting health is in the middle of the range** so that **I'm aware how many health levels I can gain/lose**|[Image](assets/img/testing/15.JPG) [Image](assets/img/testing/15-2.JPG)|Pass|
+|16|As **user** I can **see the health range represented by different emojis** so that **I'm aware which emojis represent good/bad health and where my health is in relation**|[Image](assets/img/testing/16.JPG) [Image](assets/img/testing/162.JPG)|Pass|
+|17|As a **user** I can **collect health boosting tokens** so that **I can improve my health**|-|Not completed|
+|18|As **user** I can **see health draining token** so that **I can avoid these tokens to maintain good health**|[Image](assets/img/testing/18.JPG) [Image](assets/img/testing/182.JPG)|Pass|
+|19|As a **user** I can **appreciate an increase in game play speed as I progress levels** so that **I am challenged to play faster/better**|[Image]()|Pass|
+|20|As a **user** I can **see more baddies on the map as I progress levels** so that **I am challenged to play faster/better**|-|Not completed|
+|21|As **user** I can **see the characters/tokens/map change in appearance between levels** so that **the game play is new and interesting between each level**|[Image](assets/img/testing/21.JPG) [Image](assets/img/testing/21-2.JPG)|Pass|
+|22|As a **user** I can **see a brief story introduction to each level** so that **I understand who the goodies/baddies are, how to complete the level, which tokens I'm collecting etc**|[Image]|Pass|
 |24|As **user** I can **see buttons/navigation bar** so that **I can easily navigate the website**|[Image]|Pass|
+
+
 ||As **user** I can **** so that ****|[Image]|Pass|
 ||As **user** I can **** so that ****|[Image]|Pass|
 ||As **user** I can **** so that ****|[Image]|Pass|
 ||As **user** I can **** so that ****|[Image]|Pass|
 ||As **user** I can **** so that ****|[Image]|Pass|
+
 
 
 Acceptance Criteria:

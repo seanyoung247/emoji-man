@@ -63,11 +63,7 @@
     ],    
     "enemies": [
         {"type": "skull", "x":1, "y":2}, 
-        {"type": "flag", "x":1, "y":22},
         {"type": "skull", "x":23, "y":22}, 
-        {"type": "flag", "x":23, "y":2},
-        {"type": "skull", "x":8, "y":29}, 
-        {"type": "flag", "x":8, "y":15},
         {"type": "skull", "x":16, "y":9}, 
         {"type": "flag", "x":16, "y":15}
     ],
