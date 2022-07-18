@@ -72,8 +72,6 @@
     ],  
     "enemies": [
         {"type": "zombie", "x":1, "y":6},
-        {"type": "zombie", "x":8, "y":6},
-        {"type": "zombie", "x":17, "y":4},
         {"type": "zombie", "x":23, "y":6},
         {"type": "zombie", "x":20, "y":9}
     ],
