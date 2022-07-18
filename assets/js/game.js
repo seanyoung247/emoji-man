@@ -24,6 +24,7 @@ import { createGameElements } from './domHandling.js';
 
     let gameMaps = [];
     let currentMap = null;
+    let mapIdx = 0;
     let running = 0;
 
     let player = null;
@@ -64,7 +65,7 @@ import { createGameElements } from './domHandling.js';
         music(soundfx.gameSong.pause());
 
         // Player
-        player = new Player(playerHealth, gameMap.playerSpawn.x, gameMap.playerSpawn.y, gameMap, 6);
+        player = new Player(4, playerHealth, gameMap.playerSpawn.x, gameMap.playerSpawn.y, gameMap, 6);
         createGameElements(gameMap, mapParams, player);
 
         player.initialise();
@@ -78,15 +79,57 @@ import { createGameElements } from './domHandling.js';
         running = window.requestAnimationFrame(frame);
     }
 
+    /**
+     * Unloads the current map
+     */
     function unloadMap() {
-
+        // Clear the current map
+        currentMap = null;
+        // Clear the elements
+        document.getElementById("game-screen").innerHTML = "";
     }
 
+    /**
+     * Moves to the next map
+     */
     function nextMap() {
-        console.log("moving to next map");
+        // Unload the current map
+        unloadMap();
+        // Is there another map to load?
+        mapIdx++;
+        if (mapIdx < gameMaps.length) {
+            // Load the next map
+            currentMap = new TileMap(gameMaps[mapIdx]);
+
+            player.setSpawn(currentMap.playerSpawn.x, currentMap.playerSpawn.y);
+            player.map = currentMap;
+            createGameElements(currentMap, gameMaps[mapIdx], player);
+    
+            player.initialise();
+            currentMap.initialiseObjects();
+        } else {
+            playerWon();
+        }
     }
 
-    function stopGame() { }
+    /**
+     * Cleans up objects at the end of the game, either on winning or dying.
+     */
+    function stopGame() {
+        // Clear game loop
+        // Remove event listeners
+        // Unload current map and clear game objects
+    }
+
+    function playerWon() {
+        // Actions specific to player winning here
+        stopGame();
+    }
+
+    function playerDied() {
+        // Actions specific to player dying here
+        stopGame();
+    }
 
     async function loadMaps(path) {
         let maps = [];
@@ -116,10 +159,7 @@ import { createGameElements } from './domHandling.js';
     }
 
     shuffleArray(gameMaps);
-
-    let newMap = new TileMap(gameMaps[0]);
-
-    startGame(newMap, gameMaps[0]);
+    startGame(new TileMap(gameMaps[0]), gameMaps[0]);
 
     /*
      * Game Loop
@@ -129,23 +169,22 @@ import { createGameElements } from './domHandling.js';
         const timeDelta = (time - lastFrameTime) / 1000;
 
         /* -------- PLAYER UPDATES ------- */
-        // How far can the player move this frame?
-        const playerMovement = player.speed * timeDelta;
-        // Update the player
         player.update(timeDelta);
 
         /* -------- ENTITY UPDATES ------- */
-        // Update other objects
         currentMap.update(timeDelta);
 
         /* ----- GAME LOGIC UPDATES ------ */
         // Check map complete:
         if (currentMap.complete) nextMap();
+        // Is the player an ex-player? Have they shuffled off this mortal coil?
+        if (player.dead) playerDied();
 
         // Update score
         const scoreDisplay = document.getElementById('player-score');
         scoreDisplay.innerHTML = currentScore;
 
+        // Store current frame time and wait for next cycle
         lastFrameTime = time;
         running = window.requestAnimationFrame(frame);
     }

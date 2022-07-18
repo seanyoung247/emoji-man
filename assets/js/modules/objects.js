@@ -24,6 +24,11 @@ export class MapObject {
         this._elem.classList.add('game-object');
     }
 
+    setSpawn(x,y) {
+        this._x = this._spawnX = x;
+        this._y = this._spawnY = y;
+    }
+
     // Called after the object has been added to the DOM. Do element initialisation here
     initialise() {
         this._setElementProps();

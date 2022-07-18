@@ -1,4 +1,6 @@
+
 /*jshint esversion: 6 */
+
 
 import { MapObject, MapEntity, PathFinder } from './objects.js';
 import { incScore } from './scores.js';
@@ -85,11 +87,15 @@ class Chaser extends PathFinder {
         super(prefab, x, y, map, 3); // Player is 6 tiles per second so monsters are half the speed.
     }
     update(time) {
-        // This is just a simple chaser. They'll just attempt to move toward the player
-        // Get the player's current position and try and create a path to get to them
-
+        /* 
+          This is just a simple chaser. They'll just attempt to move toward the player
+          by getting the player's current position and trying to create a path to get to them
+          Different behaviour types could be implemented by picking a different pathing target.
+          An enemy could flee from the player by pathing to the opposite side of the map, or 
+          attempt to ambush them by pathing to a tile near them etc.
+        */
         this.createPath(this._map.player.tile);
-        // Let the base class deal with the rest of the functionality
+        // Let the base class deal with the rest of the movement functionality
         super.update(time);
     }
     collide(obj) {
@@ -117,24 +123,29 @@ const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
  * Acts as the player's avatar
  */
 export class Player extends MapEntity {
-    constructor(health, x, y, map, speed) {
+    constructor(health, healthPrefabs, x, y, map, speed) {
         // The fifth health def is the default I think?
-        super(health[4], x, y, map, speed);
+        super(healthPrefabs[health], x, y, map, speed);
         this._elem.classList.add('game-player');
 
-        this._healthPrefabs = health;
+        this._healthPrefabs = healthPrefabs;
 
         this._minHealth = 0;
-        this._health = health[4].health - 1;
-        this._maxHealth = health.length - 1;
+        this._health = healthPrefabs[health].health - 1;
+        this._maxHealth = healthPrefabs.length - 1;
+        this._dead = false;
     }
 
     get category() {return 'player';}
+    get health() {return this._health.health - 1;}
+    get dead() {return this._dead;}
+
+    set map(m) {this._map = m;}
     
     // Health
     setHealth(amt) {
         if (amt < 0 && this._health === this._minHealth) {
-            // Player dies here
+            this._dead = true;
         } else {
             this._health = clamp(this._health + amt, this._minHealth, this._maxHealth);
             this._character = `'\\0${parseInt(this._healthPrefabs[this._health].html).toString(16)}'`;
