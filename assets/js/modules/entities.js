@@ -129,14 +129,16 @@ export class Player extends MapEntity {
         this._minHealth = 0;
         this._health = health[4].health - 1;
         this._maxHealth = health.length - 1;
+        this._dead = false;
     }
 
     get category() {return 'player';}
+    get dead() {return this._dead;}
     
     // Health
     setHealth(amt) {
         if (amt < 0 && this._health === this._minHealth) {
-            // Player dies here
+            this._dead = true;
         } else {
             this._health = clamp(this._health + amt, this._minHealth, this._maxHealth);
             this._character = `'\\0${parseInt(this._healthPrefabs[this._health].html).toString(16)}'`;
