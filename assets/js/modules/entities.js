@@ -131,6 +131,7 @@ export class Player extends MapEntity {
         }
     }
 
+    // Only movable objects can collide with the player, so delegate the response to them:
     collide(obj) {
         obj.doCollision(this);
     }
