@@ -42,7 +42,7 @@ export function createMapInfo(mapParams) {
         }
     }
 
-    document.getElementById('game-title').innerHTML = mapParams['title'];
+    document.getElementById('game-title').innerHTML = '- ' + mapParams['title'];
     document.getElementById('game-dest').innerHTML = mapDestinationHTML;
 }
 
