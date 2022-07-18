@@ -22,6 +22,11 @@ export class ObjectFactory {
 
 // For a static pickup, you can extend MapObject. For a moving enemy extend PathFinder
 
+
+/*
+ * STATIC ITEMS:
+ */
+
 // Implements the desitination (exit)
 
 class Exit extends MapObject {
@@ -34,7 +39,7 @@ class Exit extends MapObject {
             // Check if all pickups have been grabbed
             if (!this._map.objects.length) {
                 // If the objects array is length 0, no more objects to pick up
-                // END LEVEL HERE!
+                this._map.complete = true;
             }
         }
     }
@@ -68,6 +73,9 @@ class Food extends MapObject {
     }
 }
 
+/*
+ * MOVABLE ENTITIES:
+ */
 
 class Chaser extends PathFinder {
     constructor(prefab, x, y, map) {
