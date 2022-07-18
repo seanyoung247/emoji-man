@@ -55,6 +55,19 @@ class Points extends MapObject {
 }
 ObjectFactory.register('points', Points);
 
+class Food extends MapObject {
+    collide(obj) {
+        if (obj.category === 'player') {
+            // Add points to score.
+            incScore(this._points);
+            // Add health to player
+            obj.setHealth(this._health_diff);
+            // Get out of here eaten thing
+            this.die();
+        }
+    }
+}
+
 
 class Chaser extends PathFinder {
     constructor(prefab, x, y, map) {
