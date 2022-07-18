@@ -1,4 +1,4 @@
-
+/*jshint esversion: 6 */
 /**
  * Models an object that can live on the tile map
  */
@@ -55,7 +55,7 @@ export class MapObject {
     get prefab() {return this._prefab;}
 
     update(time) {
-        this._setElementProps()
+        this._setElementProps();
     }
 
     /** Registers a collision with another object */
@@ -65,7 +65,7 @@ export class MapObject {
     /** Moves the object back to it's spawn point */
     reset() {
         this._x = this._spawnX;
-        this._y = this._spawnY
+        this._y = this._spawnY;
     }
 
     die() {

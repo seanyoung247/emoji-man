@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 import { MapObject, MapEntity, PathFinder } from './objects.js';
 import { incScore } from './scores.js';
 import { emojis } from '../emojis/emoji_dict.js';
