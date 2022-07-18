@@ -82,8 +82,26 @@ class Chaser extends PathFinder {
         // Let the base class deal with the rest of the functionality
         super.update(time);
     }
+    collide(obj) {
+        this.doCollision(obj);
+    }
+    doCollision(obj) {
+        if (obj.category === 'player') {
+            // Imma gonna hurt ya
+            obj.setHealth(this._health_diff);
+            // Trigger reset
+            this._map.resetPositions();
+            // Do we want the monster to die here?
+        } 
+    }
 }
 ObjectFactory.register('enemies', Chaser);
+
+
+
+const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
+
+
 
 /*
  * Acts as the player's avatar
@@ -103,6 +121,15 @@ export class Player extends MapEntity {
 
     get category() {return 'player';}
     
+    // Health
+    setHealth(amt) {
+        if (amt < 0 && this._health === this._minHealth) {
+            // Player dies here
+        } else {
+            this._health = clamp(this._health + amt, this._minHealth, this._maxHealth);
+            this._character = `'\\0${parseInt(this._healthPrefabs[this._health].html).toString(16)}'`;
+        }
+    }
 
     collide(obj) {
         obj.doCollision(this);
