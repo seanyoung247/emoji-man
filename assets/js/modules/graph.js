@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 const sqr = (n) => n*n; 
 export class Node {
     constructor(x, y, c) {

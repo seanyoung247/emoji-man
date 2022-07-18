@@ -253,9 +253,14 @@ The validator used to check validity of CSS code was [W3 Jigsaw](https://jigsaw.
 The validator used to check validity of Javascript code was [JSHINT](https://jshint.com/).
 
 |File|Result|Status|
-|----|------|------|
-|game.js|[Validation]()|Pass|
-|canvas-game.js|[Validation]()|Pass|
+|----|------|------|=
+|entities.js|[Validation](assets/img/rmvalidation/entities.JPG)|Pass|
+|graph.js|[Validation](assets/img/rmvalidation/graph.JPG)|Pass|
+|map.js|[Validation](assets/img/rmvalidation/map.JPG)|Pass|
+|game.js|[Validation](assets/img/rmvalidation/game.JPG)|Pass|
+|scores.js|[Validation](assets/img/rmvalidation/scores.JPG)|Pass|
+|sounds.js|[Validation](assets/img/rmvalidation/sounds.JPG)|Pass|
+|objects.js|[Validation](assets/img/rmvalidation/objects.JPG)|Pass|
 
 ## Technologies Used
 - [HTML]() was used to write the website format
