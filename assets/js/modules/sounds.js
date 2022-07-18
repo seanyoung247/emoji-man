@@ -48,6 +48,13 @@ export var soundfx = {
             'assets/sounds/emojiman_eatghost.ogg',
             'assets/sounds/emojiman_eatghost.wav'
         ]
+    }),
+    immortal: new Howl({
+        src: [
+            'assets/sounds/emojiman_extrapac.ogg',
+            'assets/sounds/emojiman_extrapac.wav'
+        ]
+
     })
 };
 
