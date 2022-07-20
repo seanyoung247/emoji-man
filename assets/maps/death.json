@@ -214,6 +214,6 @@
         {"type": "space_invader", "x":14, "y":13}
     ],
     "destination": {"type": "screen", "x":12, "y":20},
-    "background": "#525049",
-    "foreground": "#c4cfc8"
+    "foreground": "#525049",
+    "background": "#c4cfc8"
 }

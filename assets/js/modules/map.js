@@ -96,6 +96,7 @@ export class TileMap {
             template.destination.y,
             this
         );
+        this._template = template;
         this._frag.append(this._exit.element);
         this._createObjects(template.enemies, this._enemies);
         this._createObjects(template.objects, this._objects);
@@ -111,6 +112,7 @@ export class TileMap {
      */
     get rows() {return this._rows;}
     get cols() {return this._cols;}
+    get template() {return this._template;}
     get playerSpawn() {return this._playerSpawn;}
     // HTML Properties
     get element() {return this._elem;}

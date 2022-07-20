@@ -6,7 +6,7 @@ import { currentScore } from './modules/scores.js';
 
 import { TileMap } from './modules/map.js';
 import { Player } from './modules/entities.js';
-import { soundfx, music } from './modules/sounds.js';
+import { soundfx, playSound, stopAllSounds, muteSounds } from './modules/sounds.js';
 
 import { 
     createGameElements, clearGameElements, 
@@ -68,7 +68,7 @@ import {
         setGameRunning();
 
         // load sound
-        music(soundfx.gameSong.pause());
+        soundfx.gameSong.pause();
 
         // Player
         player = new Player(4, playerHealth, gameMap.playerSpawn.x, gameMap.playerSpawn.y, gameMap, 6);
@@ -123,7 +123,10 @@ import {
      * Cleans up objects at the end of the game, either on winning or dying.
      */
     function pauseGame() {
+        // Update DOM
         setGameOver();
+        // Stop sounds
+        stopAllSounds();
         // Clear game loop
         running = false;
         // Remove event listeners
@@ -145,6 +148,7 @@ import {
      * Called when the player has run out of health
      */
     function playerDied() {
+        playSound(soundfx.death);
         // Actions specific to player dying here
         showGameDialog('You lost! Have you tried getting good?', 'Play Again?');
         // Pause game
@@ -179,6 +183,10 @@ import {
     }
 
     function playGame() {
+        playSound(soundfx.gameStart);
+        // Start the main music when intro music has finished:
+        setTimeout(() => playSound(soundfx.gameSong), 4000);
+
         shuffleArray(gameMaps);
         clearGameElements();
         startGame(new TileMap(gameMaps[0]), gameMaps[0]);
@@ -199,7 +207,7 @@ import {
         /* -------- ENTITY UPDATES ------- */
         currentMap.update(timeDelta);
 
-        /* ----- GAME LOGIC UPDATES ------ */
+        /* ------ GAMELOGIC UPDATES ------ */
         // Check map complete:
         if (currentMap.complete) nextMap();
         // Is the player an ex-player? Have they shuffled off this mortal coil?
@@ -231,9 +239,18 @@ import {
         }
     }
 
-    document.getElementById('start-game-btn').addEventListener('click', ()=>{
+    document.getElementById('start-game-btn').addEventListener('click', () => {
         playGame();
         hideGameDialog();
+    });
+
+    document.getElementById('audio-input').addEventListener('change', function () {
+        const muted = !this.checked;
+        muteSounds(muted);
+        // If game is playing and unmuted, start the music
+        if (running && !muted) {
+            playSound(soundfx.gameSong);
+        }
     });
 
 })();
