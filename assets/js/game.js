@@ -2,7 +2,7 @@
 /*jshint esversion: 8 */
 
 import { playerHealth } from './emojis/emoji_dict.js';
-import { currentScore } from './modules/scores.js';
+import { currentScore, resetScore } from './modules/scores.js';
 
 import { TileMap } from './modules/map.js';
 import { Player } from './modules/entities.js';
@@ -186,6 +186,10 @@ import {
         playMusic(soundfx.gameStart);
         // Start the main music when intro music has finished:
         setTimeout(() => playMusic(soundfx.gameSong), 4000);
+
+        // Ensure game state is reset:
+        mapIdx = 0;
+        resetScore();
 
         shuffleArray(gameMaps);
         clearGameElements();
