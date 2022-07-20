@@ -32,7 +32,6 @@ export class ObjectFactory {
  */
 
 // Implements the desitination (exit)
-
 class Exit extends MapObject {
     collide(obj) {
         // This function is called when another game object collides with this one. Basically
@@ -64,6 +63,7 @@ class Points extends MapObject {
 }
 ObjectFactory.register('points', Points);
 
+// Implements food items
 class Food extends MapObject {
     collide(obj) {
         if (obj.category === 'player' && !this._dying) {

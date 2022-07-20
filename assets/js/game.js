@@ -199,7 +199,7 @@ import {
         /* -------- ENTITY UPDATES ------- */
         currentMap.update(timeDelta);
 
-        /* ----- GAME LOGIC UPDATES ------ */
+        /* ------ GAMELOGIC UPDATES ------ */
         // Check map complete:
         if (currentMap.complete) nextMap();
         // Is the player an ex-player? Have they shuffled off this mortal coil?

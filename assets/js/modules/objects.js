@@ -163,7 +163,8 @@ export class PathFinder extends MapEntity {
     }
     createPath(goal) {
         const time = performance.now();
-        if ((time - this._lastPathTime) > this._pathWait) {
+        // If entity hasn't got a path or the current path might be out of date
+        if (!this._pathing || ((time - this._lastPathTime) > this._pathWait)) {
             this._lastPathTime = time;
             this._path = this._map.getPath(this._tile, goal);
             this._goal = goal;
@@ -176,13 +177,17 @@ export class PathFinder extends MapEntity {
         if (this._pathing) {
             // Have we reached our goal?
             if (this._tile === this._goal) {
-                this._pathing = true;
+                // Clear the path information
+                this._pathing = false;
                 this._goal = null;
                 this._path = [];
                 this._step = 0;
+                // Clear movement vector
                 this.setVector(0,0);
             } else if (this._tile.node === this._path[this._step]) {
+                // Set next path step as entities current goal position
                 this._step++;
+                // Set movement vector to point to new goal position
                 this.setVector(this._path[this._step].x - this._tile.x, this._path[this._step].y - this._tile.y);
             }
         }
