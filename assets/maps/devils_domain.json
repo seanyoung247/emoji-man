@@ -199,6 +199,6 @@
         { "type": "fire", "x": 14, "y": 19 }
     ],
     "destination": { "type": "volcano", "x": 12, "y": 21 },
-    "background": "#850d0d",
-    "foreground": "#ff6517"
+    "foreground": "#850d0d",
+    "background": "#ff6517"
 }

@@ -79,6 +79,6 @@
         {"type": "bear", "x":9, "y":8}
     ],
     "destination": {"type": "high-heels", "x":23, "y":23},
-    "background": "#563727",
-    "foreground": "#d3f090"
+    "foreground": "#563727",
+    "background": "#d3f090"
 }

@@ -94,6 +94,6 @@
         {"type": "vampire", "x":12, "y":12}
     ],
     "destination": {"type": "castle", "x":12, "y":12},
-    "background": "#000000",
-    "foreground": "#ff0000"
+    "foreground": "#880000",
+    "background": "#ff7777"
 }
