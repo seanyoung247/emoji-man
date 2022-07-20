@@ -3,6 +3,7 @@
 
 
 import { MapObject, MapEntity, PathFinder } from './objects.js';
+import { soundfx, playSound } from './sounds.js';
 import { incScore } from './scores.js';
 import { emojis } from '../emojis/emoji_dict.js';
 
@@ -56,6 +57,8 @@ class Points extends MapObject {
         if (obj.category === 'player' && !this._dying) {
             // Add points to score.
             incScore(this._points);
+            // Play sound effect
+            playSound(soundfx.chomp);
             // Get out of here eaten thing
             this.die();
         }
@@ -71,6 +74,8 @@ class Food extends MapObject {
             incScore(this._points);
             // Add health to player
             obj.setHealth(this._health_diff);
+            // Play sound effect
+            playSound(soundfx.eatfruit);
             // Get out of here eaten thing
             this.die();
         }
@@ -106,6 +111,7 @@ class Chaser extends PathFinder {
         if (obj.category === 'player') {
             // Imma gonna hurt ya
             obj.setHealth(this._health_diff);
+            playSound(soundfx.eatGhost);
             // Trigger reset
             this._map.resetPositions();
             // Do we want the monster to die here?
