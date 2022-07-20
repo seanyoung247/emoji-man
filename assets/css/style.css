@@ -250,14 +250,14 @@ header {
 }
 
 .game-tile {
-    border: 1px solid var(--game-foreground);
+    /* border: 1px solid var(--game-foreground); */
     background-color: var(--game-background);
     flex: 1 0 var(--tile-width);
     aspect-ratio: 1 / 1;
 }
 
 .game-tile.wall {
-    background-color: black;
+    background-color: var(--game-foreground);;
 }
 
 .game-object {

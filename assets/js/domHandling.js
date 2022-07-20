@@ -50,6 +50,9 @@ export function createGameElements(gameMap, mapParams, player) {
     document.documentElement.style.setProperty('--map-columns', gameMap.cols);
     document.documentElement.style.setProperty('--map-rows', gameMap.rows);
 
+    document.documentElement.style.setProperty('--game-foreground', gameMap.template.foreground);
+    document.documentElement.style.setProperty('--game-background', gameMap.template.background);
+
     // Map + Tiles
     const frag = new DocumentFragment();
     frag.append(gameMap.element);
