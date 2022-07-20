@@ -1,14 +1,17 @@
 /*jshint esversion: 6 */
 
+let muted = true;
+let playMusic = false;
+
 //all sounds
-export var soundfx = {
+export const soundfx = {
     gameSong: new Howl({
         src: [
             'assets/sounds/retrorace-108750.ogg',
             'assets/sounds/retrorace-108750.wav'
         ],
         loop: true,
-        volume: 0.1
+        volume: 0.5
     }),
     gameStart: new Howl({
         src: [
@@ -22,7 +25,7 @@ export var soundfx = {
             'assets/sounds/emojiman_chomp.ogg',
             'assets/sounds/emojiman_chomp.wav'
         ],
-        volume: 0.1
+        volume: 0.5
 
     }),
     eatfruit: new Howl({
@@ -58,16 +61,23 @@ export var soundfx = {
     })
 };
 
-// pause or play background music
+export function muteSounds(val) {
+    muted = val;
+    if (muted) stopAllSounds();
+}
 
-export function music() {
-    // Uncomment when fixed!
-    // document.querySelector(".play-music").addEventListener('click', () => {
-    //     if (!soundfx.gameSong.playing()) {
-    //         soundfx.gameSong.play();
-    //     }
-    // });
-    // document.querySelector(".mute-music").addEventListener('click', () => {
-    //     soundfx.gameSong.pause();
-    // });
-};
+export function stopAllSounds() {
+    for (const sound in soundfx) {
+        soundfx[sound].pause();
+    }
+}
+
+export function playSound(sound) {
+    if (!muted) {
+        sound.play();
+    }
+}
+
+export function stopSound(sound) {
+    sound.pause();
+}
