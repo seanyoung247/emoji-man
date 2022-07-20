@@ -6,3 +6,7 @@ export let currentScore = 0;
 export function incScore(amount) {
     currentScore += amount;
 }
+
+export function resetScore() {
+    currentScore = 0;
+}
