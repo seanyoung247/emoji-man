@@ -159,12 +159,44 @@ header {
     justify-content: space-between;
 }
 
-
 #logo-nav a {
     color: var(--light-site-col);
     text-align: center;
     text-decoration: none;
     
+}
+
+#audio-control {
+    position: fixed;
+    width:20px;
+    height: 20px;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+}
+
+#audio-control > input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    cursor: pointer;
+}
+
+#audio-control > .indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#audio-control > input ~ .indicator::before {
+    content: '🔇';
+}
+
+#audio-control > input:checked ~ .indicator::before {
+    content: '🔊';
 }
 
 #nav {
