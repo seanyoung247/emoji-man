@@ -1,7 +1,6 @@
 /*jshint esversion: 6 */
 
 let muted = true;
-let playMusic = false;
 
 //all sounds
 export const soundfx = {
@@ -80,4 +79,10 @@ export function playSound(sound) {
 
 export function stopSound(sound) {
     sound.pause();
+}
+
+export function playMusic(sound) {
+    if (!muted && !sound.playing()) {
+        sound.play();
+    } 
 }

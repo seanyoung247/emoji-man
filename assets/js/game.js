@@ -6,7 +6,7 @@ import { currentScore } from './modules/scores.js';
 
 import { TileMap } from './modules/map.js';
 import { Player } from './modules/entities.js';
-import { soundfx, playSound, stopAllSounds, muteSounds } from './modules/sounds.js';
+import { soundfx, playSound, playMusic, stopAllSounds, muteSounds } from './modules/sounds.js';
 
 import { 
     createGameElements, clearGameElements, 
@@ -183,9 +183,9 @@ import {
     }
 
     function playGame() {
-        playSound(soundfx.gameStart);
+        playMusic(soundfx.gameStart);
         // Start the main music when intro music has finished:
-        setTimeout(() => playSound(soundfx.gameSong), 4000);
+        setTimeout(() => playMusic(soundfx.gameSong), 4000);
 
         shuffleArray(gameMaps);
         clearGameElements();
@@ -249,7 +249,7 @@ import {
         muteSounds(muted);
         // If game is playing and unmuted, start the music
         if (running && !muted) {
-            playSound(soundfx.gameSong);
+            playMusic(soundfx.gameSong);
         }
     });
 
