@@ -191,7 +191,7 @@ export const emojis = {
     vampire: {
         "name":'vampire',
         "category":"enemies",
-        "points":0,
+        "points":-50,
         "health":0,
         "health_diff":-1,
         "html":'129499',
@@ -242,7 +242,7 @@ export const emojis = {
     alien: {
         "name":'alien',
         "category":"enemies",
-        "points":0,
+        "points":-50,
         "health":0,
         "health_diff":-1,
         "html":'128125',
@@ -293,7 +293,7 @@ export const emojis = {
     clown: {
         "name":'clown',
         "category":"enemies",
-        "points":0,
+        "points":-50,
         "health":0,
         "health_diff":-1,
         "html":'129313',
@@ -303,7 +303,7 @@ export const emojis = {
     juggler: {
         "name":'juggler',
         "category":"enemies",
-        "points":0,
+        "points":-50,
         "health":0,
         "health_diff":-1,
         "html":'129337',
@@ -313,7 +313,7 @@ export const emojis = {
     joker: {
         "name":'joker',
         "category":"enemies",
-        "points":0,
+        "points":-50,
         "health":0,
         "health_diff":-1,
         "html":'127183',
@@ -354,7 +354,7 @@ export const emojis = {
     devil: {
         "name":'devil',
         "category":"enemies",
-        "points":0,
+        "points":-50,
         "health":0,
         "health_diff":-1,
         "html":'128520',
@@ -364,7 +364,7 @@ export const emojis = {
     fire: {
         "name":'fire',
         "category":"enemies",
-        "points":0,
+        "points":-50,
         "health":0,
         "health_diff":-1,
         "html":'128293',
@@ -405,7 +405,7 @@ export const emojis = {
     lion: {
         "name":'lion',
         "category":"enemies",
-        "points":0,
+        "points":-50,
         "health":0,
         "health_diff":-1,
         "html":'129409',
@@ -415,7 +415,7 @@ export const emojis = {
     tiger: {
         "name":'tiger',
         "category":"enemies",
-        "points":0,
+        "points":-50,
         "health":0,
         "health_diff":-1,
         "html":'128047',
@@ -425,7 +425,7 @@ export const emojis = {
     bear: {
         "name":'bear',
         "category":"enemies",
-        "points":0,
+        "points":-50,
         "health":0,
         "health_diff":-1,
         "html":'128059',
@@ -466,7 +466,7 @@ export const emojis = {
     skull: {
         "name":'skull',
         "category":"enemies",
-        "points":0,
+        "points":-50,
         "health":0,
         "health_diff":-1,
         "html":'128128',
@@ -476,7 +476,7 @@ export const emojis = {
     flag: {
         "name":'flag',
         "category":"enemies",
-        "points":0,
+        "points":-50,
         "health":0,
         "health_diff":-1,
         "html":'127988',
@@ -517,7 +517,7 @@ export const emojis = {
     zombie: {
         "name":'zombie',
         "category":"enemies",
-        "points":0,
+        "points":-50,
         "health":0,
         "health_diff":-1,
         "html":'129503',
@@ -558,7 +558,7 @@ export const emojis = {
     "space_invader": {
         "name":'space_invader',
         "category":"enemies",
-        "points":0,
+        "points":-50,
         "health":0,
         "health_diff":-1,
         "html":'128126',

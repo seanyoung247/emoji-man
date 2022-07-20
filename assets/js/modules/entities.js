@@ -111,6 +111,9 @@ class Chaser extends PathFinder {
         if (obj.category === 'player') {
             // Imma gonna hurt ya
             obj.setHealth(this._health_diff);
+            // Reduce score
+            incScore(this._points);
+            // Play sounds
             playSound(soundfx.eatGhost);
             // Trigger reset
             this._map.resetPositions();
